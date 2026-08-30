@@ -711,4 +711,64 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.querySelectorAll('.metric-val').forEach(el => counterObserver.observe(el));
 
+  /* ------------------------------------------------------------------------
+     14. 3D TILT & PARALLAX ANIMATION ON CARDS
+     ------------------------------------------------------------------------ */
+  const tiltCards = document.querySelectorAll('.proj-card, .spec-card, .schematic-card');
+
+  tiltCards.forEach(card => {
+    card.style.transition = 'transform 0.15s ease-out, box-shadow 0.3s ease';
+
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+
+      const rotateX = ((y - centerY) / centerY) * -5; // max 5 deg
+      const rotateY = ((x - centerX) / centerX) * 5;  // max 5 deg
+
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.012, 1.012, 1.012)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+    });
+  });
+
+  /* ------------------------------------------------------------------------
+     15. RIPPLE RAYS ON CLICK
+     ------------------------------------------------------------------------ */
+  document.querySelectorAll('.btn, .tag, .filter-btn, .pill-btn').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      const rect = this.getBoundingClientRect();
+      const ripple = document.createElement('span');
+      ripple.className = 'click-ripple';
+      const size = Math.max(rect.width, rect.height);
+      ripple.style.width = ripple.style.height = `${size}px`;
+      ripple.style.left = `${e.clientX - rect.left - size / 2}px`;
+      ripple.style.top = `${e.clientY - rect.top - size / 2}px`;
+      this.appendChild(ripple);
+      setTimeout(() => ripple.remove(), 600);
+    });
+  });
+
+  /* ------------------------------------------------------------------------
+     16. SCHEMATIC WIRE GLOW ON HOVER
+     ------------------------------------------------------------------------ */
+  document.querySelectorAll('.sch-node-group').forEach(node => {
+    node.addEventListener('mouseenter', () => {
+      document.querySelectorAll('.sch-wire').forEach(wire => {
+        wire.classList.add('wire-glowing');
+      });
+    });
+    node.addEventListener('mouseleave', () => {
+      document.querySelectorAll('.sch-wire').forEach(wire => {
+        wire.classList.remove('wire-glowing');
+      });
+    });
+  });
+
 });
