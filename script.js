@@ -771,4 +771,128 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  /* ------------------------------------------------------------------------
+     17. LIVE CONCURRENCY & ALGORITHM PIPELINE VISUALIZER ENGINE
+     ------------------------------------------------------------------------ */
+  const btnVisWorker = document.getElementById('btnVisWorker');
+  const btnVisTree = document.getElementById('btnVisTree');
+  const visWorkerView = document.getElementById('visWorkerView');
+  const visTreeView = document.getElementById('visTreeView');
+
+  btnVisWorker?.addEventListener('click', () => {
+    btnVisWorker.classList.add('active');
+    btnVisTree?.classList.remove('active');
+    if (visWorkerView) visWorkerView.style.display = 'block';
+    if (visTreeView) visTreeView.style.display = 'none';
+    playSound(600, 0.05);
+  });
+
+  btnVisTree?.addEventListener('click', () => {
+    btnVisTree.classList.add('active');
+    btnVisWorker?.classList.remove('active');
+    if (visTreeView) visTreeView.style.display = 'block';
+    if (visWorkerView) visWorkerView.style.display = 'none';
+    playSound(600, 0.05);
+  });
+
+  // WORKER PIPELINE LOGIC
+  const btnPushJob = document.getElementById('btnPushJob');
+  const qSlots = document.querySelectorAll('#qSlots .q-slot');
+  const visLog = document.getElementById('visLog');
+  const workers = [
+    { el: document.getElementById('w1'), name: 'Worker #1', busy: false },
+    { el: document.getElementById('w2'), name: 'Worker #2', busy: false },
+    { el: document.getElementById('w3'), name: 'Worker #3', busy: false }
+  ];
+
+  let jobCounter = 100;
+  let queue = [];
+
+  btnPushJob?.addEventListener('click', () => {
+    jobCounter++;
+    const jobId = `JOB #${jobCounter}`;
+    playSound(720, 0.08);
+
+    if (queue.length < 5) {
+      queue.push(jobId);
+      updateQueueUI();
+      if (visLog) visLog.textContent = `[CHAN_PUSH] Dispatched ${jobId} to buffered channel. Capacity: ${queue.length}/5`;
+      processQueue();
+    } else {
+      if (visLog) visLog.innerHTML = `<span style="color:var(--accent)">[WARN] Channel Full! Capacity limit (5/5) reached. Blocked until worker frees slot.</span>`;
+    }
+  });
+
+  function updateQueueUI() {
+    qSlots.forEach((slot, idx) => {
+      if (idx < queue.length) {
+        slot.textContent = queue[idx];
+        slot.className = 'q-slot filled';
+      } else {
+        slot.textContent = 'EMPTY';
+        slot.className = 'q-slot empty';
+      }
+    });
+  }
+
+  function processQueue() {
+    if (queue.length === 0) return;
+
+    const freeWorker = workers.find(w => !w.busy);
+    if (freeWorker) {
+      const task = queue.shift();
+      updateQueueUI();
+
+      freeWorker.busy = true;
+      if (freeWorker.el) {
+        freeWorker.el.classList.add('busy');
+        freeWorker.el.querySelector('.w-status').textContent = `PROCESSING ${task}`;
+      }
+
+      if (visLog) visLog.textContent = `[EXEC] ${freeWorker.name} acquired ${task} from channel (Goroutine async execution).`;
+
+      setTimeout(() => {
+        freeWorker.busy = false;
+        if (freeWorker.el) {
+          freeWorker.el.classList.remove('busy');
+          freeWorker.el.querySelector('.w-status').textContent = 'IDLE';
+        }
+        if (visLog) visLog.textContent = `[DONE] ${freeWorker.name} completed ${task}. Slot released (200 OK).`;
+        processQueue();
+      }, 2200 + Math.random() * 800);
+    }
+  }
+
+  // BST IN-ORDER TRAVERSAL ANIMATION LOGIC
+  const btnTraverseTree = document.getElementById('btnTraverseTree');
+  const treeLog = document.getElementById('treeLog');
+  const traverseOrder = ['tn20', 'tn30', 'tn40', 'tn50', 'tn60', 'tn70', 'tn80'];
+  let isTraversing = false;
+
+  btnTraverseTree?.addEventListener('click', () => {
+    if (isTraversing) return;
+    isTraversing = true;
+    playSound(800, 0.1);
+
+    if (treeLog) treeLog.textContent = '[ALGO_START] Initiating In-Order DFS Traversal (Left -> Root -> Right)...';
+
+    let step = 0;
+    const interval = setInterval(() => {
+      document.querySelectorAll('.tnode').forEach(n => n.classList.remove('active-node'));
+
+      if (step < traverseOrder.length) {
+        const nodeEl = document.getElementById(traverseOrder[step]);
+        if (nodeEl) nodeEl.classList.add('active-node');
+        const val = nodeEl ? nodeEl.textContent : '';
+        if (treeLog) treeLog.textContent = `[TRAVERSE_STEP ${step + 1}/7] Visited Node Key: ${val} (Pointer: 0x7FFF5F_${val})`;
+        playSound(440 + step * 60, 0.08);
+        step++;
+      } else {
+        clearInterval(interval);
+        isTraversing = false;
+        if (treeLog) treeLog.innerHTML = '<span style="color:var(--accent-2)">[ALGO_COMPLETE] In-Order Traversal Result: [20, 30, 40, 50, 60, 70, 80] — Sorted 100%.</span>';
+      }
+    }, 700);
+  });
+
 });

@@ -500,6 +500,78 @@
         </div>
       </div>
 
+      <!-- 2.4 INTERACTIVE CONCURRENCY & DSA PIPELINE SIMULATOR -->
+      <div class="legend-group visualizer-group reveal">
+        <div class="group-header" style="justify-content:space-between; width:100%;">
+          <div class="gh-left" style="display:flex; align-items:center; gap:10px;">
+            <span class="group-num">2.4</span>
+            <h3 data-i18n="sg_vis">Live Go Concurrency &amp; DSA Execution Visualizer</h3>
+          </div>
+          <div class="vis-controls">
+            <button class="btn-micro active" id="btnVisWorker"><span class="pulse-dot"></span> Go Channel Workers</button>
+            <button class="btn-micro" id="btnVisTree">BST Tree Traversal</button>
+          </div>
+        </div>
+
+        <div class="visualizer-card spec-card">
+          <!-- WORKER CANOPY -->
+          <div class="vis-view" id="visWorkerView">
+            <div class="vis-hud-top">
+              <span class="vis-tag">CONCURRENCY PIPELINE // GOROUTINES</span>
+              <button class="btn primary btn-sm" id="btnPushJob">+ Push Task to Channel</button>
+            </div>
+            <div class="vis-pipeline-canvas">
+              <div class="channel-queue-box">
+                <span class="q-label">chan Task [cap: 5]</span>
+                <div class="q-slots" id="qSlots">
+                  <span class="q-slot empty">EMPTY</span>
+                  <span class="q-slot empty">EMPTY</span>
+                  <span class="q-slot empty">EMPTY</span>
+                  <span class="q-slot empty">EMPTY</span>
+                  <span class="q-slot empty">EMPTY</span>
+                </div>
+              </div>
+              <div class="channel-arrow">&rarr;</div>
+              <div class="workers-grid">
+                <div class="w-box" id="w1"><span class="w-name">Worker #1</span><span class="w-status">IDLE</span></div>
+                <div class="w-box" id="w2"><span class="w-name">Worker #2</span><span class="w-status">IDLE</span></div>
+                <div class="w-box" id="w3"><span class="w-name">Worker #3</span><span class="w-status">IDLE</span></div>
+              </div>
+            </div>
+            <div class="vis-log" id="visLog">[SYS] Channel initialized. Click "+ Push Task to Channel" to dispatch asynchronous tasks across workers.</div>
+          </div>
+
+          <!-- BST TREE CANOPY (Hidden by default) -->
+          <div class="vis-view" id="visTreeView" style="display:none;">
+            <div class="vis-hud-top">
+              <span class="vis-tag">ALGORITHM TRAVERSAL // BST</span>
+              <button class="btn primary btn-sm" id="btnTraverseTree">▶ Run In-Order Traversal</button>
+            </div>
+            <div class="vis-tree-canvas">
+              <svg viewBox="0 0 400 180" class="tree-svg">
+                <!-- Lines -->
+                <line x1="200" y1="30" x2="110" y2="80" stroke="var(--line-strong)" stroke-width="1.5" id="tline1"/>
+                <line x1="200" y1="30" x2="290" y2="80" stroke="var(--line-strong)" stroke-width="1.5" id="tline2"/>
+                <line x1="110" y1="80" x2="60" y2="135" stroke="var(--line-strong)" stroke-width="1.5" id="tline3"/>
+                <line x1="110" y1="80" x2="150" y2="135" stroke="var(--line-strong)" stroke-width="1.5" id="tline4"/>
+                <line x1="290" y1="80" x2="250" y2="135" stroke="var(--line-strong)" stroke-width="1.5" id="tline5"/>
+                <line x1="290" y1="80" x2="340" y2="135" stroke="var(--line-strong)" stroke-width="1.5" id="tline6"/>
+
+                <!-- Nodes -->
+                <g class="tnode" id="tn50"><circle cx="200" cy="30" r="16" fill="var(--panel-2)" stroke="var(--accent-2)" stroke-width="2"/><text x="200" y="34" text-anchor="middle" fill="var(--ink)" font-size="11" font-weight="600">50</text></g>
+                <g class="tnode" id="tn30"><circle cx="110" cy="80" r="14" fill="var(--panel-2)" stroke="var(--accent)" stroke-width="1.5"/><text x="110" y="84" text-anchor="middle" fill="var(--ink)" font-size="10">30</text></g>
+                <g class="tnode" id="tn70"><circle cx="290" cy="80" r="14" fill="var(--panel-2)" stroke="var(--accent)" stroke-width="1.5"/><text x="290" y="84" text-anchor="middle" fill="var(--ink)" font-size="10">70</text></g>
+                <g class="tnode" id="tn20"><circle cx="60" cy="135" r="12" fill="var(--panel-2)" stroke="var(--line-strong)" stroke-width="1.5"/><text x="60" y="139" text-anchor="middle" fill="var(--muted)" font-size="9">20</text></g>
+                <g class="tnode" id="tn40"><circle cx="150" cy="135" r="12" fill="var(--panel-2)" stroke="var(--line-strong)" stroke-width="1.5"/><text x="150" y="139" text-anchor="middle" fill="var(--muted)" font-size="9">40</text></g>
+                <g class="tnode" id="tn60"><circle cx="250" cy="135" r="12" fill="var(--panel-2)" stroke="var(--line-strong)" stroke-width="1.5"/><text x="250" y="139" text-anchor="middle" fill="var(--muted)" font-size="9">60</text></g>
+                <g class="tnode" id="tn80"><circle cx="340" cy="135" r="12" fill="var(--panel-2)" stroke="var(--line-strong)" stroke-width="1.5"/><text x="340" y="139" text-anchor="middle" fill="var(--muted)" font-size="9">80</text></g>
+              </svg>
+            </div>
+            <div class="vis-log" id="treeLog">[ALGO] Binary Search Tree ready. Click "Run In-Order Traversal" to simulate DFS traversal sequence.</div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
