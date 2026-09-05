@@ -24,11 +24,15 @@ document.addEventListener('DOMContentLoaded', () => {
       hero_sub: 'আমি বিশ্বাস করি, Software Engineering শুধু code লেখা নয়—এটি মানুষের বাস্তব সমস্যাকে বোঝা, সেটিকে ছোট ছোট অংশে ভেঙে দেখা, এবং একটি সহজ, নির্ভরযোগ্য ও অর্থবহ সমাধান তৈরি করার প্রক্রিয়া।',
       btn_projects: 'প্রজেক্ট স্কিমেটিক্স',
       btn_resume: 'রিজিউমি ডাউনলোড',
-      m_gpa: 'সিজিপিএ (বিএসএসসি এসডাব্লিউই)',
       m_projects: 'সিস্টেম প্রজেক্টস',
       m_dsa: 'ডিএসএ সমস্যা সমাধান',
-      sch_header: 'সিস্টেম টপোলজি সিমুলেটর v1.0',
-      sch_ping: 'পিং নোডস',
+      sch_header: 'সিস্টেম টপোলজি সিমুলেটর',
+      sch_sub: 'স্কেলেবল ব্যাকএন্ড রিকোয়েস্ট পাইপলাইনের ইন্টারঅ্যাক্টিভ ভিজ্যুয়ালাইজেশন। ভূমিকা, ডিপেন্ডেন্সি ও হেলথ দেখতে যেকোনো কম্পোনেন্ট সিলেক্ট করুন।',
+      sch_req: 'রিকোয়েস্ট পাঠান',
+      sch_ping: 'পিং মেশ',
+      sch_insp: 'কম্পোনেন্ট ইন্সপেক্টর',
+      sch_insp_empty: 'ভূমিকা, ডিপেন্ডেন্সি ও লাইভ হেলথ মেট্রিক্স দেখতে টপোলজি থেকে একটি নোড সিলেক্ট করুন।',
+      sch_health: '৮/৮ অপারেশনাল',
       sec_about: '01 // আর্কিটেকচারাল পটভূমি',
       about_head: 'Engineering Philosophy',
       about_p1: 'আমি বিশ্বাস করি, Software Engineering শুধু code লেখা নয়—এটি মানুষের বাস্তব সমস্যাকে বোঝা, সেটিকে ছোট ছোট অংশে ভেঙে দেখা, এবং একটি সহজ, নির্ভরযোগ্য ও অর্থবহ সমাধান তৈরি করার প্রক্রিয়া।',
@@ -42,7 +46,6 @@ document.addEventListener('DOMContentLoaded', () => {
       k_degree: 'ডিগ্রি ও টার্ম',
       k_institute: 'বিশ্ববিদ্যালয়',
       k_focus: 'প্রধান ফোকাস',
-      k_open: 'উপলব্ধি',
       k_status: 'বর্তমান স্ট্যাটাস',
       v_avail: 'গ্রীষ্ম / শরৎ ২০২৬ ইন্টার্নশিপ ও প্রজেক্টের জন্য প্রস্তুত',
       sec_skills: '02 // দক্ষতা ও স্ট্যাক ডিপেন্ডেন্সি ম্যাপ',
@@ -97,11 +100,15 @@ document.addEventListener('DOMContentLoaded', () => {
       hero_sub: 'I believe Software Engineering is not just about writing code—it is the process of understanding real human problems, breaking them down, and creating simple, reliable, and meaningful solutions.',
       btn_projects: 'View Schematics',
       btn_resume: 'Download Résumé',
-      m_gpa: 'CGPA (B.Sc SWE)',
       m_projects: 'System Projects',
       m_dsa: 'DSA Problems',
-      sch_header: 'SYSTEM TOPOLOGY SIMULATOR v1.0',
-      sch_ping: 'PING ALL NODES',
+      sch_header: 'SYSTEM TOPOLOGY SIMULATOR',
+      sch_sub: 'Interactive visualization of a scalable backend request pipeline. Select a component to inspect its role, dependencies & health.',
+      sch_req: 'SEND REQUEST',
+      sch_ping: 'PING MESH',
+      sch_insp: 'COMPONENT INSPECTOR',
+      sch_insp_empty: 'Select a node from the topology to inspect its role, dependencies & live health metrics.',
+      sch_health: '8/8 OPERATIONAL',
       sec_about: '01 // Architectural Background',
       about_head: 'Engineering Philosophy',
       about_p1: 'I believe Software Engineering is not just about writing code—it is the process of understanding real human problems, breaking them down into manageable components, and creating simple, reliable, and meaningful solutions.',
@@ -115,7 +122,6 @@ document.addEventListener('DOMContentLoaded', () => {
       k_degree: 'DEGREE & TERM',
       k_institute: 'UNIVERSITY',
       k_focus: 'PRIMARY FOCUS',
-      k_open: 'OPEN FOR',
       k_status: 'CURRENT STATUS',
       v_avail: 'Available for Summer / Autumn 2026 Internships & Collaborations',
       sec_skills: '02 // Skills & Stack Dependency Map',
@@ -160,6 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function updateLanguage(lang) {
     currentLang = lang;
+    document.documentElement.setAttribute('lang', lang === 'bn' ? 'bn' : 'en');
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.getAttribute('data-i18n');
       if (i18n[lang] && i18n[lang][key]) {
@@ -169,7 +176,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById('langBn').classList.toggle('active', lang === 'bn');
     document.getElementById('langEn').classList.toggle('active', lang === 'en');
+
+    try { localStorage.setItem('ratul_lang', lang); } catch (e) {}
   }
+
+  // Restore the visitor's previously chosen language (defaults to Bangla).
+  let savedLang = null;
+  try { savedLang = localStorage.getItem('ratul_lang'); } catch (e) {}
+  if (savedLang === 'en' || savedLang === 'bn') updateLanguage(savedLang);
 
   document.getElementById('langToggle')?.addEventListener('click', () => {
     playSound(600, 0.05);
@@ -189,20 +203,30 @@ document.addEventListener('DOMContentLoaded', () => {
     showToast(soundMuted ? '🔊 Sound Muted' : '🔊 Sound Enabled');
   });
 
+  // A single shared AudioContext — creating one per beep leaks contexts and
+  // browsers cap concurrent contexts (~6), after which all sounds die.
+  let sharedAudioCtx = null;
+
   function playSound(freq = 440, duration = 0.08, type = 'sine') {
     if (soundMuted) return;
     try {
-      const ctx = new (window.AudioContext || window.webkitAudioContext)();
-      const osc = ctx.createOscillator();
-      const gain = ctx.createGain();
+      if (!sharedAudioCtx) {
+        const Ctx = window.AudioContext || window.webkitAudioContext;
+        if (!Ctx) return;
+        sharedAudioCtx = new Ctx();
+      }
+      if (sharedAudioCtx.state === 'suspended') sharedAudioCtx.resume();
+
+      const osc = sharedAudioCtx.createOscillator();
+      const gain = sharedAudioCtx.createGain();
       osc.type = type;
-      osc.frequency.setValueAtTime(freq, ctx.currentTime);
-      gain.gain.setValueAtTime(0.04, ctx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + duration);
+      osc.frequency.setValueAtTime(freq, sharedAudioCtx.currentTime);
+      gain.gain.setValueAtTime(0.04, sharedAudioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, sharedAudioCtx.currentTime + duration);
       osc.connect(gain);
-      gain.connect(ctx.destination);
+      gain.connect(sharedAudioCtx.destination);
       osc.start();
-      osc.stop(ctx.currentTime + duration);
+      osc.stop(sharedAudioCtx.currentTime + duration);
     } catch (e) {}
   }
 
@@ -272,6 +296,27 @@ document.addEventListener('DOMContentLoaded', () => {
       height = canvas.height = window.innerHeight;
     });
 
+    // Resolve canvas colors from the active theme's CSS variables so the
+    // background follows theme switches instead of staying Blueprint Cyan.
+    function hexToRgbTriplet(hex) {
+      const m = /^#?([0-9a-fA-F]{6})$/.exec(hex || '');
+      if (!m) return null;
+      const n = parseInt(m[1], 16);
+      return `${(n >> 16) & 255}, ${(n >> 8) & 255}, ${n & 255}`;
+    }
+
+    function readCanvasColors() {
+      const s = getComputedStyle(document.documentElement);
+      return {
+        accent2: s.getPropertyValue('--accent-2-rgb').trim() || '94, 234, 212',
+        paper: hexToRgbTriplet(s.getPropertyValue('--paper').trim()) || '14, 28, 46'
+      };
+    }
+
+    let canvasColors = readCanvasColors();
+    new MutationObserver(() => { canvasColors = readCanvasColors(); })
+      .observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+
     const particles = [];
     for (let i = 0; i < 35; i++) {
       particles.push({
@@ -287,12 +332,12 @@ document.addEventListener('DOMContentLoaded', () => {
       ctx.clearRect(0, 0, width, height);
 
       const gradient = ctx.createRadialGradient(mouseX, mouseY, 0, mouseX, mouseY, 180);
-      gradient.addColorStop(0, 'rgba(94, 234, 212, 0.08)');
-      gradient.addColorStop(1, 'rgba(14, 28, 46, 0)');
+      gradient.addColorStop(0, `rgba(${canvasColors.accent2}, 0.08)`);
+      gradient.addColorStop(1, `rgba(${canvasColors.paper}, 0)`);
       ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, width, height);
 
-      ctx.fillStyle = 'rgba(94, 234, 212, 0.4)';
+      ctx.fillStyle = `rgba(${canvasColors.accent2}, 0.4)`;
       particles.forEach(p => {
         p.x += p.vx;
         p.y += p.vy;
@@ -313,40 +358,30 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ------------------------------------------------------------------------
-     05. INTERACTIVE SCHEMATIC SIMULATOR
+     04b. MOBILE NAVIGATION TOGGLE
      ------------------------------------------------------------------------ */
-  const schLogContent = document.getElementById('schLogContent');
+  const mainNav = document.getElementById('mainNav');
+  const navBurger = document.getElementById('navBurger');
 
-  document.querySelectorAll('.sch-node-group').forEach(group => {
-    group.addEventListener('click', () => {
-      const nodeName = group.getAttribute('data-node-name') || 'Node';
-      playSound(700, 0.1);
+  navBurger?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const open = mainNav?.classList.toggle('nav-open');
+    navBurger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    playSound(520, 0.05);
+  });
 
-      const rect = group.querySelector('rect, polygon, ellipse, path');
-      if (rect) {
-        rect.style.stroke = 'var(--accent)';
-        setTimeout(() => rect.style.stroke = '', 800);
-      }
-
-      if (schLogContent) {
-        schLogContent.innerHTML = `<strong style="color:var(--accent)">[SELECTED]</strong> ${nodeName} — System operational. Latency 2.4ms.`;
-      }
+  mainNav?.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => {
+      mainNav.classList.remove('nav-open');
+      navBurger?.setAttribute('aria-expanded', 'false');
     });
   });
 
-  document.getElementById('pulseSimBtn')?.addEventListener('click', () => {
-    playSound(900, 0.2);
-    showToast('⚡ Signal Pulse Sent Across All Nodes');
-
-    document.querySelectorAll('.signal-pulse').forEach(p => {
-      p.setAttribute('r', '7');
-      setTimeout(() => p.setAttribute('r', '3.5'), 600);
-    });
-
-    if (schLogContent) {
-      schLogContent.innerHTML = '<span style="color:var(--accent-2)">[PING_SURGE] All 7 Nodes Responded (200 OK) — System Health: 100%</span>';
-    }
-  });
+  /* ------------------------------------------------------------------------
+     05. SYSTEM TOPOLOGY SIMULATOR
+     ------------------------------------------------------------------------ */
+  // The topology card engine (tooltip, inspector, live metrics, request
+  // traces, ping mesh) lives in topology.js.
 
   /* ------------------------------------------------------------------------
      06. THEME ACCENT SELECTOR ENGINE
@@ -362,6 +397,14 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   document.addEventListener('click', () => themeDropdown?.classList.remove('open'));
+
+  // Dismiss the mobile nav when clicking anywhere outside of it.
+  document.addEventListener('click', (e) => {
+    if (mainNav?.classList.contains('nav-open') && !mainNav.contains(e.target)) {
+      mainNav.classList.remove('nav-open');
+      navBurger?.setAttribute('aria-expanded', 'false');
+    }
+  });
 
   themeOpts.forEach(opt => {
     opt.addEventListener('click', () => {
@@ -425,12 +468,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
       projCards.forEach(card => {
         const category = card.getAttribute('data-category');
+        // Cancel any pending hide timer so quickly switching filters
+        // can't leave cards stuck at display:none.
+        clearTimeout(card._hideTimer);
         if (filter === 'all' || category === filter) {
           card.style.display = 'flex';
           setTimeout(() => card.style.opacity = '1', 50);
         } else {
           card.style.opacity = '0';
-          setTimeout(() => card.style.display = 'none', 300);
+          card._hideTimer = setTimeout(() => card.style.display = 'none', 300);
         }
       });
     });
@@ -587,12 +633,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // Escape user-provided strings before they touch innerHTML.
+  function escapeHtml(str) {
+    return String(str).replace(/[&<>"']/g, c => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    }[c]));
+  }
+
   function executeCommand(cmd) {
     if (!termOutput) return;
 
     const line = document.createElement('div');
     line.className = 'term-line';
-    line.innerHTML = `<span class="term-ps1">ratul@uftb:~$</span> ${cmd}`;
+    line.innerHTML = `<span class="term-ps1">ratul@uftb:~$</span> ${escapeHtml(cmd)}`;
     termOutput.appendChild(line);
 
     const res = document.createElement('div');
@@ -606,6 +659,7 @@ document.addEventListener('DOMContentLoaded', () => {
           - <span class="term-cmd">contact</span>: View transmission channels<br>
           - <span class="term-cmd">matrix</span>: Display metrics<br>
           - <span class="term-cmd">theme [cyan|emerald|amber|amethyst]</span>: Switch accent color<br>
+          - <span class="term-cmd">quote</span>: Random engineering wisdom<br>
           - <span class="term-cmd">clear</span>: Clear console buffer`;
         break;
       case 'skills':
@@ -615,7 +669,7 @@ document.addEventListener('DOMContentLoaded', () => {
         res.innerHTML = '1. Distributed Task Scheduler | 2. Campus Marketplace | 3. Realtime Chat Engine | 4. Resume Screener ML';
         break;
       case 'contact':
-        res.innerHTML = 'Email: ratul@uftb.edu.bd | GitHub: github.com | LinkedIn: linkedin.com';
+        res.innerHTML = 'Email: ratul@uftb.edu.bd | GitHub: github.com/rahmatul-islam | LinkedIn: linkedin.com/in/rahmatul-islam';
         break;
       case 'matrix':
         res.innerHTML = 'Name: Rahmatul Islam (Ratul) | Department: Software Engineering (Level 2 Term 2) | University: UFTB';
@@ -631,12 +685,15 @@ document.addEventListener('DOMContentLoaded', () => {
           const t = cmd.split(' ')[1];
           if (['cyan', 'emerald', 'amber', 'amethyst'].includes(t)) {
             document.documentElement.setAttribute('data-theme', t);
-            res.innerHTML = `Theme set to: ${t}`;
+            localStorage.setItem('ratul_theme', t);
+            // Keep the palette dropdown's active marker in sync.
+            themeOpts.forEach(o => o.classList.toggle('active', o.getAttribute('data-theme-set') === t));
+            res.innerHTML = `Theme set to: ${escapeHtml(t)}`;
           } else {
             res.innerHTML = 'Invalid theme option. Use: cyan, emerald, amber, amethyst';
           }
         } else if (cmd !== '') {
-          res.innerHTML = `Command not recognized: "${cmd}". Type <span class="term-cmd">help</span> for assistance.`;
+          res.innerHTML = `Command not recognized: "${escapeHtml(cmd)}". Type <span class="term-cmd">help</span> for assistance.`;
         }
     }
 
@@ -650,12 +707,37 @@ document.addEventListener('DOMContentLoaded', () => {
      ------------------------------------------------------------------------ */
   const copyEmailBtn = document.getElementById('copyEmailBtn');
 
+  // Fallback for non-secure contexts / denied clipboard permission.
+  function legacyCopyText(text) {
+    try {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.setAttribute('readonly', '');
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      const ok = document.execCommand('copy');
+      ta.remove();
+      return ok;
+    } catch (e) {
+      return false;
+    }
+  }
+
   copyEmailBtn?.addEventListener('click', () => {
     const email = 'ratul@uftb.edu.bd';
-    navigator.clipboard.writeText(email).then(() => {
+    const onOk = () => {
       playSound(800, 0.15);
       showToast('📋 Email copied to clipboard: ratul@uftb.edu.bd');
-    });
+    };
+    const onFail = () => showToast('❌ Copy failed — email: ratul@uftb.edu.bd');
+
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(email).then(onOk).catch(() => (legacyCopyText(email) ? onOk() : onFail()));
+    } else {
+      legacyCopyText(email) ? onOk() : onFail();
+    }
   });
 
   function showToast(msg) {
@@ -714,29 +796,37 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ------------------------------------------------------------------------
      14. 3D TILT & PARALLAX ANIMATION ON CARDS
      ------------------------------------------------------------------------ */
-  const tiltCards = document.querySelectorAll('.proj-card, .spec-card, .schematic-card');
+  // Only run the tilt effect on devices with a real hover-capable pointer.
+  // The inline transform used to permanently override the CSS :hover lift and
+  // the inline transition override killed the .reveal fade — now the inline
+  // transform is cleared on leave and transitions stay CSS-controlled
+  // (see the .tilting helper class in styles.css).
+  if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    const tiltCards = document.querySelectorAll('.proj-card, .spec-card, .schematic-card');
 
-  tiltCards.forEach(card => {
-    card.style.transition = 'transform 0.15s ease-out, box-shadow 0.3s ease';
+    tiltCards.forEach(card => {
+      card.addEventListener('mouseenter', () => card.classList.add('tilting'));
 
-    card.addEventListener('mousemove', (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
 
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
 
-      const rotateX = ((y - centerY) / centerY) * -5; // max 5 deg
-      const rotateY = ((x - centerX) / centerX) * 5;  // max 5 deg
+        const rotateX = ((y - centerY) / centerY) * -5; // max 5 deg
+        const rotateY = ((x - centerX) / centerX) * 5;  // max 5 deg
 
-      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.012, 1.012, 1.012)`;
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.012, 1.012, 1.012)`;
+      });
+
+      card.addEventListener('mouseleave', () => {
+        card.classList.remove('tilting');
+        card.style.transform = ''; // hand control back to CSS (:hover lift, reveal)
+      });
     });
-
-    card.addEventListener('mouseleave', () => {
-      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
-    });
-  });
+  }
 
   /* ------------------------------------------------------------------------
      15. RIPPLE RAYS ON CLICK
@@ -756,143 +846,10 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* ------------------------------------------------------------------------
-     16. SCHEMATIC WIRE GLOW ON HOVER
+     17. LIVE CONCURRENCY & DSA VISUALIZER
      ------------------------------------------------------------------------ */
-  document.querySelectorAll('.sch-node-group').forEach(node => {
-    node.addEventListener('mouseenter', () => {
-      document.querySelectorAll('.sch-wire').forEach(wire => {
-        wire.classList.add('wire-glowing');
-      });
-    });
-    node.addEventListener('mouseleave', () => {
-      document.querySelectorAll('.sch-wire').forEach(wire => {
-        wire.classList.remove('wire-glowing');
-      });
-    });
-  });
+  // The upgraded Concurrency Lab + BST Lab engine lives in viz-core.js (pure
+  // simulation logic) and visualizer.js (UI rendering). Loaded after this file.
 
-  /* ------------------------------------------------------------------------
-     17. LIVE CONCURRENCY & ALGORITHM PIPELINE VISUALIZER ENGINE
-     ------------------------------------------------------------------------ */
-  const btnVisWorker = document.getElementById('btnVisWorker');
-  const btnVisTree = document.getElementById('btnVisTree');
-  const visWorkerView = document.getElementById('visWorkerView');
-  const visTreeView = document.getElementById('visTreeView');
-
-  btnVisWorker?.addEventListener('click', () => {
-    btnVisWorker.classList.add('active');
-    btnVisTree?.classList.remove('active');
-    if (visWorkerView) visWorkerView.style.display = 'block';
-    if (visTreeView) visTreeView.style.display = 'none';
-    playSound(600, 0.05);
-  });
-
-  btnVisTree?.addEventListener('click', () => {
-    btnVisTree.classList.add('active');
-    btnVisWorker?.classList.remove('active');
-    if (visTreeView) visTreeView.style.display = 'block';
-    if (visWorkerView) visWorkerView.style.display = 'none';
-    playSound(600, 0.05);
-  });
-
-  // WORKER PIPELINE LOGIC
-  const btnPushJob = document.getElementById('btnPushJob');
-  const qSlots = document.querySelectorAll('#qSlots .q-slot');
-  const visLog = document.getElementById('visLog');
-  const workers = [
-    { el: document.getElementById('w1'), name: 'Worker #1', busy: false },
-    { el: document.getElementById('w2'), name: 'Worker #2', busy: false },
-    { el: document.getElementById('w3'), name: 'Worker #3', busy: false }
-  ];
-
-  let jobCounter = 100;
-  let queue = [];
-
-  btnPushJob?.addEventListener('click', () => {
-    jobCounter++;
-    const jobId = `JOB #${jobCounter}`;
-    playSound(720, 0.08);
-
-    if (queue.length < 5) {
-      queue.push(jobId);
-      updateQueueUI();
-      if (visLog) visLog.textContent = `[CHAN_PUSH] Dispatched ${jobId} to buffered channel. Capacity: ${queue.length}/5`;
-      processQueue();
-    } else {
-      if (visLog) visLog.innerHTML = `<span style="color:var(--accent)">[WARN] Channel Full! Capacity limit (5/5) reached. Blocked until worker frees slot.</span>`;
-    }
-  });
-
-  function updateQueueUI() {
-    qSlots.forEach((slot, idx) => {
-      if (idx < queue.length) {
-        slot.textContent = queue[idx];
-        slot.className = 'q-slot filled';
-      } else {
-        slot.textContent = 'EMPTY';
-        slot.className = 'q-slot empty';
-      }
-    });
-  }
-
-  function processQueue() {
-    if (queue.length === 0) return;
-
-    const freeWorker = workers.find(w => !w.busy);
-    if (freeWorker) {
-      const task = queue.shift();
-      updateQueueUI();
-
-      freeWorker.busy = true;
-      if (freeWorker.el) {
-        freeWorker.el.classList.add('busy');
-        freeWorker.el.querySelector('.w-status').textContent = `PROCESSING ${task}`;
-      }
-
-      if (visLog) visLog.textContent = `[EXEC] ${freeWorker.name} acquired ${task} from channel (Goroutine async execution).`;
-
-      setTimeout(() => {
-        freeWorker.busy = false;
-        if (freeWorker.el) {
-          freeWorker.el.classList.remove('busy');
-          freeWorker.el.querySelector('.w-status').textContent = 'IDLE';
-        }
-        if (visLog) visLog.textContent = `[DONE] ${freeWorker.name} completed ${task}. Slot released (200 OK).`;
-        processQueue();
-      }, 2200 + Math.random() * 800);
-    }
-  }
-
-  // BST IN-ORDER TRAVERSAL ANIMATION LOGIC
-  const btnTraverseTree = document.getElementById('btnTraverseTree');
-  const treeLog = document.getElementById('treeLog');
-  const traverseOrder = ['tn20', 'tn30', 'tn40', 'tn50', 'tn60', 'tn70', 'tn80'];
-  let isTraversing = false;
-
-  btnTraverseTree?.addEventListener('click', () => {
-    if (isTraversing) return;
-    isTraversing = true;
-    playSound(800, 0.1);
-
-    if (treeLog) treeLog.textContent = '[ALGO_START] Initiating In-Order DFS Traversal (Left -> Root -> Right)...';
-
-    let step = 0;
-    const interval = setInterval(() => {
-      document.querySelectorAll('.tnode').forEach(n => n.classList.remove('active-node'));
-
-      if (step < traverseOrder.length) {
-        const nodeEl = document.getElementById(traverseOrder[step]);
-        if (nodeEl) nodeEl.classList.add('active-node');
-        const val = nodeEl ? nodeEl.textContent : '';
-        if (treeLog) treeLog.textContent = `[TRAVERSE_STEP ${step + 1}/7] Visited Node Key: ${val} (Pointer: 0x7FFF5F_${val})`;
-        playSound(440 + step * 60, 0.08);
-        step++;
-      } else {
-        clearInterval(interval);
-        isTraversing = false;
-        if (treeLog) treeLog.innerHTML = '<span style="color:var(--accent-2)">[ALGO_COMPLETE] In-Order Traversal Result: [20, 30, 40, 50, 60, 70, 80] — Sorted 100%.</span>';
-      }
-    }, 700);
-  });
 
 });

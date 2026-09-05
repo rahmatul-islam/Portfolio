@@ -1,0 +1,685 @@
+/* ==========================================================================
+   SYSTEM TOPOLOGY SIMULATOR v2 — premium engineering showcase (hero card)
+   Semantic status colors (green=ok, purple=async, red=fault) are fixed;
+   brand accents inherit the active theme via tokens.
+   ========================================================================== */
+
+.topo-card {
+  --tp-cyan: var(--accent-2);
+  --tp-cyan-rgb: var(--accent-2-rgb);
+  --tp-purple: #c084fc;
+  --tp-purple-rgb: 192, 132, 252;
+  --tp-green: #34d399;
+  --tp-green-rgb: 52, 211, 153;
+  --tp-red: #f87171;
+  --tp-amber: #fbbf24;
+
+  background: var(--card-bg);
+  border: 1px solid var(--line-strong);
+  backdrop-filter: blur(12px);
+  position: relative;
+  box-shadow: var(--shadow-glow), 0 24px 60px rgba(0, 0, 0, 0.45);
+  overflow: hidden;
+}
+
+/* scanline sheen across the top of the card */
+.topo-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--tp-cyan), var(--tp-purple), var(--tp-cyan), transparent);
+  opacity: 0.7;
+  z-index: 3;
+}
+
+/* ---- header -------------------------------------------------------------- */
+.topo-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 14px 16px 12px;
+  border-bottom: 1px solid var(--line);
+  background: rgba(var(--paper-rgb), 0.55);
+}
+
+.topo-title {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  min-width: 0;
+}
+
+.topo-title-icon {
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+  margin-top: 2px;
+  filter: drop-shadow(0 0 6px rgba(var(--tp-cyan-rgb), 0.5));
+}
+
+.topo-h {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  line-height: 1.2;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.topo-ver {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--tp-cyan);
+  border: 1px solid rgba(var(--tp-cyan-rgb), 0.5);
+  background: rgba(var(--tp-cyan-rgb), 0.08);
+  padding: 1px 6px;
+  letter-spacing: 0.1em;
+}
+
+.topo-sub {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.55;
+  margin-top: 3px;
+  max-width: 340px;
+}
+
+.topo-actions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+  align-items: center;
+}
+
+.topo-btn {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 7px 12px;
+  border: 1px solid var(--line-strong);
+  background: rgba(var(--paper-rgb), 0.5);
+  color: var(--ink);
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.topo-btn:hover {
+  border-color: var(--tp-cyan);
+  color: var(--tp-cyan);
+  box-shadow: 0 0 14px rgba(var(--tp-cyan-rgb), 0.18);
+}
+
+.topo-btn:focus-visible {
+  outline: 1px dashed var(--tp-cyan);
+  outline-offset: 2px;
+}
+
+.topo-btn.primary {
+  border-color: rgba(var(--tp-cyan-rgb), 0.65);
+  color: var(--tp-cyan);
+  background: rgba(var(--tp-cyan-rgb), 0.09);
+  font-weight: 600;
+}
+
+.topo-btn.primary:hover {
+  background: rgba(var(--tp-cyan-rgb), 0.18);
+}
+
+.topo-btn.busy {
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+.tdot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 6px currentColor;
+  animation: topo-blink 1.6s ease-in-out infinite;
+}
+
+@keyframes topo-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+/* ---- body layout ---------------------------------------------------------- */
+.topo-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 288px;
+}
+
+.topo-stage {
+  position: relative;
+  padding: 6px;
+  background:
+    radial-gradient(ellipse 70% 60% at 30% 45%, rgba(var(--tp-cyan-rgb), 0.05), transparent),
+    rgba(var(--paper-rgb), 0.35);
+  min-width: 0;
+}
+
+.topo-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ---- edges ----------------------------------------------------------------- */
+.te {
+  fill: none;
+  stroke: var(--line-strong);
+  stroke-width: 1.2;
+}
+
+.te.thin { stroke: var(--line); }
+
+.te-flow {
+  fill: none;
+  stroke: var(--tp-cyan);
+  stroke-width: 1.7;
+  stroke-dasharray: 5 11;
+  opacity: 0.5;
+  animation: topo-dash 1.7s linear infinite;
+  filter: drop-shadow(0 0 3px rgba(var(--tp-cyan-rgb), 0.55));
+}
+
+.te-flow.purple {
+  stroke: var(--tp-purple);
+  filter: drop-shadow(0 0 3px rgba(var(--tp-purple-rgb), 0.55));
+}
+
+.te-flow.ok {
+  stroke: var(--tp-green);
+  opacity: 0.3;
+  filter: none;
+}
+
+.te-flow.rev { animation-direction: reverse; }
+
+@keyframes topo-dash {
+  to { stroke-dashoffset: -64; }
+}
+
+.te-g.hot .te { stroke: var(--tp-cyan); }
+.te-g.hot .te-flow { opacity: 1; stroke-width: 2; }
+
+.te-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 7.5px;
+  letter-spacing: 0.12em;
+  fill: var(--muted);
+  text-anchor: middle;
+  paint-order: stroke;
+  stroke: rgba(var(--paper-rgb), 0.9);
+  stroke-width: 3px;
+}
+
+/* ping surge */
+.topo-svg.surge .te-flow {
+  animation-duration: 0.4s;
+  opacity: 1;
+}
+
+.topo-svg.surge .topo-pulse {
+  transform: scale(2.1);
+}
+
+.topo-pulse {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 0.3s;
+}
+
+/* ---- nodes ----------------------------------------------------------------- */
+.topo-node { cursor: pointer; outline: none; }
+
+.tn-box {
+  fill: var(--panel-2);
+  stroke: var(--line-strong);
+  stroke-width: 1.2;
+  transition: all 0.25s ease;
+}
+
+.topo-node:hover .tn-box,
+.topo-node:focus-visible .tn-box {
+  stroke: var(--tp-cyan);
+  fill: var(--panel-hover);
+  filter: drop-shadow(0 0 10px rgba(var(--tp-cyan-rgb), 0.35));
+}
+
+.topo-node.selected .tn-box {
+  stroke: var(--tp-cyan);
+  stroke-width: 1.6;
+  filter: drop-shadow(0 0 12px rgba(var(--tp-cyan-rgb), 0.45));
+}
+
+.tn-ring {
+  fill: none;
+  stroke: var(--tp-cyan);
+  stroke-width: 1;
+  stroke-dasharray: 4 4;
+  opacity: 0;
+  transition: opacity 0.25s;
+  pointer-events: none;
+}
+
+.topo-node.selected .tn-ring { opacity: 0.8; }
+
+.tn-glyph {
+  color: var(--tp-cyan);
+  opacity: 0.95;
+}
+
+.tn-glyph [stroke] { stroke: currentColor; }
+.tn-glyph [fill="cur"] { fill: currentColor; }
+
+.topo-node:hover .tn-glyph,
+.topo-node.selected .tn-glyph {
+  filter: drop-shadow(0 0 4px rgba(var(--tp-cyan-rgb), 0.8));
+}
+
+.tn-name {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  fill: var(--ink);
+  text-anchor: middle;
+  pointer-events: none;
+}
+
+.tn-sub {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 7.5px;
+  letter-spacing: 0.08em;
+  fill: var(--muted);
+  text-anchor: middle;
+  pointer-events: none;
+}
+
+.tn-dot {
+  fill: var(--tp-green);
+  filter: drop-shadow(0 0 4px rgba(var(--tp-green-rgb), 0.9));
+  animation: topo-dotpulse 2.4s ease-in-out infinite;
+}
+
+@keyframes topo-dotpulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.55; }
+}
+
+.topo-node.flash .tn-box {
+  stroke: var(--tp-green);
+  filter: drop-shadow(0 0 14px rgba(var(--tp-green-rgb), 0.65));
+}
+
+.topo-trace-dot {
+  fill: #ffffff;
+  filter: drop-shadow(0 0 6px var(--tp-cyan)) drop-shadow(0 0 12px rgba(var(--tp-cyan-rgb), 0.8));
+  pointer-events: none;
+}
+
+/* ---- tooltip ---------------------------------------------------------------- */
+.topo-tooltip {
+  position: absolute;
+  z-index: 20;
+  transform: translate(-50%, calc(-100% - 12px));
+  background: rgba(var(--paper-rgb), 0.95);
+  border: 1px solid rgba(var(--tp-cyan-rgb), 0.5);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.6), 0 0 12px rgba(var(--tp-cyan-rgb), 0.12);
+  padding: 8px 11px;
+  pointer-events: none;
+  max-width: 230px;
+  opacity: 0;
+  transition: opacity 0.15s;
+  backdrop-filter: blur(8px);
+}
+
+.topo-tooltip.show { opacity: 1; }
+
+.tt-name {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--tp-cyan);
+}
+
+.tt-role {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 10.5px;
+  color: var(--ink);
+  line-height: 1.45;
+  margin-top: 2px;
+}
+
+.tt-hint {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-top: 5px;
+}
+
+/* ---- event ticker chip ------------------------------------------------------- */
+.topo-event {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  z-index: 15;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.04em;
+  color: var(--tp-cyan);
+  background: rgba(var(--paper-rgb), 0.92);
+  border: 1px solid rgba(var(--tp-cyan-rgb), 0.4);
+  padding: 5px 10px;
+  max-width: calc(100% - 24px);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.25s, transform 0.25s;
+  pointer-events: none;
+}
+
+.topo-event.show { opacity: 1; transform: translateY(0); }
+
+/* ---- inspector ---------------------------------------------------------------- */
+.topo-inspector {
+  border-left: 1px solid var(--line);
+  background: rgba(var(--paper-rgb), 0.55);
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+}
+
+.ti-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--line);
+}
+
+.ti-title {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.ti-live {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 8.5px;
+  color: var(--tp-green);
+  letter-spacing: 0.1em;
+  animation: topo-blink 2.2s ease-in-out infinite;
+}
+
+.ti-empty {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 11.5px;
+  color: var(--muted);
+  line-height: 1.6;
+  border: 1px dashed var(--line-strong);
+  padding: 14px 12px;
+  text-align: center;
+}
+
+.ti-name-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.ti-name-row h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+  text-transform: uppercase;
+}
+
+.ti-pill {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 0.1em;
+  color: var(--tp-green);
+  border: 1px solid rgba(var(--tp-green-rgb), 0.55);
+  background: rgba(var(--tp-green-rgb), 0.08);
+  padding: 2px 7px;
+  white-space: nowrap;
+}
+
+.ti-role {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 11.5px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.ti-tech { display: flex; flex-wrap: wrap; gap: 5px; }
+
+.ti-chip {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 8.5px;
+  letter-spacing: 0.06em;
+  color: var(--tp-cyan);
+  border: 1px solid rgba(var(--tp-cyan-rgb), 0.4);
+  padding: 2px 6px;
+}
+
+.ti-metrics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+
+.ti-metric {
+  border: 1px solid var(--line);
+  background: rgba(var(--paper-rgb), 0.5);
+  padding: 7px 9px;
+}
+
+.ti-metric .v {
+  display: block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--tp-cyan);
+  line-height: 1.15;
+}
+
+.ti-metric .k {
+  display: block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 7.5px;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+.ti-spark { border: 1px solid var(--line); padding: 7px 9px; }
+
+.ti-spark svg { width: 100%; height: 30px; display: block; margin-top: 4px; }
+
+.ti-spark polyline {
+  fill: none;
+  stroke: var(--tp-cyan);
+  stroke-width: 1.4;
+  filter: drop-shadow(0 0 3px rgba(var(--tp-cyan-rgb), 0.5));
+}
+
+.ti-k {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 7.5px;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.ti-deps .ti-dep-list { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 5px; }
+
+.ti-dep {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  border: 1px dashed var(--line-strong);
+  background: transparent;
+  padding: 3px 8px;
+  transition: all 0.2s;
+}
+
+.ti-dep:hover {
+  border-color: var(--tp-cyan);
+  border-style: solid;
+  color: var(--tp-cyan);
+}
+
+.ti-none {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  color: var(--muted);
+  margin-top: 5px;
+}
+
+.ti-sys {
+  margin-top: auto;
+  border-top: 1px solid var(--line);
+  padding-top: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 10px;
+}
+
+.ti-sys-row span {
+  display: block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 7.5px;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+}
+
+.ti-sys-row b {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.ti-sys-row b.hi { color: var(--tp-cyan); }
+.ti-sys-row b.ok { color: var(--tp-green); }
+
+/* ---- footer ---------------------------------------------------------------- */
+.topo-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 9px 16px;
+  border-top: 1px solid var(--line);
+  background: rgba(var(--paper-rgb), 0.6);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+.topo-legend { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+
+.topo-legend .lg-item { display: inline-flex; align-items: center; gap: 6px; }
+
+.lg-line {
+  display: inline-block;
+  width: 22px;
+  height: 0;
+  border-top: 2px solid var(--tp-cyan);
+}
+
+.lg-line.dashed {
+  border-top-style: dashed;
+  border-top-color: var(--tp-purple);
+}
+
+.lg-line.thin { border-top-width: 1px; border-top-color: var(--muted); }
+
+.lg-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--tp-green);
+  box-shadow: 0 0 5px rgba(var(--tp-green-rgb), 0.8);
+}
+
+.topo-health {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--tp-green);
+}
+
+.topo-health .hdot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--tp-green);
+  box-shadow: 0 0 8px rgba(var(--tp-green-rgb), 0.9);
+  animation: topo-blink 2s ease-in-out infinite;
+}
+
+.topo-health .up-clock { color: var(--muted); }
+
+/* ---- responsive -------------------------------------------------------------- */
+@media (max-width: 1100px) {
+  .topo-body { grid-template-columns: 1fr; }
+  .topo-inspector {
+    border-left: none;
+    border-top: 1px dashed var(--line);
+  }
+  .ti-sys { margin-top: 4px; }
+}
+
+@media (max-width: 620px) {
+  .topo-header { flex-direction: column; }
+  .topo-actions { width: 100%; }
+  .topo-actions .topo-btn { flex: 1; justify-content: center; }
+  .te-label { display: none; }
+  .topo-sub { font-size: 10.5px; }
+  .topo-h { font-size: 13px; white-space: normal; }
+}
+
+/* ---- reduced motion ------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  .te-flow,
+  .tn-dot,
+  .tdot,
+  .ti-live,
+  .topo-health .hdot { animation: none !important; }
+  .topo-pulse { display: none; }
+}
