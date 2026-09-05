@@ -52,7 +52,7 @@
 
   <div class="nav-controls">
     <!-- Sound Effect Toggle -->
-    <button class="icon-btn" id="audioToggle" title="Toggle Sound FX" aria-label="Toggle Audio">
+    <button class="icon-btn sound-muted" id="audioToggle" title="Toggle Sound FX" aria-label="Toggle Audio">
       <svg class="icon-speaker" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <path d="M11 5L6 9H2v6h4l5 4V5z"/>
         <path class="sound-wave" d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
@@ -82,8 +82,13 @@
       </div>
     </div>
 
+    <!-- Mobile Navigation Toggle -->
+    <button class="icon-btn nav-burger" id="navBurger" aria-label="Toggle navigation menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+
     <!-- Terminal Trigger -->
-    <button class="btn ghost icon-text-btn" id="termTrigger" title="Open Interactive Terminal (Cmd+K)">
+    <button class="btn ghost" id="termTrigger" title="Open Interactive Terminal (Cmd+K)">
       <span class="term-prompt">&gt;_</span>
       <span class="term-label">HUD</span>
     </button>
@@ -143,11 +148,11 @@
       </p>
 
       <div class="hero-cta">
-        <a href="#work" class="btn primary arrow-btn">
+        <a href="#work" class="btn primary">
           <span data-i18n="btn_projects">View Schematics</span>
           <svg class="btn-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"/></svg>
         </a>
-        <button class="btn ghost arrow-btn" id="openResumeModal">
+        <button class="btn ghost" id="openResumeModal">
           <span data-i18n="btn_resume">Download Résumé</span>
           <svg class="btn-arrow" viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7" stroke="currentColor" stroke-width="2" fill="none"/></svg>
         </button>
@@ -631,7 +636,7 @@
         </div>
 
         <div class="proj-links">
-          <a href="https://github.com" target="_blank" rel="noopener" class="proj-link">
+          <a href="https://github.com/rahmatul-islam" target="_blank" rel="noopener" class="proj-link">
             <span>GitHub</span>
             <svg class="link-arrow" viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" fill="none" stroke-width="1.5"/></svg>
           </a>
@@ -673,7 +678,7 @@
         </div>
 
         <div class="proj-links">
-          <a href="https://github.com" target="_blank" rel="noopener" class="proj-link">
+          <a href="https://github.com/rahmatul-islam" target="_blank" rel="noopener" class="proj-link">
             <span>GitHub</span>
             <svg class="link-arrow" viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" fill="none" stroke-width="1.5"/></svg>
           </a>
@@ -711,7 +716,7 @@
         </div>
 
         <div class="proj-links">
-          <a href="https://github.com" target="_blank" rel="noopener" class="proj-link">
+          <a href="https://github.com/rahmatul-islam" target="_blank" rel="noopener" class="proj-link">
             <span>GitHub</span>
             <svg class="link-arrow" viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" fill="none" stroke-width="1.5"/></svg>
           </a>
@@ -752,7 +757,7 @@
         </div>
 
         <div class="proj-links">
-          <a href="https://github.com" target="_blank" rel="noopener" class="proj-link">
+          <a href="https://github.com/rahmatul-islam" target="_blank" rel="noopener" class="proj-link">
             <span>GitHub</span>
             <svg class="link-arrow" viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" fill="none" stroke-width="1.5"/></svg>
           </a>
@@ -847,15 +852,15 @@
         </p>
 
         <div class="contact-links">
-          <a href="https://github.com" target="_blank" rel="noopener" class="c-link">
+          <a href="https://github.com/rahmatul-islam" target="_blank" rel="noopener" class="c-link">
             <svg class="c-icon" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" fill="none" stroke="currentColor" stroke-width="2"/></svg>
             <span>GitHub</span>
           </a>
-          <a href="https://linkedin.com" target="_blank" rel="noopener" class="c-link">
+          <a href="https://www.linkedin.com/in/rahmatul-islam" target="_blank" rel="noopener" class="c-link">
             <svg class="c-icon" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="4" cy="4" r="2" fill="currentColor"/></svg>
             <span>LinkedIn</span>
           </a>
-          <a href="https://leetcode.com" target="_blank" rel="noopener" class="c-link">
+          <a href="https://leetcode.com/rahmatul-islam" target="_blank" rel="noopener" class="c-link">
             <svg class="c-icon" viewBox="0 0 24 24"><path d="M16.5 3.5L7 13l9.5 9.5M10 3.5l-9.5 9.5 9.5 9.5" fill="none" stroke="currentColor" stroke-width="2"/></svg>
             <span>LeetCode</span>
           </a>
@@ -957,7 +962,7 @@
       <div class="r-head">
         <h1>RAHMATUL ISLAM (RATUL)</h1>
         <p class="r-sub">Software Engineering Student (Level 2, Term 2) | Backend &amp; Systems Architecture</p>
-        <p class="r-contact">University of Frontier Technology, Bangladesh · ratul@uftb.edu.bd · github.com/ratul · linkedin.com/in/ratul</p>
+        <p class="r-contact">University of Frontier Technology, Bangladesh · ratul@uftb.edu.bd · github.com/rahmatul-islam · linkedin.com/in/rahmatul-islam</p>
       </div>
       <div class="r-section">
         <h2>EDUCATION</h2>

@@ -1,5 +1,5 @@
 /* ==========================================================================
-   AYAN CHOWDHURY — ARCHITECTURAL PORTFOLIO SCHEMATIC SYSTEM
+   RAHMATUL ISLAM (RATUL) — ARCHITECTURAL PORTFOLIO SCHEMATIC SYSTEM
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
@@ -8,6 +8,7 @@
 :root {
   /* Default: Blueprint Cyan & Coral */
   --paper: #0E1C2E;
+  --paper-rgb: 14, 28, 46;
   --panel: #122439;
   --panel-2: #16304C;
   --panel-hover: #1A395B;
@@ -23,12 +24,13 @@
   --line-strong: rgba(234, 242, 251, 0.28);
   --card-bg: rgba(18, 36, 57, 0.7);
   --blur-bg: rgba(14, 28, 46, 0.85);
-  --shadow-glow: 0 10px 30px rgba(94, 234, 212, 0.15);
+  --shadow-glow: 0 10px 30px rgba(var(--accent-2-rgb), 0.15);
 }
 
 /* Theme 2: Emerald Circuit */
 html[data-theme="emerald"] {
   --paper: #081B15;
+  --paper-rgb: 8, 27, 21;
   --panel: #0E2920;
   --panel-2: #13392D;
   --panel-hover: #194939;
@@ -50,6 +52,7 @@ html[data-theme="emerald"] {
 /* Theme 3: Amber CAD */
 html[data-theme="amber"] {
   --paper: #18130E;
+  --paper-rgb: 24, 19, 14;
   --panel: #231B13;
   --panel-2: #30241A;
   --panel-hover: #3E2F21;
@@ -71,6 +74,7 @@ html[data-theme="amber"] {
 /* Theme 4: Deep Amethyst */
 html[data-theme="amethyst"] {
   --paper: #120E22;
+  --paper-rgb: 18, 14, 34;
   --panel: #1A1433;
   --panel-2: #241C47;
   --panel-hover: #2E235C;
@@ -201,7 +205,7 @@ button {
 
 .cursor-cross-h, .cursor-cross-v {
   position: absolute;
-  background: rgba(94, 234, 212, 0.4);
+  background: rgba(var(--accent-2-rgb), 0.4);
 }
 .cursor-cross-h { width: 14px; height: 1px; }
 .cursor-cross-v { width: 1px; height: 14px; }
@@ -216,7 +220,7 @@ button {
   color: var(--accent-2);
   letter-spacing: 0.1em;
   white-space: nowrap;
-  background: rgba(14, 28, 46, 0.9);
+  background: rgba(var(--paper-rgb), 0.9);
   padding: 1px 4px;
   border: 1px solid var(--line);
 }
@@ -291,7 +295,7 @@ nav .mark:hover .mark-icon {
   color: var(--accent);
   margin-left: 6px;
   padding: 1px 5px;
-  background: rgba(255, 122, 69, 0.12);
+  background: rgba(var(--accent-rgb), 0.12);
   border: 1px solid var(--accent);
 }
 
@@ -336,7 +340,7 @@ nav .nav-links a:hover {
 .icon-btn:hover {
   border-color: var(--accent-2);
   color: var(--accent-2);
-  background: rgba(94, 234, 212, 0.1);
+  background: rgba(var(--accent-2-rgb), 0.1);
 }
 
 .icon-speaker {
@@ -447,8 +451,54 @@ nav .nav-links a:hover {
   font-weight: bold;
 }
 
+.nav-burger {
+  display: none;
+}
+
 @media (max-width: 860px) {
-  nav .nav-links { display: none; }
+  nav .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 2px;
+    padding: 10px 5vw 18px;
+    background: var(--blur-bg);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+  }
+
+  nav.nav-open .nav-links {
+    display: flex;
+  }
+
+  nav .nav-links a {
+    display: block;
+    padding: 10px 0;
+    border-bottom: 1px dashed var(--line);
+  }
+
+  nav .nav-links li:last-child a {
+    border-bottom: none;
+  }
+
+  .nav-burger {
+    display: flex;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-controls {
+    gap: 8px;
+  }
+  .term-label {
+    display: none;
+  }
+  .pill-btn {
+    padding: 6px 8px;
+  }
 }
 
 /* --------------------------------------------------------------------------
@@ -510,6 +560,7 @@ section {
   position: relative;
   border-top: 1px solid var(--line);
   z-index: 2;
+  scroll-margin-top: 84px; /* keep anchored headings clear of the fixed navbar */
 }
 
 .dim {
@@ -759,7 +810,7 @@ h1.title span span {
   align-items: center;
   padding: 12px 18px;
   border-bottom: 1px solid var(--line);
-  background: rgba(14, 28, 46, 0.5);
+  background: rgba(var(--paper-rgb), 0.5);
 }
 
 .sch-title {
@@ -824,6 +875,11 @@ h1.title span span {
   stroke-dasharray: 3 3;
 }
 
+.wire-dash {
+  stroke: var(--muted);
+  stroke-dasharray: 5 4;
+}
+
 .sch-node-rect, .sch-node-poly, .sch-node-ellipse, .sch-node-cyl {
   fill: var(--panel-2);
   stroke: var(--line-strong);
@@ -857,7 +913,7 @@ h1.title span span {
 .schematic-footer {
   padding: 10px 18px;
   border-top: 1px solid var(--line);
-  background: rgba(14, 28, 46, 0.6);
+  background: rgba(var(--paper-rgb), 0.6);
   font-family: 'IBM Plex Mono', monospace;
   font-size: 11px;
   color: var(--muted);
@@ -919,7 +975,7 @@ h1.title span span {
   background: var(--card-bg);
   backdrop-filter: blur(12px);
   position: relative;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(234, 242, 251, 0.08);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.06);
   border-radius: 4px;
   overflow: hidden;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
@@ -935,7 +991,7 @@ h1.title span span {
 
 .spec-card:hover {
   border-color: var(--accent-2);
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5), 0 0 16px rgba(94, 234, 212, 0.15);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5), 0 0 16px rgba(var(--accent-2-rgb), 0.15);
 }
 
 .spec-header {
@@ -969,9 +1025,9 @@ h1.title span span {
   font-weight: 600;
   letter-spacing: 0.08em;
   padding: 3px 8px;
-  background: rgba(94, 234, 212, 0.12);
+  background: rgba(var(--accent-2-rgb), 0.12);
   color: var(--accent-2);
-  border: 1px solid rgba(94, 234, 212, 0.3);
+  border: 1px solid rgba(var(--accent-2-rgb), 0.3);
   border-radius: 2px;
   text-transform: uppercase;
 }
@@ -989,7 +1045,7 @@ h1.title span span {
 .spec-row:first-child { border-top: none; }
 
 .spec-row:hover {
-  background: rgba(94, 234, 212, 0.04);
+  background: rgba(var(--accent-2-rgb), 0.04);
 }
 
 .spec-row .k {
@@ -1030,7 +1086,7 @@ h1.title span span {
 }
 
 .nick-badge {
-  background: rgba(255, 122, 69, 0.15);
+  background: rgba(var(--accent-rgb), 0.15);
   color: var(--accent);
   border: 1px solid var(--accent);
   padding: 2px 10px;
@@ -1042,7 +1098,7 @@ h1.title span span {
 }
 
 .term-pill {
-  background: rgba(94, 234, 212, 0.12);
+  background: rgba(var(--accent-2-rgb), 0.12);
   color: var(--accent-2);
   border: 1px solid var(--accent-2);
   padding: 2px 8px;
@@ -1101,7 +1157,7 @@ h1.title span span {
 
 .spec-footer {
   padding: 10px 18px;
-  background: rgba(14, 28, 46, 0.6);
+  background: rgba(var(--paper-rgb), 0.6);
   border-top: 1px solid var(--line-strong);
   display: flex;
   align-items: center;
@@ -1204,8 +1260,8 @@ h1.title span span {
 
 .tag.highlighted {
   border-color: var(--accent) !important;
-  background: rgba(255, 122, 69, 0.15) !important;
-  box-shadow: 0 0 16px rgba(255, 122, 69, 0.3) !important;
+  background: rgba(var(--accent-rgb), 0.15) !important;
+  box-shadow: 0 0 16px rgba(var(--accent-rgb), 0.3) !important;
 }
 
 .tag .sw {
@@ -1232,7 +1288,7 @@ h1.title span span {
   position: relative;
   padding: 24px;
   border: 1px dashed var(--line-strong);
-  background: rgba(14, 28, 46, 0.4);
+  background: rgba(var(--paper-rgb), 0.4);
 }
 
 .cloud-svg {
@@ -1340,7 +1396,7 @@ h1.title span span {
 .proj-arch-preview {
   margin: 18px 0;
   padding: 8px;
-  background: rgba(14, 28, 46, 0.8);
+  background: rgba(var(--paper-rgb), 0.8);
   border: 1px solid var(--line);
 }
 .arch-svg { width: 100%; height: 34px; }
@@ -1415,7 +1471,7 @@ h1.title span span {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   border-bottom: 1px solid var(--line-strong);
-  background: rgba(14, 28, 46, 0.8);
+  background: rgba(var(--paper-rgb), 0.8);
 }
 
 .revtable td {
@@ -1564,7 +1620,7 @@ footer {
   position: fixed;
   inset: 0;
   z-index: 1000;
-  background: rgba(8, 15, 26, 0.85);
+  background: rgba(var(--paper-rgb), 0.85);
   backdrop-filter: blur(8px);
   display: flex;
   align-items: center;
@@ -1769,25 +1825,22 @@ footer {
    16. ADVANCED ANIMATIONS & DELIGHT EFFECTS
    -------------------------------------------------------------------------- */
 
-/* Animated Scanning Laser on Section Dimension Rules */
+/* Animated Scanning Laser on Section Dimension Rules.
+   Implemented as an animated background layer on .rule itself so it never
+   clobbers the ::before/::after dimension arrowheads defined in section 06. */
 .dim .rule {
-  position: relative;
-  overflow: hidden;
-}
-.dim .rule::after {
-  content: '';
-  position: absolute;
-  top: 0; left: -120px;
-  width: 120px;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, var(--accent-2), var(--accent), transparent);
+  background-image:
+    linear-gradient(90deg, transparent, var(--accent-2), var(--accent), transparent),
+    linear-gradient(var(--line-strong), var(--line-strong));
+  background-size: 120px 100%, 100% 100%;
+  background-position: -120px 0, 0 0;
+  background-repeat: no-repeat;
   animation: scan-laser 4s linear infinite;
 }
 
 @keyframes scan-laser {
-  0% { left: -120px; }
-  50% { left: 100%; }
-  100% { left: 100%; }
+  0% { background-position: -120px 0, 0 0; }
+  50%, 100% { background-position: calc(100% + 120px) 0, 0 0; }
 }
 
 /* Crop Marks Pulse */
@@ -1810,7 +1863,7 @@ footer {
 .click-ripple {
   position: absolute;
   border-radius: 50%;
-  background: rgba(94, 234, 212, 0.35);
+  background: rgba(var(--accent-2-rgb), 0.35);
   transform: scale(0);
   animation: ripple-anim 0.6s linear;
   pointer-events: none;
@@ -1873,7 +1926,7 @@ footer {
   display: flex;
   align-items: center;
   gap: 20px;
-  background: rgba(14, 28, 46, 0.7);
+  background: rgba(var(--paper-rgb), 0.7);
   border: 1px solid var(--line);
   padding: 20px;
   border-radius: 4px;
@@ -1885,7 +1938,7 @@ footer {
   border: 1px dashed var(--accent-2);
   padding: 12px;
   border-radius: 4px;
-  background: rgba(94, 234, 212, 0.03);
+  background: rgba(var(--accent-2-rgb), 0.03);
 }
 
 .q-label {
@@ -1916,11 +1969,11 @@ footer {
 }
 
 .q-slot.filled {
-  background: rgba(255, 122, 69, 0.2);
+  background: rgba(var(--accent-rgb), 0.2);
   border-color: var(--accent);
   color: var(--accent);
   font-weight: 600;
-  box-shadow: 0 0 10px rgba(255, 122, 69, 0.4);
+  box-shadow: 0 0 10px rgba(var(--accent-rgb), 0.4);
 }
 
 .channel-arrow {
@@ -1957,8 +2010,8 @@ footer {
 
 .w-box.busy {
   border-color: var(--accent-2);
-  background: rgba(94, 234, 212, 0.1);
-  box-shadow: 0 0 12px rgba(94, 234, 212, 0.2);
+  background: rgba(var(--accent-2-rgb), 0.1);
+  box-shadow: 0 0 12px rgba(var(--accent-2-rgb), 0.2);
 }
 
 .w-name {
@@ -1987,7 +2040,7 @@ footer {
 }
 
 .vis-tree-canvas {
-  background: rgba(14, 28, 46, 0.7);
+  background: rgba(var(--paper-rgb), 0.7);
   border: 1px solid var(--line);
   padding: 10px;
   border-radius: 4px;
@@ -2016,4 +2069,82 @@ footer {
 .tnode.active-node text {
   fill: #ffffff;
   font-weight: bold;
+}
+
+/* --------------------------------------------------------------------------
+   18. TILT HELPER — disables transitions while actively tilting a card so the
+       3D transform tracks the cursor instantly; removed on mouseleave so the
+       CSS :hover lift / reveal transitions work again.
+   -------------------------------------------------------------------------- */
+.tilting {
+  transition: box-shadow 0.3s ease !important;
+}
+
+/* --------------------------------------------------------------------------
+   19. PRINT STYLESHEET — printing (or "Print / PDF" in the résumé modal)
+       outputs ONLY the résumé sheet, in light colors, instead of the whole
+       animated dark site.
+   -------------------------------------------------------------------------- */
+@page {
+  margin: 16mm;
+}
+
+@media print {
+  :root {
+    --paper: #ffffff;
+    --panel: #ffffff;
+    --panel-2: #f5f5f5;
+    --ink: #111111;
+    --muted: #555555;
+    --accent: #111111;
+    --accent-2: #444444;
+    --line: #dddddd;
+    --line-strong: #999999;
+    --card-bg: #ffffff;
+    --shadow-glow: none;
+  }
+
+  html, body {
+    background: #ffffff !important;
+    overflow: visible;
+  }
+
+  nav,
+  #bgCanvas,
+  .titleblock,
+  .crop,
+  .cursor-dot,
+  .cursor-ring,
+  footer,
+  .toast-container,
+  #mainContent,
+  #termModal,
+  #projModal {
+    display: none !important;
+  }
+
+  /* Force the résumé modal into a static, fully visible print layout */
+  .modal-overlay {
+    position: static;
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    background: none;
+    backdrop-filter: none;
+    padding: 0;
+  }
+
+  #resumeModal .modal-card {
+    max-width: 100%;
+    max-height: none;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    overflow: visible;
+  }
+
+  #resumeModal .resume-modal-header,
+  #resumeModal .modal-close-icon {
+    display: none;
+  }
 }
