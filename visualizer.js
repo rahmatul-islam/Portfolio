@@ -461,7 +461,7 @@
   }
 
   function bstInsert(v) {
-    if (state.bstBusy) return;
+    if (state.bstBusy) { bstStatus('⏳ animation in progress — wait a moment'); return; }
     const res = state.bst.insert(v);
     if (!res.created) { bstStatus(`${v} already in tree — BSTs hold unique keys`); return; }
     let i = 0;
@@ -485,7 +485,7 @@
   }
 
   function bstDelete(v) {
-    if (state.bstBusy) return;
+    if (state.bstBusy) { bstStatus('⏳ animation in progress — wait a moment'); return; }
     const res = state.bst.delete(v);
     if (!res.found) { bstStatus(`${v} not found — search path: ${res.path.join(' → ') || '(empty tree)'}`); return; }
     let i = 0;
@@ -510,7 +510,7 @@
   }
 
   function bstTraverse(kind) {
-    if (state.bstBusy) return;
+    if (state.bstBusy) { bstStatus('⏳ animation in progress — wait a moment'); return; }
     if (!state.bst.root) { bstStatus('tree is empty — insert some values first'); return; }
     const steps = state.bst.traverse(kind);
     const names = { in: 'In-Order', pre: 'Pre-Order', post: 'Post-Order', level: 'Level-Order (BFS)' };
@@ -519,7 +519,7 @@
   }
 
   function bstRandom() {
-    if (state.bstBusy) return;
+    if (state.bstBusy) { bstStatus('⏳ animation in progress — wait a moment'); return; }
     state.bst = new C.BST();
     for (let i = 0; i < 9; i++) state.bst.insert(Math.floor(Math.random() * 99) + 1);
     bstRender();
@@ -582,7 +582,7 @@
       syncCodeHeader();
       resetSim(`channel re-made: make(chan Task, ${$('vpCfgBuffer').value}) — channels are fixed-size in Go, so the sim reset`);
     });
-    ['vpCfgProducer', 'vpCfgProc', 'vpCfgFail', 'vpCfgRetry'].forEach(id => {
+    ['vpCfgProducer', 'vpCfgProcessing', 'vpCfgFailRate', 'vpCfgMaxRetries'].forEach(id => {
       $(id).addEventListener('change', () => {
         Object.assign(state.sched.cfg, readControls());
         vpToast('config applied live (no reset needed)');
