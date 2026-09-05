@@ -12,6 +12,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="visualizer.css">
 </head>
 <body>
 
@@ -500,75 +501,161 @@
         </div>
       </div>
 
-      <!-- 2.4 INTERACTIVE CONCURRENCY & DSA PIPELINE SIMULATOR -->
-      <div class="legend-group visualizer-group reveal">
-        <div class="group-header" style="justify-content:space-between; width:100%;">
-          <div class="gh-left" style="display:flex; align-items:center; gap:10px;">
+      <!-- 2.4 LIVE GO CONCURRENCY & DSA EXECUTION VISUALIZER -->
+      <div class="legend-group visualizer-group reveal" id="visualizer">
+        <div class="group-header vp-header">
+          <div class="gh-left">
             <span class="group-num">2.4</span>
             <h3 data-i18n="sg_vis">Live Go Concurrency &amp; DSA Execution Visualizer</h3>
           </div>
-          <div class="vis-controls">
-            <button class="btn-micro active" id="btnVisWorker"><span class="pulse-dot"></span> Go Channel Workers</button>
-            <button class="btn-micro" id="btnVisTree">BST Tree Traversal</button>
+          <div class="vp-badges">
+            <span class="vp-mode-badge" id="vpModeBadge" title="Event source for this visualizer">● SIMULATED</span>
+            <button class="vp-btn" id="vpMotion" title="Toggle animations (also respects your OS reduced-motion setting)">🌀 Motion: Full</button>
+            <div class="vis-controls">
+              <button class="btn-micro active" id="vpTabPool">Concurrency Lab</button>
+              <button class="btn-micro" id="vpTabBST">BST Lab</button>
+            </div>
           </div>
         </div>
 
         <div class="visualizer-card spec-card">
-          <!-- WORKER CANOPY -->
-          <div class="vis-view" id="visWorkerView">
-            <div class="vis-hud-top">
-              <span class="vis-tag">CONCURRENCY PIPELINE // GOROUTINES</span>
-              <button class="btn primary btn-sm" id="btnPushJob">+ Push Task to Channel</button>
+          <!-- ==================== CONCURRENCY LAB ==================== -->
+          <div id="vpPoolView">
+            <div class="vp-layout">
+            <div class="vp-main">
+            <div class="vp-presets" id="vpPresets" role="group" aria-label="Scenario presets">
+              <button class="vp-preset" data-preset="normal" title="w3 · buf5 · normal producer · 0% fail">▸ Normal Load</button>
+              <button class="vp-preset" data-preset="burst" title="w4 · buf5 · burst producer">▸ Burst Traffic</button>
+              <button class="vp-preset" data-preset="slow" title="w2 · slow processing → queue saturates">▸ Slow Workers</button>
+              <button class="vp-preset" data-preset="failretry" title="25% failure rate · 3 retries">▸ Failure &amp; Retry</button>
+              <button class="vp-preset" data-preset="backpres" title="w1 · buf1 → producer blocks on send">▸ Backpressure Demo</button>
             </div>
-            <div class="vis-pipeline-canvas">
-              <div class="channel-queue-box">
-                <span class="q-label">chan Task [cap: 5]</span>
-                <div class="q-slots" id="qSlots">
-                  <span class="q-slot empty">EMPTY</span>
-                  <span class="q-slot empty">EMPTY</span>
-                  <span class="q-slot empty">EMPTY</span>
-                  <span class="q-slot empty">EMPTY</span>
-                  <span class="q-slot empty">EMPTY</span>
+
+            <div class="vp-controls">
+              <label class="vp-ctl">Workers
+                <select id="vpCfgWorkers" aria-label="Worker count (applies live)">
+                  <option>1</option><option>2</option><option selected>3</option><option>4</option>
+                  <option>5</option><option>6</option><option>7</option><option>8</option>
+                </select>
+              </label>
+              <label class="vp-ctl">Channel Buffer
+                <select id="vpCfgBuffer" aria-label="Channel buffer size (resets sim — channels are fixed-size)">
+                  <option>0</option><option>1</option><option selected>5</option><option>10</option>
+                </select>
+              </label>
+              <label class="vp-ctl">Producer
+                <select id="vpCfgProducer" aria-label="Producer speed">
+                  <option value="slow">slow</option><option value="normal" selected>normal</option><option value="burst">burst</option>
+                </select>
+              </label>
+              <label class="vp-ctl">Processing
+                <select id="vpCfgProcessing" aria-label="Worker processing time">
+                  <option value="fast">fast</option><option value="normal" selected>normal</option>
+                  <option value="slow">slow</option><option value="random">random</option>
+                </select>
+              </label>
+              <label class="vp-ctl">Fail %
+                <select id="vpCfgFailRate" aria-label="Task failure rate">
+                  <option>0</option><option>5</option><option>10</option><option>15</option>
+                  <option>20</option><option>25</option><option>30</option>
+                </select>
+              </label>
+              <label class="vp-ctl">Retries
+                <select id="vpCfgMaxRetries" aria-label="Retry limit per task">
+                  <option>0</option><option selected>1</option><option>2</option><option>3</option>
+                </select>
+              </label>
+              <button class="vp-btn primary" id="vpPlay" aria-pressed="false" title="Play / Pause (Space)">▶ Play</button>
+              <button class="vp-btn" id="vpStep" title="Advance one 100ms tick while paused (S)">⏭ Step</button>
+              <button class="vp-btn" id="vpReset" title="Reset simulation (R)">⟲ Reset</button>
+              <button class="vp-btn" id="vpPush" title="Manually produce one task (works while paused)">+ Push Task</button>
+              <button class="vp-btn" id="vpShare" title="Copy a shareable URL encoding this scenario">🔗 Share</button>
+              <span class="vp-kbd-hint"><kbd>Space</kbd> play/pause · <kbd>S</kbd> step · <kbd>R</kbd> reset</span>
+            </div>
+
+            <div class="vp-pipeline" aria-label="Worker pool pipeline">
+              <div class="vp-producer" id="vpProducer" title="Producer goroutine — parks on send when the channel is full">
+                <span class="vp-producer-title">PRODUCER</span>
+                <span class="vp-producer-state" id="vpProducerState">ready</span>
+                <span class="vp-producer-rate" id="vpProducerRate"></span>
+              </div>
+              <div class="vp-channel">
+                <span class="vp-channel-label">chan Task [cap <span id="vpCap">5</span>]</span>
+                <div class="vp-slots" id="vpSlots"></div>
+                <span class="vp-blocked-badge" id="vpBlockedBadge" hidden></span>
+              </div>
+              <div class="vp-workers" id="vpWorkers" aria-live="polite"></div>
+            </div>
+
+            <div class="vp-metrics">
+              <div class="vp-metric" title="Tasks currently sitting in the channel buffer"><span class="v" id="vpMQueue">0</span><span class="k">Queue</span></div>
+              <div class="vp-metric" title="Workers currently RECEIVED/RUNNING"><span class="v" id="vpMActive">0</span><span class="k">Active</span></div>
+              <div class="vp-metric" title="Tasks completed successfully"><span class="v" id="vpMDone">0</span><span class="k">Done</span></div>
+              <div class="vp-metric fail" title="Tasks that exhausted all retries"><span class="v" id="vpMFail">0</span><span class="k">Failed</span></div>
+              <div class="vp-metric retry" title="Retry re-queues performed"><span class="v" id="vpMRetry">0</span><span class="k">Retried</span></div>
+              <div class="vp-metric" title="Completions per second (5s sliding window)"><span class="v" id="vpMThr">0.0</span><span class="k">Tasks/s</span></div>
+              <div class="vp-metric" title="Average time from enqueue to completion"><span class="v" id="vpMLat">—</span><span class="k">Avg latency</span></div>
+              <div class="vp-metric goro" title="main + producer + workers + goroutines blocked on send"><span class="v" id="vpMGoro">0</span><span class="k">Goroutines</span></div>
+              <div class="vp-clock">sim clock <span id="vpMClock">0.0s</span> · ticks = 100ms of simulated time</div>
+            </div>
+
+            <div class="vp-log" id="vpLog" aria-live="polite" aria-label="Task lifecycle event log"></div>
+            </div><!-- /vp-main -->
+
+            <div class="vp-side">
+              <div class="vp-code-card">
+                <div class="vp-code-title">main.go — worker pool · line highlight follows the sim</div>
+                <pre class="vp-code" id="vpCode"><span class="code-line"><span class="kw">func</span> <span class="fn">main</span>() {</span><span class="code-line">  jobs := <span class="fn">make</span>(<span class="kw">chan</span> Task, <span id="codeBuf">5</span>)  <span class="cm">// buffered channel</span></span><span class="code-line">  done := <span class="fn">make</span>(<span class="kw">chan</span> Result)</span><span class="code-line"> </span><span class="code-line">  <span class="kw">for</span> id := 1; id &lt;= <span id="codeW">3</span>; id++ {</span><span class="code-line">    <span class="cl" id="cl-spawn"><span class="kw">go</span> <span class="fn">worker</span>(id, jobs, done)</span>  <span class="cm">// spawn</span></span><span class="code-line">  }</span><span class="code-line"> </span><span class="code-line">  <span class="kw">for</span> t := <span class="kw">range</span> <span class="fn">produce</span>() {</span><span class="code-line">    <span class="cl" id="cl-send">jobs &lt;- t</span>  <span class="cm">// blocks when full</span></span><span class="code-line">  }</span><span class="code-line">  <span class="fn">close</span>(jobs)</span><span class="code-line">}</span><span class="code-line"> </span><span class="code-line"><span class="kw">func</span> <span class="fn">worker</span>(id <span class="kw">int</span>, jobs &lt;-<span class="kw">chan</span> Task, done <span class="kw">chan</span>&lt;- Result) {</span><span class="code-line">  <span class="kw">for</span> task := <span class="kw">range</span> jobs {  <span class="cm">// receive</span></span><span class="code-line">    <span class="cl" id="cl-proc">res := <span class="fn">process</span>(task)</span>  <span class="cm">// may fail</span></span><span class="code-line">    <span class="kw">if</span> res.err != nil &amp;&amp; task.attempt &lt;= maxRetries {</span><span class="code-line">      <span class="cl" id="cl-retry"><span class="kw">go func</span>() { jobs &lt;- task.<span class="fn">retry</span>() }()</span>  <span class="cm">// requeue</span></span><span class="code-line">    }</span><span class="code-line">    <span class="cl" id="cl-done">done &lt;- res</span>  <span class="cm">// report</span></span><span class="code-line">  }</span><span class="code-line">}</span></pre>
+                <div class="vp-code-legend">highlighted line = current lifecycle phase: send → recv → proc → done / retry</div>
+              </div>
+            </div><!-- /vp-side -->
+            </div><!-- /vp-layout -->
+          </div>
+
+          <!-- ==================== BST LAB ==================== -->
+          <div id="vpBSTView" hidden>
+            <div class="vp-bst-controls">
+              <input type="number" id="vpBstInput" min="0" max="999" placeholder="0–999" aria-label="Value to insert or delete">
+              <button class="vp-btn primary" id="vpBstInsert" title="Insert value with animated search path">+ Insert</button>
+              <button class="vp-btn" id="vpBstDelete" title="Delete value — animates leaf / one-child / two-children cases">− Delete</button>
+              <button class="vp-btn" id="vpBstRandom" title="Generate a random tree">⚄ Random</button>
+              <button class="vp-btn" id="vpBstClear" title="Empty the tree">✕ Clear</button>
+              <span class="vp-sep"></span>
+              <button class="vp-btn" data-trav="in" title="Left → Root → Right (yields sorted order)">In-Order</button>
+              <button class="vp-btn" data-trav="pre" title="Root → Left → Right">Pre-Order</button>
+              <button class="vp-btn" data-trav="post" title="Left → Right → Root">Post-Order</button>
+              <button class="vp-btn" data-trav="level" title="BFS by depth using a queue">Level-Order</button>
+            </div>
+
+            <div class="vp-bst-layout">
+              <div class="vp-tree-wrap">
+                <svg class="tree-svg" id="vpTreeSvg" viewBox="0 0 320 150" role="img" aria-label="Binary search tree visualization"></svg>
+              </div>
+              <div class="vp-bst-side">
+                <div class="vp-panel">
+                  <span class="vp-panel-title">Tree Stats &amp; Complexity</span>
+                  <div class="vp-complexity">
+                    n = <b id="vpBstN">0</b> · height = <b id="vpBstH">0</b> · balanced ≈ <b id="vpBstLog">—</b><br>
+                    search / insert / delete = <b>O(h)</b> → <b>O(log n)</b> balanced · <b>O(n)</b> skewed
+                  </div>
+                  <div style="margin-top:7px;"><span class="vp-chip" id="vpBstShape">EMPTY</span></div>
+                </div>
+                <div class="vp-panel">
+                  <span class="vp-panel-title">Recursion Stack / BFS Queue</span>
+                  <div id="vpBstStack"><span class="vp-dim">empty</span></div>
+                </div>
+                <div class="vp-panel">
+                  <span class="vp-panel-title">Traversal Output</span>
+                  <div id="vpBstOut"><span class="vp-dim">[ ]</span></div>
+                </div>
+                <div class="vp-panel">
+                  <span class="vp-panel-title">Operation</span>
+                  <div class="vp-bst-status" id="vpBstStatus">BST ready — insert values or run a traversal.</div>
                 </div>
               </div>
-              <div class="channel-arrow">&rarr;</div>
-              <div class="workers-grid">
-                <div class="w-box" id="w1"><span class="w-name">Worker #1</span><span class="w-status">IDLE</span></div>
-                <div class="w-box" id="w2"><span class="w-name">Worker #2</span><span class="w-status">IDLE</span></div>
-                <div class="w-box" id="w3"><span class="w-name">Worker #3</span><span class="w-status">IDLE</span></div>
-              </div>
             </div>
-            <div class="vis-log" id="visLog">[SYS] Channel initialized. Click "+ Push Task to Channel" to dispatch asynchronous tasks across workers.</div>
           </div>
 
-          <!-- BST TREE CANOPY (Hidden by default) -->
-          <div class="vis-view" id="visTreeView" style="display:none;">
-            <div class="vis-hud-top">
-              <span class="vis-tag">ALGORITHM TRAVERSAL // BST</span>
-              <button class="btn primary btn-sm" id="btnTraverseTree">▶ Run In-Order Traversal</button>
-            </div>
-            <div class="vis-tree-canvas">
-              <svg viewBox="0 0 400 180" class="tree-svg">
-                <!-- Lines -->
-                <line x1="200" y1="30" x2="110" y2="80" stroke="var(--line-strong)" stroke-width="1.5" id="tline1"/>
-                <line x1="200" y1="30" x2="290" y2="80" stroke="var(--line-strong)" stroke-width="1.5" id="tline2"/>
-                <line x1="110" y1="80" x2="60" y2="135" stroke="var(--line-strong)" stroke-width="1.5" id="tline3"/>
-                <line x1="110" y1="80" x2="150" y2="135" stroke="var(--line-strong)" stroke-width="1.5" id="tline4"/>
-                <line x1="290" y1="80" x2="250" y2="135" stroke="var(--line-strong)" stroke-width="1.5" id="tline5"/>
-                <line x1="290" y1="80" x2="340" y2="135" stroke="var(--line-strong)" stroke-width="1.5" id="tline6"/>
-
-                <!-- Nodes -->
-                <g class="tnode" id="tn50"><circle cx="200" cy="30" r="16" fill="var(--panel-2)" stroke="var(--accent-2)" stroke-width="2"/><text x="200" y="34" text-anchor="middle" fill="var(--ink)" font-size="11" font-weight="600">50</text></g>
-                <g class="tnode" id="tn30"><circle cx="110" cy="80" r="14" fill="var(--panel-2)" stroke="var(--accent)" stroke-width="1.5"/><text x="110" y="84" text-anchor="middle" fill="var(--ink)" font-size="10">30</text></g>
-                <g class="tnode" id="tn70"><circle cx="290" cy="80" r="14" fill="var(--panel-2)" stroke="var(--accent)" stroke-width="1.5"/><text x="290" y="84" text-anchor="middle" fill="var(--ink)" font-size="10">70</text></g>
-                <g class="tnode" id="tn20"><circle cx="60" cy="135" r="12" fill="var(--panel-2)" stroke="var(--line-strong)" stroke-width="1.5"/><text x="60" y="139" text-anchor="middle" fill="var(--muted)" font-size="9">20</text></g>
-                <g class="tnode" id="tn40"><circle cx="150" cy="135" r="12" fill="var(--panel-2)" stroke="var(--line-strong)" stroke-width="1.5"/><text x="150" y="139" text-anchor="middle" fill="var(--muted)" font-size="9">40</text></g>
-                <g class="tnode" id="tn60"><circle cx="250" cy="135" r="12" fill="var(--panel-2)" stroke="var(--line-strong)" stroke-width="1.5"/><text x="250" y="139" text-anchor="middle" fill="var(--muted)" font-size="9">60</text></g>
-                <g class="tnode" id="tn80"><circle cx="340" cy="135" r="12" fill="var(--panel-2)" stroke="var(--line-strong)" stroke-width="1.5"/><text x="340" y="139" text-anchor="middle" fill="var(--muted)" font-size="9">80</text></g>
-              </svg>
-            </div>
-            <div class="vis-log" id="treeLog">[ALGO] Binary Search Tree ready. Click "Run In-Order Traversal" to simulate DFS traversal sequence.</div>
-          </div>
         </div>
       </div>
 
@@ -991,6 +1078,8 @@
 <!-- TOAST NOTIFICATION CONTAINER -->
 <div class="toast-container" id="toastBox"></div>
 
+<script src="viz-core.js"></script>
+<script src="visualizer.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
