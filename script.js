@@ -26,8 +26,13 @@ document.addEventListener('DOMContentLoaded', () => {
       btn_resume: 'রিজিউমি ডাউনলোড',
       m_projects: 'সিস্টেম প্রজেক্টস',
       m_dsa: 'ডিএসএ সমস্যা সমাধান',
-      sch_header: 'সিস্টেম টপোলজি সিমুলেটর v1.0',
-      sch_ping: 'পিং নোডস',
+      sch_header: 'সিস্টেম টপোলজি সিমুলেটর',
+      sch_sub: 'স্কেলেবল ব্যাকএন্ড রিকোয়েস্ট পাইপলাইনের ইন্টারঅ্যাক্টিভ ভিজ্যুয়ালাইজেশন। ভূমিকা, ডিপেন্ডেন্সি ও হেলথ দেখতে যেকোনো কম্পোনেন্ট সিলেক্ট করুন।',
+      sch_req: 'রিকোয়েস্ট পাঠান',
+      sch_ping: 'পিং মেশ',
+      sch_insp: 'কম্পোনেন্ট ইন্সপেক্টর',
+      sch_insp_empty: 'ভূমিকা, ডিপেন্ডেন্সি ও লাইভ হেলথ মেট্রিক্স দেখতে টপোলজি থেকে একটি নোড সিলেক্ট করুন।',
+      sch_health: '৮/৮ অপারেশনাল',
       sec_about: '01 // আর্কিটেকচারাল পটভূমি',
       about_head: 'Engineering Philosophy',
       about_p1: 'আমি বিশ্বাস করি, Software Engineering শুধু code লেখা নয়—এটি মানুষের বাস্তব সমস্যাকে বোঝা, সেটিকে ছোট ছোট অংশে ভেঙে দেখা, এবং একটি সহজ, নির্ভরযোগ্য ও অর্থবহ সমাধান তৈরি করার প্রক্রিয়া।',
@@ -97,8 +102,13 @@ document.addEventListener('DOMContentLoaded', () => {
       btn_resume: 'Download Résumé',
       m_projects: 'System Projects',
       m_dsa: 'DSA Problems',
-      sch_header: 'SYSTEM TOPOLOGY SIMULATOR v1.0',
-      sch_ping: 'PING ALL NODES',
+      sch_header: 'SYSTEM TOPOLOGY SIMULATOR',
+      sch_sub: 'Interactive visualization of a scalable backend request pipeline. Select a component to inspect its role, dependencies & health.',
+      sch_req: 'SEND REQUEST',
+      sch_ping: 'PING MESH',
+      sch_insp: 'COMPONENT INSPECTOR',
+      sch_insp_empty: 'Select a node from the topology to inspect its role, dependencies & live health metrics.',
+      sch_health: '8/8 OPERATIONAL',
       sec_about: '01 // Architectural Background',
       about_head: 'Engineering Philosophy',
       about_p1: 'I believe Software Engineering is not just about writing code—it is the process of understanding real human problems, breaking them down into manageable components, and creating simple, reliable, and meaningful solutions.',
@@ -368,42 +378,10 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* ------------------------------------------------------------------------
-     05. INTERACTIVE SCHEMATIC SIMULATOR
+     05. SYSTEM TOPOLOGY SIMULATOR
      ------------------------------------------------------------------------ */
-  const schLogContent = document.getElementById('schLogContent');
-
-  document.querySelectorAll('.sch-node-group').forEach(group => {
-    group.addEventListener('click', () => {
-      const nodeName = group.getAttribute('data-node-name') || 'Node';
-      playSound(700, 0.1);
-
-      const rect = group.querySelector('rect, polygon, ellipse, path');
-      if (rect) {
-        rect.style.stroke = 'var(--accent)';
-        setTimeout(() => rect.style.stroke = '', 800);
-      }
-
-      if (schLogContent) {
-        schLogContent.innerHTML = `<strong style="color:var(--accent)">[SELECTED]</strong> ${nodeName} — System operational. Latency 2.4ms.`;
-      }
-    });
-  });
-
-  document.getElementById('pulseSimBtn')?.addEventListener('click', () => {
-    playSound(900, 0.2);
-    showToast('⚡ Signal Pulse Sent Across All Nodes');
-
-    document.querySelectorAll('.signal-pulse').forEach(p => {
-      // Remember each pulse's own base radius — they don't all start at 3.5.
-      if (!p.dataset.baseR) p.dataset.baseR = p.getAttribute('r') || '3.5';
-      p.setAttribute('r', '7');
-      setTimeout(() => p.setAttribute('r', p.dataset.baseR), 600);
-    });
-
-    if (schLogContent) {
-      schLogContent.innerHTML = '<span style="color:var(--accent-2)">[PING_SURGE] All 7 Nodes Responded (200 OK) — System Health: 100%</span>';
-    }
-  });
+  // The topology card engine (tooltip, inspector, live metrics, request
+  // traces, ping mesh) lives in topology.js.
 
   /* ------------------------------------------------------------------------
      06. THEME ACCENT SELECTOR ENGINE
@@ -864,22 +842,6 @@ document.addEventListener('DOMContentLoaded', () => {
       ripple.style.top = `${e.clientY - rect.top - size / 2}px`;
       this.appendChild(ripple);
       setTimeout(() => ripple.remove(), 600);
-    });
-  });
-
-  /* ------------------------------------------------------------------------
-     16. SCHEMATIC WIRE GLOW ON HOVER
-     ------------------------------------------------------------------------ */
-  document.querySelectorAll('.sch-node-group').forEach(node => {
-    node.addEventListener('mouseenter', () => {
-      document.querySelectorAll('.sch-wire').forEach(wire => {
-        wire.classList.add('wire-glowing');
-      });
-    });
-    node.addEventListener('mouseleave', () => {
-      document.querySelectorAll('.sch-wire').forEach(wire => {
-        wire.classList.remove('wire-glowing');
-      });
     });
   });
 
