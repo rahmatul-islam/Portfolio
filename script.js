@@ -779,7 +779,7 @@ document.addEventListener('DOMContentLoaded', () => {
         res.innerHTML = 'Projects: 1. Expense Tracker App (Flutter) | 2. Identity Management System (Java) | 3. Nagar-Drishti (Flutter + AI) | 4. EmpSys (Java) | 5. IntelliLog (Flutter + AI) | 6. Java DSA Practice (learning)';
         break;
       case 'contact':
-        res.innerHTML = 'Primary: <a href="mailto:rahmatulislam.se@gmail.com">rahmatulislam.se@gmail.com</a><br>University: <a href="mailto:2303016@bdu.ac.bd">2303016@bdu.ac.bd</a> · Personal: <a href="mailto:rahmatulislam@proton.me">rahmatulislam@proton.me</a><br>GitHub: github.com/rahmatul-islam';
+        res.innerHTML = 'Primary: <a href="mailto:rahmatulislam.se@gmail.com">rahmatulislam.se@gmail.com</a><br>University: <a href="mailto:2303016@bdu.ac.bd">2303016@bdu.ac.bd</a> · Personal: <a href="mailto:rahmatulislam@proton.me">rahmatulislam@proton.me</a><br>Phone: <a href="tel:+8801521715025">+880 1521 715025</a><br>GitHub: github.com/rahmatul-islam · LinkedIn: linkedin.com/in/rahmatul-islam-447b39341';
         break;
       case 'matrix':
         res.innerHTML = 'Name: Rahmatul Islam (Ratul) | Discipline: Software Engineering (SE) | Level: Level 2, Term 2 | Degree: B.Sc. in Software Engineering | Location: Bangladesh';
