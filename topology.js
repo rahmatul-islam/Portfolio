@@ -1,69 +1,73 @@
 /* ==========================================================================
-   SYSTEM TOPOLOGY SIMULATOR v2 — interaction engine
-   Tooltip · Inspector · live metric ticker · request trace · ping surge
+   SYSTEM ARCHITECTURE LEARNING VISUALIZER — interaction engine
+   Tooltip · Inspector · simulated metric ticker · request trace · highlight
+   Educational concept diagram: every value it shows is simulated for
+   learning. It does not describe a system that is built, deployed,
+   operated or maintained by the portfolio owner.
    Requires: #topoSvg markup in index.html. No dependencies.
    ========================================================================== */
 (function () {
   'use strict';
 
   /* ------------------------------------------------------------------
-     Node knowledge base (technical strings intentionally English —
-     like a real observability tool; UI chrome is bilingual via i18n)
+     Component knowledge base — general, textbook-level explanations of
+     what each part of a typical backend request pipeline does. Technical
+     strings are intentionally English; UI chrome is bilingual via i18n.
      ------------------------------------------------------------------ */
   const NODES = {
     client: {
-      name: 'CLIENT', role: 'Traffic Source',
-      desc: 'Browsers & mobile clients issuing HTTPS requests against the public edge.',
-      tech: ['HTTPS', 'WSS', 'GLOBAL'],
-      m: { p50: 42, p99: 118, rps: 1240, conn: 'global' },
+      name: 'CLIENT', role: 'Request Source',
+      desc: 'Where a request starts — a browser or mobile app sends an HTTPS request to the public entry point of the system.',
+      tech: ['HTTPS', 'ENTRY POINT'],
+      m: { p50: 42, p99: 118, rps: 1240, conn: 'many' },
       deps: []
     },
     lb: {
-      name: 'LOAD BALANCER', role: 'L7 Reverse Proxy',
-      desc: 'Nginx terminates TLS, health-checks upstreams and spreads load round-robin.',
-      tech: ['NGINX', 'TLS 1.3'],
-      m: { p50: 1.2, p99: 4.8, rps: 1240, conn: '4.2k' },
+      name: 'LOAD BALANCER', role: 'Traffic Distributor',
+      desc: 'Accepts incoming requests and spreads them across the available application instances, so no single instance carries all of the load.',
+      tech: ['ROUTING', 'TLS'],
+      m: { p50: 1.2, p99: 4.8, rps: 1240, conn: 'shared' },
       deps: ['api']
     },
     api: {
-      name: 'API SERVICE', role: 'Go Microservice',
-      desc: 'Stateless REST/gRPC handlers — auth, validation, orchestration. Scales horizontally.',
-      tech: ['GO', ':8080', 'GRPC'],
-      m: { p50: 6.4, p99: 28, rps: 1240, conn: '512' },
-      deps: ['redis', 'postgres', 'queue']
+      name: 'API SERVICE', role: 'Request Handler',
+      desc: 'The part that handles a request: it validates the input, applies the business logic, reads or writes data, and returns a structured response.',
+      tech: ['REST', 'HTTP', 'JSON'],
+      m: { p50: 6.4, p99: 28, rps: 1240, conn: 'pooled' },
+      deps: ['cache', 'db', 'queue']
     },
-    redis: {
-      name: 'REDIS', role: 'Cache · Pub/Sub',
-      desc: 'In-memory cache for hot reads (94% hit rate) and ephemeral pub/sub fan-out.',
-      tech: ['RESP', 'TTL 300S'],
-      m: { p50: 0.4, p99: 1.6, rps: 3900, conn: '256' },
+    cache: {
+      name: 'CACHE', role: 'Fast Temporary Storage',
+      desc: 'Keeps frequently requested data in memory so repeated reads can be answered quickly instead of querying the database every time. Cached data is temporary and can expire.',
+      tech: ['IN-MEMORY', 'SHORT-LIVED'],
+      m: { p50: 0.4, p99: 1.6, rps: 3900, conn: 'pooled' },
       deps: []
     },
     queue: {
-      name: 'TASK QUEUE', role: 'Buffered Channel',
-      desc: 'Bounded task buffer (cap 5) applying backpressure to the async pipeline.',
-      tech: ['CAP 5', 'FIFO'],
-      m: { p50: 0.2, p99: 2.1, rps: 180, conn: 'chan' },
+      name: 'TASK QUEUE', role: 'Work Buffer',
+      desc: 'Holds work that does not need an instant response, so it can be processed later, in order, without keeping the user waiting.',
+      tech: ['FIFO', 'BOUNDED', 'ASYNC'],
+      m: { p50: 0.2, p99: 2.1, rps: 180, conn: 'fifo' },
       deps: ['worker']
     },
     worker: {
-      name: 'WORKER', role: 'Goroutine Pool',
-      desc: 'Async task processors with exponential-backoff retries and dead-letter handling.',
-      tech: ['GO', 'xN POOL'],
-      m: { p50: 14, p99: 62, rps: 180, conn: '32' },
-      deps: ['postgres', 'storage']
+      name: 'WORKER', role: 'Background Processor',
+      desc: 'Takes tasks out of the queue and processes them one step at a time — the usual place for slow jobs such as sending mail or generating a report.',
+      tech: ['BACKGROUND', 'ASYNC'],
+      m: { p50: 14, p99: 62, rps: 180, conn: 'limited' },
+      deps: ['db', 'storage']
     },
-    postgres: {
-      name: 'POSTGRES', role: 'Primary Cluster',
-      desc: 'System of record — full-text search, JSONB, PITR backups every 5 minutes.',
-      tech: ['SQL', 'PITR'],
-      m: { p50: 2.8, p99: 15, rps: 940, conn: '128' },
+    db: {
+      name: 'DATABASE', role: 'Permanent Storage',
+      desc: 'The system of record. Structured data lives here, and SQL queries are used to read, update and relate it.',
+      tech: ['SQL', 'PERSISTENT'],
+      m: { p50: 2.8, p99: 15, rps: 940, conn: 'pooled' },
       deps: []
     },
     storage: {
-      name: 'OBJECT STORAGE', role: 'S3-Compatible Blobs',
-      desc: 'Durable artifact storage with presigned URLs and lifecycle policies.',
-      tech: ['MINIO', 'S3 API'],
+      name: 'OBJECT STORAGE', role: 'File Storage',
+      desc: 'Stores files and media — images, documents, exports — as objects. The database usually keeps only the reference or path to each object.',
+      tech: ['FILES', 'OBJECTS'],
       m: { p50: 8.1, p99: 44, rps: 95, conn: '—' },
       deps: []
     }
@@ -72,23 +76,23 @@
   const EDGES = [
     { id: 'client-lb',     a: 'client',  b: 'lb' },
     { id: 'lb-api',        a: 'lb',      b: 'api' },
-    { id: 'api-redis',     a: 'api',     b: 'redis' },
+    { id: 'api-cache',     a: 'api',     b: 'cache' },
     { id: 'api-queue',     a: 'api',     b: 'queue' },
     { id: 'queue-worker',  a: 'queue',   b: 'worker' },
-    { id: 'worker-pg',     a: 'worker',  b: 'postgres' },
+    { id: 'worker-db',     a: 'worker',  b: 'db' },
     { id: 'worker-storage',a: 'worker',  b: 'storage' },
-    { id: 'api-pg',        a: 'api',     b: 'postgres' }
+    { id: 'api-db',        a: 'api',     b: 'db' }
   ];
 
   const FLOWS = [
     {
-      label: 'GET /api/tasks · cache HIT @ REDIS',
-      fwd: ['client-lb', 'lb-api', 'api-redis'],
-      back: ['api-redis', 'lb-api', 'client-lb']
+      label: 'Read path · GET /api/items · answered from cache',
+      fwd: ['client-lb', 'lb-api', 'api-cache'],
+      back: ['api-cache', 'lb-api', 'client-lb']
     },
     {
-      label: 'POST /api/tasks · 202 Accepted (async)',
-      fwd: ['client-lb', 'lb-api', 'api-queue', 'queue-worker', 'worker-pg', 'worker-storage'],
+      label: 'Write path · POST /api/items · queued for background work',
+      fwd: ['client-lb', 'lb-api', 'api-queue', 'queue-worker', 'worker-db', 'worker-storage'],
       back: ['lb-api', 'client-lb']
     }
   ];
@@ -115,12 +119,12 @@
     Object.keys(NODES).forEach(n => { incident[n] = []; });
     EDGES.forEach(e => { incident[e.a].push(e.id); incident[e.b].push(e.id); });
 
-    /* ---------------- live state ---------------- */
+    /* ---------------- simulated state ---------------- */
     const state = {
       selected: null,
       reqs: 4812 + Math.floor(Math.random() * 400),
       startedAt: Date.now(),
-      live: {},       // per-node jittered metrics
+      live: {},       // per-component jittered (simulated) metrics
       spark: [],      // rps history for selected node
       tracing: false
     };
@@ -167,16 +171,17 @@
       const thr = Object.keys(NODES)
         .filter(n => ['client', 'lb', 'api'].includes(n))
         .reduce((s, n) => s + state.live[n].rps, 0) / 3;
-      $('tiThr').textContent = Math.round(thr).toLocaleString('en-US') + ' rps';
+      $('tiThr').textContent = Math.round(thr).toLocaleString('en-US') + '/s';
       $('tiErr').textContent = (Math.random() < 0.12 ? 0.01 : 0.00).toFixed(2) + '%';
     }
 
     function metricRows(m) {
+      // Simulated teaching values — not measurements from a running system.
       return [
-        { k: 'P50 latency', v: fmtMs(m.p50) },
-        { k: 'P99 latency', v: fmtMs(m.p99) },
-        { k: 'Throughput', v: Math.round(m.rps).toLocaleString('en-US') + ' rps' },
-        { k: 'Connections', v: String(m.conn) }
+        { k: 'Response p50 (sim)', v: fmtMs(m.p50) },
+        { k: 'Response p99 (sim)', v: fmtMs(m.p99) },
+        { k: 'Flow rate (sim)', v: Math.round(m.rps).toLocaleString('en-US') + '/s' },
+        { k: 'Connections (sim)', v: String(m.conn) }
       ];
     }
 
@@ -211,16 +216,16 @@
       const depsEl = $('tiDeps');
       depsEl.innerHTML = info.deps.length
         ? info.deps.map(d => `<button class="ti-dep" data-dep="${d}">${NODES[d].name}</button>`).join('')
-        : '<span class="ti-none">none — edge of the graph</span>';
+        : '<span class="ti-none">none — edge of the diagram</span>';
       depsEl.querySelectorAll('.ti-dep').forEach(b =>
         b.addEventListener('click', () => select(b.dataset.dep)));
       state.spark = Array.from({ length: 14 }, () => jitter(info.m.rps, 0.18));
       renderSpark();
       setSysPanel();
-      announce(`INSPECT · ${info.name} — ${info.role.toLowerCase()}`);
+      announce(`CONCEPT · ${info.name} — ${info.role.toLowerCase()}`);
     }
 
-    /* ---------------- node interactions ---------------- */
+    /* ---------------- component interactions ---------------- */
     Object.entries(nodeEls).forEach(([id, g]) => {
       g.addEventListener('click', () => select(id));
       g.addEventListener('keydown', (e) => {
@@ -235,7 +240,7 @@
     });
     stage && stage.addEventListener('mouseleave', hideTooltip);
 
-    /* ---------------- metric ticker ---------------- */
+    /* ---------------- simulated metric ticker ---------------- */
     function tick() {
       Object.keys(NODES).forEach(n => {
         const base = NODES[n].m;
@@ -260,7 +265,7 @@
       const mm = String(Math.floor((up % 3600) / 60)).padStart(2, '0');
       const ss = String(up % 60).padStart(2, '0');
       const clock = $('topoClock');
-      if (clock) clock.textContent = `UP ${hh}:${mm}:${ss}`;
+      if (clock) clock.textContent = `SESSION ${hh}:${mm}:${ss}`;
     }
     setInterval(tick, 1600);
     tick();
@@ -324,16 +329,16 @@
 
       const e = EDGES.find(x => x.id === flow.fwd[flow.fwd.length - 1]);
       flashNode(e.b);
-      announce(`▲ REQ #${state.reqs.toLocaleString('en-US')} — ${flow.label} — ${Math.round(jitter(24, 0.3))}ms`);
+      announce(`▲ SIMULATED TRACE #${state.reqs.toLocaleString('en-US')} — ${flow.label} — ~${Math.round(jitter(24, 0.3))}ms (simulated)`);
       Object.values(edgeEls).forEach(g => setTimeout(() => g.classList.remove('hot'), 600));
       btn && btn.classList.remove('busy');
       state.tracing = false;
     }
 
-    /* ---------------- ping mesh ---------------- */
+    /* ---------------- highlight all ---------------- */
     function pingMesh() {
       svg.classList.add('surge');
-      announce('◎ PING MESH · 8/8 nodes responded 200 OK · avg 2.1ms');
+      announce('◎ HIGHLIGHT ALL · 8/8 components of the concept diagram · values are simulated');
       Object.keys(nodeEls).forEach((n, i) =>
         setTimeout(() => flashNode(n), i * 90));
       setTimeout(() => svg.classList.remove('surge'), 1400);
@@ -344,7 +349,7 @@
     const pingBtn = $('topoPingBtn');
     pingBtn && pingBtn.addEventListener('click', pingMesh);
 
-    announce('SYSTEM ONLINE — all 8 components operational · click any node to inspect', 5200);
+    announce('LEARNING MODE — 8 common backend components · every value is simulated · click a component to explore its role', 5600);
   }
 
   if (document.readyState === 'loading') {
