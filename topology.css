@@ -591,6 +591,18 @@
   color: var(--ink);
 }
 
+/* Header line that labels every value below it as simulated */
+.ti-sys-row.ti-sys-head {
+  grid-column: 1 / -1;
+  border-bottom: 1px dashed var(--line);
+  padding-bottom: 5px;
+}
+.ti-sys-row.ti-sys-head span {
+  font-size: 7px;
+  letter-spacing: 0.08em;
+  color: var(--tp-cyan);
+}
+
 .ti-sys-row b.hi { color: var(--tp-cyan); }
 .ti-sys-row b.ok { color: var(--tp-green); }
 

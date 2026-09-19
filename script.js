@@ -17,22 +17,34 @@ document.addEventListener('DOMContentLoaded', () => {
       theme_btn: 'থিম',
       tb_name: 'প্রকৌশলী',
       tb_disc: 'বিষয়',
-      hero_tag: '// SWE আন্ডারগ্রাজুয়েট — লেভেল ২ টার্ম ২, বাংলাদেশ',
+      hero_tag: '// সফটওয়্যার ইঞ্জিনিয়ারিং আন্ডারগ্রাজুয়েট — লেভেল ২, টার্ম ২, বাংলাদেশ',
       hero_title_1: 'Building',
       hero_title_2: 'Software,',
       hero_title_3: 'Structurally.',
       hero_sub: 'আমি বিশ্বাস করি, Software Engineering শুধু code লেখা নয়—এটি মানুষের বাস্তব সমস্যাকে বোঝা, সেটিকে ছোট ছোট অংশে ভেঙে দেখা, এবং একটি সহজ, নির্ভরযোগ্য ও অর্থবহ সমাধান তৈরি করার প্রক্রিয়া।',
-      btn_projects: 'প্রজেক্ট স্কিমেটিক্স',
-      btn_resume: 'রিজিউমি ডাউনলোড',
-      m_projects: 'সিস্টেম প্রজেক্টস',
-      m_dsa: 'ডিএসএ সমস্যা সমাধান',
-      sch_header: 'সিস্টেম টপোলজি সিমুলেটর',
-      sch_sub: 'স্কেলেবল ব্যাকএন্ড রিকোয়েস্ট পাইপলাইনের ইন্টারঅ্যাক্টিভ ভিজ্যুয়ালাইজেশন। ভূমিকা, ডিপেন্ডেন্সি ও হেলথ দেখতে যেকোনো কম্পোনেন্ট সিলেক্ট করুন।',
-      sch_req: 'রিকোয়েস্ট পাঠান',
-      sch_ping: 'পিং মেশ',
+      hero_desc: 'আমি সফটওয়্যার ইঞ্জিনিয়ারিং-এর একজন আন্ডারগ্রাজুয়েট শিক্ষার্থী, এবং Java আমার মূল ভাষা। আমি Java ব্যবহার করে Data Structures and Algorithms এবং সমস্যা সমাধান অনুশীলন করি। এছাড়াও আমি Go, Python, Flutter, Dart, SQL, HTML, CSS, Git, GitHub, GitLab এবং REST API নিয়ে কাজ করি। Backend development-এ আমার আগ্রহ রয়েছে, এবং ভবিষ্যতে Artificial Intelligence, Machine Learning ও DevOps শেখার পরিকল্পনা করছি।',
+      btn_projects: 'প্রজেক্ট দেখুন',
+      btn_resume: 'রিজিউমি দেখুন',
+      m_focus1: 'Java কোর',
+      m_focus2: 'Java-তে ডিএসএ অনুশীলন',
+      m_focus3: 'Flutter ও ব্যাকএন্ড লার্নিং',
+      sch_header: 'সিস্টেম আর্কিটেকচার লার্নিং ভিজ্যুয়ালাইজার',
+      sch_sub: 'একটি রিকোয়েস্ট পাইপলাইনে সাধারণ ব্যাকএন্ড কম্পোনেন্টগুলো কীভাবে একে অপরের সাথে যোগাযোগ করতে পারে, তা বোঝার জন্য একটি শিক্ষামূলক ভিজ্যুয়ালাইজেশন। সাধারণ ভূমিকা ও ডিপেন্ডেন্সি জানতে যেকোনো কম্পোনেন্ট সিলেক্ট করুন।',
+      sch_req: 'রিকোয়েস্ট ট্রেস',
+      sch_ping: 'সব হাইলাইট',
       sch_insp: 'কম্পোনেন্ট ইন্সপেক্টর',
-      sch_insp_empty: 'ভূমিকা, ডিপেন্ডেন্সি ও লাইভ হেলথ মেট্রিক্স দেখতে টপোলজি থেকে একটি নোড সিলেক্ট করুন।',
-      sch_health: '৮/৮ অপারেশনাল',
+      sch_insp_sim: '● সিমুলেটেড',
+      sch_insp_empty: 'সাধারণ ভূমিকা ও ডিপেন্ডেন্সি জানতে ডায়াগ্রাম থেকে একটি কম্পোনেন্ট সিলেক্ট করুন। এখানে দেখানো প্রতিটি মান শেখার উদ্দেশ্যে সিমুলেটেড।',
+      sch_pill: 'কনসেপ্ট',
+      sch_spark: 'সিমুলেটেড ফ্লো · শেষ ২৪ স্যাম্পল',
+      sch_deps: 'ডিপেন্ডেন্সি',
+      sch_sys_head: 'সিমুলেটেড ডেটা — আসল ট্রাফিক নয়',
+      sch_sys_reqs: 'রিকোয়েস্ট (সিম)',
+      sch_sys_p99: 'রেসপন্স টাইম (সিম)',
+      sch_sys_thr: 'ফ্লো রেট (সিম)',
+      sch_sys_err: 'এরর রেট (সিম)',
+      sch_lg_node: 'কম্পোনেন্ট',
+      sch_health: '৮/৮ কম্পোনেন্ট · শিক্ষামূলক ভিজ্যুয়ালাইজেশন',
       sec_about: '01 // আর্কিটেকচারাল পটভূমি',
       about_head: 'Engineering Philosophy',
       about_p1: 'আমি বিশ্বাস করি, Software Engineering শুধু code লেখা নয়—এটি মানুষের বাস্তব সমস্যাকে বোঝা, সেটিকে ছোট ছোট অংশে ভেঙে দেখা, এবং একটি সহজ, নির্ভরযোগ্য ও অর্থবহ সমাধান তৈরি করার প্রক্রিয়া।',
@@ -47,40 +59,47 @@ document.addEventListener('DOMContentLoaded', () => {
       k_institute: 'বিশ্ববিদ্যালয়',
       k_focus: 'প্রধান ফোকাস',
       k_status: 'বর্তমান স্ট্যাটাস',
-      v_avail: 'গ্রীষ্ম / শরৎ ২০২৬ ইন্টার্নশিপ ও প্রজেক্টের জন্য প্রস্তুত',
+      v_avail: 'সফটওয়্যার ইঞ্জিনিয়ারিং-এর আন্ডারগ্রাজুয়েট শিক্ষার্থী — সক্রিয়ভাবে শিখছি, প্রজেক্ট বানাচ্ছি এবং সহযোগিতার জন্য প্রস্তুত।',
       sec_skills: '02 // দক্ষতা ও স্ট্যাক ডিপেন্ডেন্সি ম্যাপ',
       skills_head: 'টেকনিক্যাল স্ট্যাক স্কিমেটিক্স',
-      skills_desc: 'নিচের টেকনোলজি ট্যাগে মাউস হভার করলে দেখতে পাবেন কীভাবে প্রতিটি প্রযুক্তি একে অপরের সাথে সিস্টেম আর্কিটেকচারে অ্যারো ভেক্টরের মাধ্যমে সংযুক্ত।',
+      skills_desc: 'নিচের যেকোনো টেকনোলজি ট্যাগে মাউস হভার করলে দেখতে পাবেন সেটি আমার স্ট্যাকের আর কোন কোন প্রযুক্তির সাথে যুক্ত।',
       sg_lang: 'প্রোগ্রামিং ল্যাঙ্গুয়েজ',
-      sg_frameworks: 'ফ্রেমওয়ার্ক, স্টোরেজ ও ডেভঅপস',
-      sg_learning: 'চলমান গবেষণা ও আরঅ্যান্ডডি',
+      sg_frameworks: 'ডেভেলপমেন্ট টুলস ও টেকনোলজি',
+      sg_learning: 'ভবিষ্যতের লার্নিং রোডম্যাপ',
+      sg_learning_note: 'ভবিষ্যতের জন্য শেখার পরিকল্পনা — বর্তমান দক্ষতা নয়।',
+      sg_vis: 'জাভা ডিএসএ ও সমস্যা সমাধান ভিজ্যুয়ালাইজার',
       sec_work: '03 // প্রজেক্ট ব্লুপ্রিন্টস',
-      proj_head: 'নির্বাচিত প্রজেক্ট স্কিমেটিক্স',
-      proj_desc: 'প্রতিটি প্রজেক্ট কোনো না কোনো রিয়েল-ওয়ার্ল্ড প্রকৌশল জটিলতা নিরসনের সচেষ্ট প্রচেষ্টা — মেমরি অপ্টিমাইজেশন থেকে শুরু করে কনকারেন্ট মেসেজিং পর্যন্ত।',
-      f_all: 'সকল স্কিমেটিক্স (০৪)',
-      f_dist: 'ডিস্ট্রিবিউটেড ও ব্যাকএন্ড',
-      f_full: 'ফুল-স্ট্যাক',
-      f_ml: 'এমএল ও ফাস্ট-এপিআই',
-      p1_desc: 'একটি lightweight high-concurrency job scheduler যা একাধিক worker নোডের মধ্যে task ডিস্ট্রিবিউট করে, worker ফেইল করলে Heartbeat detection ও automatic retry নিশ্চিত করে।',
-      p2_desc: 'বিশ্ববিদ্যালয়ের শিক্ষার্থীদের ব্যবহৃত বই ও ল্যাব ইকুইপমেন্ট কেনাবেচার সুরক্ষিত প্ল্যাটফর্ম — যেখানে JWT Auth, PostgreSQL Full-Text Search এবং ইমেজ ক্যাশিং ইমপ্লিমেন্ট করা হয়েছে।',
-      p3_desc: 'WebSocket-ভিত্তিক ডিস্ট্রিবিউটেড চ্যাট ইঞ্জিন যা Redis Adapter দিয়ে ক্লাস্টার স্কেলিং, Presence tracking এবং Message Ack & Retry Guarantee নিশ্চিত করে।',
-      p4_desc: 'TF-IDF এবং TF-Vector Cosine Similarity অ্যালগরিদম ব্যবহার করে রেজুমি থেকে কী-ওয়ার্ড ও এক্সপেরিয়েন্স এক্সট্র্যাক্ট করে স্কোরের ভিত্তিতে সর্টিং করার অটোমেটেড পাইপলাইন।',
-      p_details: 'সিস্টেম স্পেক দেখুন',
+      proj_head: 'লার্নিং প্রজেক্ট ও অনুশীলন',
+      proj_desc: 'এই লার্নিং প্রজেক্টগুলো Java, Data Structures ও Algorithms, Flutter, ওয়েব ডেভেলপমেন্ট, ব্যাকএন্ডের মূল বিষয়, REST API এবং ভার্সন কন্ট্রোলে আমার চলমান অনুশীলনের প্রতিফলন।',
+      f_all: 'সব প্রজেক্ট (০৪)',
+      f_java: 'JAVA ও ডিএসএ',
+      f_backend: 'ব্যাকএন্ড ও API',
+      f_mobile: 'FLUTTER ও মোবাইল',
+      f_web: 'ওয়েব বেসিক',
+      p1_desc: 'Java-তে লেখা Data Structures ও Algorithms সমাধানের একটি সংগ্রহ, যা সমস্যা সমাধানের দক্ষতা, যুক্তিচিন্তা এবং মূল ধারণাগুলো বোঝার ওপর গুরুত্ব দেয়।',
+      p2_desc: 'API ডিজাইন, HTTP মেথড, রিকোয়েস্ট হ্যান্ডলিং এবং ব্যাকএন্ড ডেভেলপমেন্টের মূল বিষয়গুলো শেখার একটি অনুশীলন প্রজেক্ট।',
+      p3_desc: 'মোবাইল ডেভেলপমেন্টের মূল বিষয়গুলো শেখার সময় Flutter ও Dart দিয়ে তৈরি একটি মোবাইল অ্যাপ্লিকেশন অনুশীলন প্রজেক্ট।',
+      p4_desc: 'HTML ও CSS ব্যবহার করে তৈরি একটি রেসপন্সিভ ফ্রন্টএন্ড অনুশীলন প্রজেক্ট।',
+      p_details: 'বিস্তারিত দেখুন',
       sec_exp: '04 // ইঞ্জিনিয়ারিং লগ ও রিভিশনস',
       exp_head: 'পরিবর্তন লগ ও মাইলফলক',
       th_date: 'সময়কাল',
       th_role: 'ভূমিকা / মাইলফলক',
       th_org: 'প্রতিষ্ঠান',
       th_status: 'স্ট্যাটাস',
-      r3_title: 'বিএসএসসি ইন সফটওয়্যার ইঞ্জিনিয়ারিং — লেভেল ২, টার্ম ২',
-      r3_desc: 'সফটওয়্যার আর্কিটেকচার, ব্যাকএন্ড সিস্টেম, ডাটাবেস ডিজাইন ও হাই-পারফর্ম্যান্স API ডেভেলপমেন্ট।',
-      r2_title: 'অ্যালগরিদম ও ওপেন-সোর্স অবদান',
-      r2_desc: '৬০০+ ডাটা স্ট্রাকচার ও অ্যালগরিদম সমস্যা সমাধান; ফুল-স্ট্যাক প্রজেক্ট ও ব্যাকএন্ড সিস্টেম নির্মাণ।',
-      r1_title: 'সফটওয়্যার ইঞ্জিনিয়ারিং-এ ভর্তি',
-      r1_desc: 'কম্পিউটার সায়েন্স ফান্ডামেন্টালস, C/C++, Python এবং অবজেক্ট-ওরিয়েন্টেড সফটওয়্যার ইঞ্জিনিয়ারিং চর্চার সূচনা।',
+      r3_title: 'বিএসসি ইন সফটওয়্যার ইঞ্জিনিয়ারিং — লেভেল ২, টার্ম ২',
+      r3_desc: 'ফোকাস: Java, ডিএসএ ও সমস্যা সমাধান, Flutter, ডাটাবেস, ব্যাকএন্ড ডেভেলপমেন্ট, REST API শেখা এবং ভার্সন কন্ট্রোল।',
+      r2_title: 'প্রোগ্রামিং ফাউন্ডেশন ও ডেভেলপমেন্ট দক্ষতা',
+      r2_desc: 'Java, Go, Python, C, Flutter, Dart, SQL, HTML, CSS, Git, GitHub এবং GitLab শেখা ও অনুশীলন।',
+      r1_title: 'সফটওয়্যার ইঞ্জিনিয়ারিং যাত্রার সূচনা',
+      r1_desc: 'প্রোগ্রামিং, OOP, সমস্যা সমাধান, ভার্সন কন্ট্রোল এবং ওয়েব ডেভেলপমেন্টের মূল বিষয়গুলোর ভিত্তি তৈরি।',
       sec_contact: '05 // ট্রান্সমিশন ও যোগাযোগ',
-      c_title: 'চলুন মজবুত সফটওয়্যার বানাই —',
-      c_sub: 'আপনি কি ব্যাকএন্ড ইঞ্জিনিয়ারিং ইন্টার্নশিপ, সিস্টেম আর্কিটেকচার রিভিউ বা কোনো নতুন ওপেন-সোর্স প্রজেক্ট নিয়ে আলোচনা করতে চান? ইমেইল বা লিঙ্কডইনে বার্তা পাঠাতে পারেন।',
+      c_title: 'চলুন শিখি, বানাই এবং একসাথে কাজ করি।',
+      c_sub: 'আমি বর্তমানে Java, Data Structures ও Algorithms, সমস্যা সমাধান, Flutter, ব্যাকএন্ড ডেভেলপমেন্ট, REST API, ডাটাবেস এবং বাস্তব প্রজেক্টের মাধ্যমে সফটওয়্যার ইঞ্জিনিয়ারিং-এর ভিত্তি শক্তিশালী করছি। শেখার সহযোগিতা, শিক্ষার্থী প্রজেক্ট এবং এন্ট্রি-লেভেল সুযোগের জন্য নির্দ্বিধায় যোগাযোগ করুন।',
+      c_copy_btn: 'কপি',
+      c_alt_title: 'অন্যান্য যোগাযোগ ইমেইল',
+      c_alt_uni: 'বিশ্ববিদ্যালয়',
+      c_alt_personal: 'ব্যক্তিগত',
       c_res_btn: 'রিজিউমি (পিডিএফ)',
       foot_built: 'ভ্যানিলা HTML/CSS/JS এবং SVG ভেক্টর স্কিমেটিক্স দ্বারা তৈরি'
     },
@@ -93,22 +112,34 @@ document.addEventListener('DOMContentLoaded', () => {
       theme_btn: 'Theme',
       tb_name: 'ENGINEER',
       tb_disc: 'DISCIPLINE',
-      hero_tag: '// SWE UNDERGRADUATE — LEVEL 2 TERM 2, BANGLADESH',
+      hero_tag: '// SOFTWARE ENGINEERING UNDERGRADUATE — LEVEL 2, TERM 2, BANGLADESH',
       hero_title_1: 'Building',
       hero_title_2: 'Software,',
       hero_title_3: 'Structurally.',
       hero_sub: 'I believe Software Engineering is not just about writing code—it is the process of understanding real human problems, breaking them down, and creating simple, reliable, and meaningful solutions.',
-      btn_projects: 'View Schematics',
-      btn_resume: 'Download Résumé',
-      m_projects: 'System Projects',
-      m_dsa: 'DSA Problems',
-      sch_header: 'SYSTEM TOPOLOGY SIMULATOR',
-      sch_sub: 'Interactive visualization of a scalable backend request pipeline. Select a component to inspect its role, dependencies & health.',
-      sch_req: 'SEND REQUEST',
-      sch_ping: 'PING MESH',
+      hero_desc: 'I am an undergraduate Software Engineering student with Java as my core language. I practice Data Structures and Algorithms and problem solving using Java. I also work with Go, Python, Flutter, Dart, SQL, HTML, CSS, Git, GitHub, GitLab, and REST APIs. I am interested in backend development, and I plan to learn Artificial Intelligence, Machine Learning, and DevOps in the future.',
+      btn_projects: 'View Projects',
+      btn_resume: 'View Résumé',
+      m_focus1: 'Java Core',
+      m_focus2: 'Java DSA Practice',
+      m_focus3: 'Flutter & Backend Learning',
+      sch_header: 'SYSTEM ARCHITECTURE LEARNING VISUALIZER',
+      sch_sub: 'An educational visualization for understanding how common backend components can communicate in a request pipeline. Select a component to explore its general role and dependencies.',
+      sch_req: 'TRACE REQUEST',
+      sch_ping: 'HIGHLIGHT ALL',
       sch_insp: 'COMPONENT INSPECTOR',
-      sch_insp_empty: 'Select a node from the topology to inspect its role, dependencies & live health metrics.',
-      sch_health: '8/8 OPERATIONAL',
+      sch_insp_sim: '● SIMULATED',
+      sch_insp_empty: 'Select a component from the diagram to explore its general role and dependencies. All values shown here are simulated for learning.',
+      sch_pill: 'CONCEPT',
+      sch_spark: 'SIMULATED FLOW · LAST 24 SAMPLES',
+      sch_deps: 'DEPENDENCIES',
+      sch_sys_head: 'SIMULATED DATA — NOT REAL TRAFFIC',
+      sch_sys_reqs: 'REQUESTS (SIM)',
+      sch_sys_p99: 'RESPONSE TIME (SIM)',
+      sch_sys_thr: 'FLOW RATE (SIM)',
+      sch_sys_err: 'ERROR RATE (SIM)',
+      sch_lg_node: 'COMPONENT',
+      sch_health: '8/8 COMPONENTS · EDUCATIONAL VISUALIZATION',
       sec_about: '01 // Architectural Background',
       about_head: 'Engineering Philosophy',
       about_p1: 'I believe Software Engineering is not just about writing code—it is the process of understanding real human problems, breaking them down into manageable components, and creating simple, reliable, and meaningful solutions.',
@@ -123,25 +154,28 @@ document.addEventListener('DOMContentLoaded', () => {
       k_institute: 'UNIVERSITY',
       k_focus: 'PRIMARY FOCUS',
       k_status: 'CURRENT STATUS',
-      v_avail: 'Available for Summer / Autumn 2026 Internships & Collaborations',
+      v_avail: 'Undergraduate Software Engineering student — actively learning, building projects, and open to collaboration.',
       sec_skills: '02 // Skills & Stack Dependency Map',
       skills_head: 'Technical Stack Schematics',
-      skills_desc: 'Hover over tech tags to visually inspect how components connect to each other across backend architectural layers.',
+      skills_desc: 'Hover over any technology tag to see which other tools in my stack it connects to.',
       sg_lang: 'Programming Languages',
-      sg_frameworks: 'Frameworks, Storage & DevOps',
-      sg_learning: 'Active Engineering Research',
+      sg_frameworks: 'Development Tools & Technologies',
+      sg_learning: 'Future Learning Roadmap',
+      sg_learning_note: 'Planned learning goals for the future — not current skills.',
+      sg_vis: 'Java DSA & Problem-Solving Visualizer',
       sec_work: '03 // Project Blueprints',
-      proj_head: 'Selected System Schematics',
-      proj_desc: 'Each project addresses a real-world engineering challenge — from concurrent task distribution to realtime WebSocket state synchronization.',
-      f_all: 'ALL SCHEMATICS (04)',
-      f_dist: 'DISTRIBUTED & BACKEND',
-      f_full: 'FULL-STACK',
-      f_ml: 'ML & FASTAPI',
-      p1_desc: 'Lightweight high-concurrency job scheduler distributing tasks across worker nodes with Heartbeat monitoring and automatic retries.',
-      p2_desc: 'Secure campus peer marketplace featuring JWT Auth, PostgreSQL Full-Text Search, and image caching for 400+ active student users.',
-      p3_desc: 'Distributed WebSocket chat server engine with Redis Pub/Sub multi-instance scaling and message delivery guarantees.',
-      p4_desc: 'Automated resume parsing & matching pipeline using TF-IDF and Cosine Similarity vector scores built with Python & FastAPI.',
-      p_details: 'View System Spec',
+      proj_head: 'Learning Projects & Practice',
+      proj_desc: 'These learning projects represent my ongoing practice in Java, Data Structures and Algorithms, Flutter, web development, backend fundamentals, REST APIs, and version control.',
+      f_all: 'ALL PROJECTS (04)',
+      f_java: 'JAVA & DSA',
+      f_backend: 'BACKEND & API',
+      f_mobile: 'FLUTTER & MOBILE',
+      f_web: 'WEB BASICS',
+      p1_desc: 'A collection of Data Structures and Algorithms solutions written in Java, focused on improving problem-solving skills, logical thinking, and understanding core concepts.',
+      p2_desc: 'A practice project for learning API design, HTTP methods, request handling, and backend development fundamentals.',
+      p3_desc: 'A mobile application practice project built with Flutter and Dart while learning mobile development fundamentals.',
+      p4_desc: 'A responsive frontend practice project built using HTML and CSS.',
+      p_details: 'View Details',
       sec_exp: '04 // Engineering Log & Revisions',
       exp_head: 'Changelog & Milestones',
       th_date: 'TIMEFRAME',
@@ -149,14 +183,18 @@ document.addEventListener('DOMContentLoaded', () => {
       th_org: 'ORGANIZATION',
       th_status: 'STATUS',
       r3_title: 'B.Sc. in Software Engineering — Level 2, Term 2',
-      r3_desc: 'Software architecture, backend systems, database design & high-performance REST/gRPC API development.',
-      r2_title: 'Algorithms & Open Source Core',
-      r2_desc: 'Solved 600+ Data Structures & Algorithms problems; built full-stack campus platforms and background schedulers.',
-      r1_title: 'Admitted to Software Engineering (SWE)',
-      r1_desc: 'Initiated computer science fundamentals, C/C++, Python & object-oriented software engineering paradigms.',
+      r3_desc: 'Focus: Java, DSA and problem solving, Flutter, databases, backend development, REST API learning, and version control.',
+      r2_title: 'Programming Foundations & Development Skills',
+      r2_desc: 'Learning and practicing Java, Go, Python, C, Flutter, Dart, SQL, HTML, CSS, Git, GitHub, and GitLab.',
+      r1_title: 'Started Software Engineering Journey',
+      r1_desc: 'Built foundational knowledge of programming, OOP, problem solving, version control, and web development fundamentals.',
       sec_contact: '05 // Transmission & Contact',
-      c_title: 'Let\'s build reliable software —',
-      c_sub: 'Interested in backend engineering internships, architecture reviews, or open-source collaboration? Feel free to reach out via email or LinkedIn.',
+      c_title: 'Let\'s learn, build, and collaborate.',
+      c_sub: 'I am currently strengthening my software engineering foundations through Java, Data Structures and Algorithms, problem solving, Flutter, backend development, REST APIs, databases, and practical projects. Feel free to contact me for learning collaboration, student projects, and entry-level opportunities.',
+      c_copy_btn: 'COPY',
+      c_alt_title: 'OTHER CONTACT EMAILS',
+      c_alt_uni: 'University',
+      c_alt_personal: 'Personal',
       c_res_btn: 'Résumé (PDF)',
       foot_built: 'BUILT WITH VANILLA HTML/CSS/JS & SVG VECTOR SCHEMATICS'
     }
@@ -487,64 +525,82 @@ document.addEventListener('DOMContentLoaded', () => {
      ------------------------------------------------------------------------ */
   const projSpecs = {
     proj1: {
-      title: 'Distributed Task Scheduler',
-      fig: 'FIG. 01 // ARCHITECTURAL SPECIFICATION',
-      tags: ['Go (Golang)', 'Redis', 'Docker', 'gRPC', 'Heartbeat Protocol'],
+      title: 'Java DSA Practice',
+      fig: 'FIG. 01 // LEARNING PROJECT SPECIFICATION',
+      tags: ['Learning Project', 'Java', 'DSA', 'OOP'],
       body: `
-        <h4>Architecture Overview</h4>
-        <p>A distributed task execution engine designed to handle asynchronous background jobs across multiple worker nodes without a single point of failure.</p>
+        <h4>Overview</h4>
+        <p>A collection of Data Structures and Algorithms solutions written in Java, focused on improving problem-solving skills, logical thinking, and understanding core concepts.</p>
         <br>
-        <h4>Key Technical Implementations</h4>
+        <h4>Learning Goals</h4>
         <ul>
-          <li><strong>Worker Heartbeat Monitoring:</strong> Master node maintains a Redis Hash with TTL ping records to auto-detect crashed worker instances.</li>
-          <li><strong>Task Re-queueing Mechanism:</strong> Unacknowledged jobs are atomically re-assigned via Lua scripts in Redis.</li>
-          <li><strong>gRPC Communication:</strong> High-performance binary serialization for inter-node communication.</li>
+          <li><strong>Understand first:</strong> trace how a data structure behaves before writing the code.</li>
+          <li><strong>Write readable Java:</strong> clear naming, small methods and proper OOP structure.</li>
+          <li><strong>Compare approaches:</strong> look at time and space complexity, not only at a working answer.</li>
+          <li><strong>Practise consistently:</strong> solve problems regularly and revisit the ones that were hard.</li>
         </ul>
+        <br>
+        <h4>Status</h4>
+        <p>Ongoing learning practice as a Software Engineering undergraduate — not a deployed product.</p>
       `
     },
     proj2: {
-      title: 'Campus Peer Marketplace',
-      fig: 'FIG. 02 // ARCHITECTURAL SPECIFICATION',
-      tags: ['React.js', 'Node.js', 'PostgreSQL', 'Express', 'JWT Auth'],
+      title: 'REST API Learning Project',
+      fig: 'FIG. 02 // LEARNING PROJECT SPECIFICATION',
+      tags: ['Learning Project', 'REST API', 'Java or Python', 'SQL'],
       body: `
-        <h4>Architecture Overview</h4>
-        <p>Full-stack marketplace created for 400+ UFTB university students to buy, sell, and exchange textbooks and engineering lab devices.</p>
+        <h4>Overview</h4>
+        <p>A practice project for learning API design, HTTP methods, request handling, and backend development fundamentals.</p>
         <br>
-        <h4>Key Technical Implementations</h4>
+        <h4>Learning Goals</h4>
         <ul>
-          <li><strong>PostgreSQL Full-Text Search:</strong> Indexed search queries for instant title and ISBN lookups.</li>
-          <li><strong>Security & Authentication:</strong> HttpOnly JWT cookie verification with rate-limiting middleware.</li>
+          <li><strong>API design:</strong> plan clear endpoints and choose the right HTTP method for each action.</li>
+          <li><strong>Request handling:</strong> read input, validate it, and return meaningful status codes and responses.</li>
+          <li><strong>Data layer:</strong> store and query records with SQL.</li>
+          <li><strong>Project structure:</strong> keep a small backend organised and easy to read.</li>
         </ul>
+        <br>
+        <h4>Status</h4>
+        <p>Backend fundamentals practice — still learning, not a production service.</p>
       `
     },
     proj3: {
-      title: 'Realtime Messaging Engine',
-      fig: 'FIG. 03 // ARCHITECTURAL SPECIFICATION',
-      tags: ['TypeScript', 'Socket.io', 'Redis Pub/Sub', 'Express'],
+      title: 'Flutter Learning App',
+      fig: 'FIG. 03 // LEARNING PROJECT SPECIFICATION',
+      tags: ['Learning Project', 'Flutter', 'Dart'],
       body: `
-        <h4>Architecture Overview</h4>
-        <p>Horizontal-scaling WebSocket chat infrastructure supporting presence notifications and chat channels.</p>
+        <h4>Overview</h4>
+        <p>A mobile application practice project built with Flutter and Dart while learning mobile development fundamentals.</p>
         <br>
-        <h4>Key Technical Implementations</h4>
+        <h4>Learning Goals</h4>
         <ul>
-          <li><strong>Redis Pub/Sub Adapter:</strong> Broadcasts messages across multiple Node.js WebSocket process instances.</li>
-          <li><strong>Delivery Guarantees:</strong> Message sequence IDs with client-side optimistic updates and ACK retry timers.</li>
+          <li><strong>UI basics:</strong> build simple screens with Flutter widgets and layout.</li>
+          <li><strong>Navigation:</strong> move between screens and pass data around.</li>
+          <li><strong>State:</strong> manage simple state in a small application.</li>
+          <li><strong>Dart:</strong> strengthen Dart fundamentals alongside the framework.</li>
         </ul>
+        <br>
+        <h4>Status</h4>
+        <p>Mobile development practice project — learning stage.</p>
       `
     },
     proj4: {
-      title: 'AI Resume Screener & Matcher',
-      fig: 'FIG. 04 // ARCHITECTURAL SPECIFICATION',
-      tags: ['Python 3', 'FastAPI', 'scikit-learn', 'NLP', 'PyMuPDF'],
+      title: 'Web Fundamentals Project',
+      fig: 'FIG. 04 // LEARNING PROJECT SPECIFICATION',
+      tags: ['Learning Project', 'HTML', 'CSS'],
       body: `
-        <h4>Architecture Overview</h4>
-        <p>Automated NLP resume screening engine deployed during the campus career fair to rank applicant resumes against job requirements.</p>
+        <h4>Overview</h4>
+        <p>A responsive frontend practice project built using HTML and CSS.</p>
         <br>
-        <h4>Key Technical Implementations</h4>
+        <h4>Learning Goals</h4>
         <ul>
-          <li><strong>Text Extraction & Normalization:</strong> PDF parsing via PyMuPDF with lemmatization and stop-word removal.</li>
-          <li><strong>Vector Space Matching:</strong> TF-IDF matrix vectorization with Cosine Similarity scoring.</li>
+          <li><strong>Semantic structure:</strong> write HTML that describes the content clearly.</li>
+          <li><strong>Styling:</strong> lay out pages with CSS and keep the stylesheet organised.</li>
+          <li><strong>Responsiveness:</strong> make the page usable on small and large screens.</li>
         </ul>
+        <br>
+        <h4>Status</h4>
+        <p>Frontend fundamentals practice — learning stage.</p>
       `
     }
   };
@@ -645,7 +701,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const line = document.createElement('div');
     line.className = 'term-line';
-    line.innerHTML = `<span class="term-ps1">ratul@uftb:~$</span> ${escapeHtml(cmd)}`;
+    line.innerHTML = `<span class="term-ps1">ratul@se:~$</span> ${escapeHtml(cmd)}`;
     termOutput.appendChild(line);
 
     const res = document.createElement('div');
@@ -654,25 +710,25 @@ document.addEventListener('DOMContentLoaded', () => {
     switch (cmd) {
       case 'help':
         res.innerHTML = `Available HUD commands:<br>
-          - <span class="term-cmd">skills</span>: List technical languages & systems<br>
-          - <span class="term-cmd">projects</span>: Display architectural schematics<br>
-          - <span class="term-cmd">contact</span>: View transmission channels<br>
-          - <span class="term-cmd">matrix</span>: Display metrics<br>
+          - <span class="term-cmd">skills</span>: List my current stack and learning roadmap<br>
+          - <span class="term-cmd">projects</span>: List my learning projects<br>
+          - <span class="term-cmd">contact</span>: View contact channels<br>
+          - <span class="term-cmd">matrix</span>: Show the specification matrix<br>
           - <span class="term-cmd">theme [cyan|emerald|amber|amethyst]</span>: Switch accent color<br>
           - <span class="term-cmd">quote</span>: Random engineering wisdom<br>
           - <span class="term-cmd">clear</span>: Clear console buffer`;
         break;
       case 'skills':
-        res.innerHTML = 'Languages: Go, Python, TS, C++, SQL. Frameworks: React, Node.js, PostgreSQL, Docker, Redis.';
+        res.innerHTML = 'Languages: Java (core — OOP, DSA, problem solving), Go, Python, C, Dart, SQL, HTML, CSS.<br>Tools: Flutter, REST API (learning), Git, GitHub, GitLab.<br>Future roadmap: AI, ML, DevOps.';
         break;
       case 'projects':
-        res.innerHTML = '1. Distributed Task Scheduler | 2. Campus Marketplace | 3. Realtime Chat Engine | 4. Resume Screener ML';
+        res.innerHTML = 'Learning projects: 1. Java DSA Practice | 2. REST API Learning Project | 3. Flutter Learning App | 4. Web Fundamentals Project';
         break;
       case 'contact':
-        res.innerHTML = 'Email: ratul@uftb.edu.bd | GitHub: github.com/rahmatul-islam | LinkedIn: linkedin.com/in/rahmatul-islam';
+        res.innerHTML = 'Primary: <a href="mailto:rahmatulislam.se@gmail.com">rahmatulislam.se@gmail.com</a><br>University: <a href="mailto:2303016@bdu.ac.bd">2303016@bdu.ac.bd</a> · Personal: <a href="mailto:rahmatulislam@proton.me">rahmatulislam@proton.me</a><br>GitHub: github.com/rahmatul-islam';
         break;
       case 'matrix':
-        res.innerHTML = 'Name: Rahmatul Islam (Ratul) | Department: Software Engineering (Level 2 Term 2) | University: UFTB';
+        res.innerHTML = 'Name: Rahmatul Islam (Ratul) | Discipline: Software Engineering (SE) | Level: Level 2, Term 2 | Degree: B.Sc. in Software Engineering | Location: Bangladesh';
         break;
       case 'clear':
         termOutput.innerHTML = '';
@@ -726,12 +782,12 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   copyEmailBtn?.addEventListener('click', () => {
-    const email = 'ratul@uftb.edu.bd';
+    const email = 'rahmatulislam.se@gmail.com';
     const onOk = () => {
       playSound(800, 0.15);
-      showToast('📋 Email copied to clipboard: ratul@uftb.edu.bd');
+      showToast('📋 Email copied to clipboard: rahmatulislam.se@gmail.com');
     };
-    const onFail = () => showToast('❌ Copy failed — email: ratul@uftb.edu.bd');
+    const onFail = () => showToast('❌ Copy failed — email: rahmatulislam.se@gmail.com');
 
     if (navigator.clipboard && window.isSecureContext) {
       navigator.clipboard.writeText(email).then(onOk).catch(() => (legacyCopyText(email) ? onOk() : onFail()));
@@ -773,6 +829,8 @@ document.addEventListener('DOMContentLoaded', () => {
       if (entry.isIntersecting) {
         const valEl = entry.target;
         const target = parseFloat(valEl.getAttribute('data-target'));
+        // Labels without a numeric target (e.g. the hero focus tags) are not counters.
+        if (!Number.isFinite(target)) { counterObserver.unobserve(valEl); return; }
         const isDecimal = target % 1 !== 0;
         let current = 0;
         const step = target / 40;

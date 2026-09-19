@@ -757,12 +757,22 @@ h1.title span span {
   transform: translateX(4px);
 }
 
-/* Metrics Bar */
+/* Hero description (second paragraph under the opening statement) */
+.hero-desc {
+  max-width: 520px;
+  margin-top: 18px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+/* Metrics Bar — now honest text labels instead of numeric counters */
 .hero-metrics {
   margin-top: 48px;
   display: flex;
   align-items: center;
   gap: 24px;
+  flex-wrap: wrap;
   padding-top: 24px;
   border-top: 1px dashed var(--line);
 }
@@ -793,6 +803,25 @@ h1.title span span {
   width: 1px;
   height: 28px;
   background: var(--line);
+}
+
+/* Static focus labels (no counters — nothing is invented) */
+.metric-item.metric-static {
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+.metric-mark {
+  color: var(--accent);
+  font-size: 12px;
+  line-height: 1;
+}
+.metric-static .metric-lbl {
+  margin-top: 0;
+  font-size: 11.5px;
+  color: var(--ink);
+  letter-spacing: 0.06em;
+  white-space: nowrap;
 }
 
 /* INTERACTIVE SCHEMATIC CARD */
@@ -1108,7 +1137,7 @@ h1.title span span {
   font-weight: 600;
 }
 
-.uftb-v {
+.uni-v {
   font-weight: 500;
   color: var(--accent-2);
 }
@@ -1289,6 +1318,16 @@ h1.title span span {
   padding: 24px;
   border: 1px dashed var(--line-strong);
   background: rgba(var(--paper-rgb), 0.4);
+}
+
+.roadmap-note {
+  position: relative;
+  margin-top: 14px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  text-align: center;
 }
 
 .cloud-svg {
@@ -1543,7 +1582,13 @@ h1.title span span {
   padding-bottom: 4px;
   transition: color 0.3s;
   text-align: left;
+  /* the primary address is longer than the old one — cap the display size so
+     it always fits its column, and allow a graceful break as a last resort */
+  min-width: 0;
+  font-size: clamp(17px, 2.6vw, 34px);
+  line-height: 1.2;
 }
+.email-copy-link > span { overflow-wrap: anywhere; }
 .email-copy-link:hover {
   color: var(--accent-2);
   border-color: var(--accent-2);
@@ -1551,6 +1596,76 @@ h1.title span span {
 .copy-icon {
   width: 28px;
   height: 28px;
+}
+
+.email-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.email-copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  background: transparent;
+  border: 1px solid var(--line);
+  padding: 7px 10px;
+  cursor: pointer;
+  transition: color 0.25s, border-color 0.25s;
+}
+.email-copy-btn:hover {
+  color: var(--accent-2);
+  border-color: var(--accent-2);
+}
+.email-copy-btn .copy-icon {
+  width: 14px;
+  height: 14px;
+}
+
+/* Compact secondary contact area */
+.contact-alt {
+  margin-top: 28px;
+  max-width: 540px;
+  padding: 14px 16px;
+  border: 1px dashed var(--line-strong);
+  background: rgba(var(--paper-rgb), 0.4);
+  display: grid;
+  gap: 8px;
+}
+.contact-alt-title {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.14em;
+  color: var(--accent);
+}
+.contact-alt-row {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.contact-alt-row .alt-k {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10.5px;
+  color: var(--muted);
+  min-width: 76px;
+}
+.contact-alt-row .alt-v {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  color: var(--ink);
+  border-bottom: 1px solid var(--line);
+  transition: color 0.25s, border-color 0.25s;
+}
+.contact-alt-row .alt-v:hover {
+  color: var(--accent-2);
+  border-color: var(--accent-2);
 }
 
 .contact-sub {
@@ -1690,6 +1805,12 @@ footer {
   line-height: 1.6;
 }
 
+.term-line a {
+  color: var(--accent-2);
+  border-bottom: 1px dashed var(--accent-2);
+}
+.term-line a:hover { color: var(--ink); }
+
 .term-cmd {
   color: var(--accent-2);
   font-weight: bold;
@@ -1771,6 +1892,7 @@ footer {
 .resume-sheet h1 { font-family: 'Space Grotesk', sans-serif; font-size: 28px; }
 .resume-sheet .r-sub { color: var(--accent); font-weight: 500; margin-bottom: 4px; }
 .resume-sheet .r-contact { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--muted); margin-bottom: 24px; }
+.resume-sheet .r-contact a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
 .resume-sheet .r-section { margin-bottom: 24px; }
 .resume-sheet h2 { font-family: 'IBM Plex Mono', monospace; font-size: 14px; border-bottom: 1px solid var(--line); padding-bottom: 4px; margin-bottom: 12px; color: var(--accent-2); }
 .resume-sheet .r-item { margin-bottom: 14px; }
