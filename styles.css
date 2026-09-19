@@ -1898,6 +1898,11 @@ footer {
 .resume-sheet h2 { font-family: 'IBM Plex Mono', monospace; font-size: 14px; border-bottom: 1px solid var(--line); padding-bottom: 4px; margin-bottom: 12px; color: var(--accent-2); }
 .resume-sheet .r-item { margin-bottom: 14px; }
 .resume-sheet .r-item-head { display: flex; justify-content: space-between; font-size: 14px; }
+/* Supports the ATS-résumé layout (tech line + bullet lists). Uses existing tokens only. */
+.resume-sheet .r-tech { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--muted); letter-spacing: .4px; margin: 2px 0 4px; }
+.resume-sheet ul { margin: 2px 0 6px; padding-left: 18px; }
+.resume-sheet li { margin-bottom: 3px; font-size: 13px; }
+.resume-sheet .r-link { font-family: 'IBM Plex Mono', monospace; font-size: 12px; }
 
 /* Toast Notification */
 .toast-container {
