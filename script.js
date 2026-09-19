@@ -69,17 +69,18 @@ document.addEventListener('DOMContentLoaded', () => {
       sg_learning_note: 'ভবিষ্যতের জন্য শেখার পরিকল্পনা — বর্তমান দক্ষতা নয়।',
       sg_vis: 'জাভা ডিএসএ ও সমস্যা সমাধান ভিজ্যুয়ালাইজার',
       sec_work: '03 // প্রজেক্ট ব্লুপ্রিন্টস',
-      proj_head: 'লার্নিং প্রজেক্ট ও অনুশীলন',
-      proj_desc: 'এই লার্নিং প্রজেক্টগুলো Java, Data Structures ও Algorithms, Flutter, ওয়েব ডেভেলপমেন্ট, ব্যাকএন্ডের মূল বিষয়, REST API এবং ভার্সন কন্ট্রোলে আমার চলমান অনুশীলনের প্রতিফলন।',
-      f_all: 'সব প্রজেক্ট (০৪)',
-      f_java: 'JAVA ও ডিএসএ',
-      f_backend: 'ব্যাকএন্ড ও API',
+      proj_head: 'রিয়েল প্রজেক্ট ও অনুশীলন',
+      proj_desc: 'এগুলো আমি নিজে তৈরি করা প্রজেক্ট — Flutter মোবাইল অ্যাপ্লিকেশন, Java ডেস্কটপ সিস্টেম এবং ডাটাবেস-ভিত্তিক টুল। পাশাপাশি Java, Data Structures ও Algorithms, ব্যাকএন্ডের মূল বিষয়, REST API এবং ভার্সন কন্ট্রোলে আমার অনুশীলন চলছে।',
+      f_all: 'সব প্রজেক্ট (০৬)',
       f_mobile: 'FLUTTER ও মোবাইল',
-      f_web: 'ওয়েব বেসিক',
-      p1_desc: 'Java-তে লেখা Data Structures ও Algorithms সমাধানের একটি সংগ্রহ, যা সমস্যা সমাধানের দক্ষতা, যুক্তিচিন্তা এবং মূল ধারণাগুলো বোঝার ওপর গুরুত্ব দেয়।',
-      p2_desc: 'API ডিজাইন, HTTP মেথড, রিকোয়েস্ট হ্যান্ডলিং এবং ব্যাকএন্ড ডেভেলপমেন্টের মূল বিষয়গুলো শেখার একটি অনুশীলন প্রজেক্ট।',
-      p3_desc: 'মোবাইল ডেভেলপমেন্টের মূল বিষয়গুলো শেখার সময় Flutter ও Dart দিয়ে তৈরি একটি মোবাইল অ্যাপ্লিকেশন অনুশীলন প্রজেক্ট।',
-      p4_desc: 'HTML ও CSS ব্যবহার করে তৈরি একটি রেসপন্সিভ ফ্রন্টএন্ড অনুশীলন প্রজেক্ট।',
+      f_java: 'JAVA ও ডেস্কটপ',
+      f_ai: 'AI ও ডেটা',
+      p1_desc: 'Flutter দিয়ে তৈরি একটি ক্রস-প্লাটফর্ম পার্সোনাল ফাইন্যান্স অ্যাপ, যা নিজের অর্থের পুরো নিয়ন্ত্রণ নিতে সাহায্য করে — ক্যাটাগরি সহ আয় ও খরচ ট্র্যাকিং, মাসিক বাজেট ব্যবস্থাপনা, ইন্টারঅ্যাক্টিভ অ্যানালিটিক্স চার্ট, CSV এক্সপোর্ট, বায়োমেট্রিক লক এবং ডার্ক/লাইট থিম। সব ডেটা SQLite-এর মাধ্যমে ডিভাইসেই সংরক্ষিত থাকে, আর একটি কোডবেস থেকেই Android, iOS, Web ও Desktop চলে।',
+      p2_desc: 'নাগরিক পরিচয় রেকর্ড ব্যবস্থাপনার জন্য Java Swing ও MySQL দিয়ে তৈরি একটি ডেস্কটপ অ্যাপ্লিকেশন। সাইনআপে OTP-ভিত্তিক ইমেইল ভেরিফিকেশন রয়েছে, এবং অনুমোদিত ব্যবহারকারীরা একটি পরিষ্কার GUI ড্যাশবোর্ডের মাধ্যমে নাগরিক রেকর্ড যোগ, দেখা, হালনাগাদ ও মুছে ফেলতে পারেন — কাগুজে পদ্ধতির সম্পূর্ণ ডিজিটাল বিকল্প।',
+      p3_desc: 'স্মার্ট বাংলাদেশ ভিশন ২০৪১-এর সাথে সঙ্গতিপূর্ণ একটি AI-ভিত্তিক নাগরিক সমস্যা প্রতিবেদন প্ল্যাটফর্ম। একজন নাগরিক কোনো সমস্যার (গর্ত, ময়লা, নষ্ট স্ট্রিটলাইট) ছবি তুললে অন-ডিভাইস AI সেটি শনাক্ত করে, GPS অবস্থান সংগ্রহ করে এবং প্রতিবেদনটি সরাসরি অ্যাডমিন GIS ড্যাশবোর্ডে দেখা যায়। একই ধরনের প্রতিবেদন স্বয়ংক্রিয়ভাবে একত্রিত হয়, কর্তৃপক্ষ কাজ বরাদ্দ করে এবং নাগরিক সমাধান নিশ্চিত করেন।',
+      p4_desc: 'Java Swing ও MySQL দিয়ে তৈরি একটি ডেস্কটপ HR টুল, যা কর্মীদের রেকর্ড ব্যবস্থাপনাকে সহজ করে — নাম, পদবি, বেতন, NID, শিক্ষাগত যোগ্যতা ও জন্মতারিখ সহ নতুন কর্মী যোগ করা, সব রেকর্ড দেখা, তথ্য হালনাগাদ করা এবং কর্মী মুছে ফেলা। অটো-জেনারেটেড কর্মী আইডি ও পরিষ্কার Swing GUI সহ।',
+      p5_desc: 'ফেস রিকগনিশন প্রযুক্তি ব্যবহার করে ঐতিহ্যবাহী ম্যানুয়াল রোল কল প্রতিস্থাপনকারী একটি AI-ভিত্তিক স্মার্ট হল অ্যাক্সেস ও অ্যাটেন্ডেন্স সিস্টেম। তিনটি রোল-ভিত্তিক পোর্টাল — শিক্ষার্থী (ডিজিটাল আইডি কার্ড ও লাইভ স্ট্যাটাস), গেট সিকিউরিটি (Google ML Kit ব্যবহার করে রিয়েল-টাইম ফেস স্ক্যানার) এবং হল কর্তৃপক্ষ (লাইভ পরিসংখ্যান ও শিক্ষার্থী নিবন্ধন)। Appwrite Realtime-এর মাধ্যমে সব অ্যাটেন্ডেন্স ডেটা তাৎক্ষণিকভাবে ক্লাউডে সিংক হয়।',
+      p6_desc: 'Java-তে লেখা Data Structures ও Algorithms সমাধানের একটি সংগ্রহ, যা সমস্যা সমাধানের দক্ষতা, যুক্তিচিন্তা এবং মূল ধারণাগুলো বোঝার ওপর গুরুত্ব দেয়।',
       p_details: 'বিস্তারিত দেখুন',
       sec_exp: '04 // ইঞ্জিনিয়ারিং লগ ও রিভিশনস',
       exp_head: 'পরিবর্তন লগ ও মাইলফলক',
@@ -164,17 +165,18 @@ document.addEventListener('DOMContentLoaded', () => {
       sg_learning_note: 'Planned learning goals for the future — not current skills.',
       sg_vis: 'Java DSA & Problem-Solving Visualizer',
       sec_work: '03 // Project Blueprints',
-      proj_head: 'Learning Projects & Practice',
-      proj_desc: 'These learning projects represent my ongoing practice in Java, Data Structures and Algorithms, Flutter, web development, backend fundamentals, REST APIs, and version control.',
-      f_all: 'ALL PROJECTS (04)',
-      f_java: 'JAVA & DSA',
-      f_backend: 'BACKEND & API',
+      proj_head: 'Real Projects & Practice',
+      proj_desc: 'These are projects I have built myself — Flutter mobile applications, Java desktop systems and database-backed tools — alongside my ongoing practice in Java, Data Structures and Algorithms, backend fundamentals, REST APIs, and version control.',
+      f_all: 'ALL PROJECTS (06)',
       f_mobile: 'FLUTTER & MOBILE',
-      f_web: 'WEB BASICS',
-      p1_desc: 'A collection of Data Structures and Algorithms solutions written in Java, focused on improving problem-solving skills, logical thinking, and understanding core concepts.',
-      p2_desc: 'A practice project for learning API design, HTTP methods, request handling, and backend development fundamentals.',
-      p3_desc: 'A mobile application practice project built with Flutter and Dart while learning mobile development fundamentals.',
-      p4_desc: 'A responsive frontend practice project built using HTML and CSS.',
+      f_java: 'JAVA & DESKTOP',
+      f_ai: 'AI & DATA',
+      p1_desc: 'A cross-platform personal finance app built with Flutter that helps users take full control of their money — income and expense tracking with categories, monthly budget management, interactive analytics charts, CSV export, biometric lock and dark/light theme. Everything is stored locally on-device with SQLite, and one codebase runs on Android, iOS, Web and Desktop.',
+      p2_desc: 'A desktop application for managing citizen identity records, built with Java Swing and MySQL. Signup is protected with OTP-based email verification, and authorised users can add, view, update and delete citizen records through a clean GUI dashboard — a fully digital replacement for manual, paper-based identity management.',
+      p3_desc: 'An AI-powered civic issue reporting platform aligned with the Smart Bangladesh Vision 2041. A citizen photographs a problem — a pothole, garbage, a broken streetlight — on-device AI classifies it, GPS captures the location, and the report appears live on an admin GIS dashboard. Duplicate reports are clustered automatically, authorities assign the work, and citizens verify the fix.',
+      p4_desc: 'A desktop HR tool built with Java Swing and MySQL that streamlines employee record management — add employees with full details (name, designation, salary, NID, education, date of birth), view all records, update information and remove employees, with auto-generated employee IDs and a clean Swing GUI.',
+      p5_desc: 'An AI-based smart hall access and attendance system that replaces manual roll calls with face recognition. Three role-based portals — Student (digital ID card and live status), Gate Security (real-time face scanner using Google ML Kit) and Hall Authority (live statistics and student registration) — with attendance data syncing instantly to the cloud through Appwrite Realtime.',
+      p6_desc: 'A collection of Data Structures and Algorithms solutions written in Java, focused on improving problem-solving skills, logical thinking, and understanding core concepts.',
       p_details: 'View Details',
       sec_exp: '04 // Engineering Log & Revisions',
       exp_head: 'Changelog & Milestones',
@@ -505,11 +507,12 @@ document.addEventListener('DOMContentLoaded', () => {
       const filter = btn.getAttribute('data-filter');
 
       projCards.forEach(card => {
-        const category = card.getAttribute('data-category');
+        // A card can belong to more than one group, e.g. data-category="mobile ai".
+        const category = (card.getAttribute('data-category') || '').split(/\s+/);
         // Cancel any pending hide timer so quickly switching filters
         // can't leave cards stuck at display:none.
         clearTimeout(card._hideTimer);
-        if (filter === 'all' || category === filter) {
+        if (filter === 'all' || category.includes(filter)) {
           card.style.display = 'flex';
           setTimeout(() => card.style.opacity = '1', 50);
         } else {
@@ -525,8 +528,118 @@ document.addEventListener('DOMContentLoaded', () => {
      ------------------------------------------------------------------------ */
   const projSpecs = {
     proj1: {
+      title: 'Expense Tracker App',
+      fig: 'FIG. 01 // PROJECT SPECIFICATION',
+      tags: ['Completed Project', 'Flutter', 'Dart', 'SQLite', 'Material 3'],
+      body: `
+        <h4>Overview</h4>
+        <p>A cross-platform personal finance app built with Flutter that helps users take full control of their money. Every record is stored locally on the device in a SQLite database.</p>
+        <br>
+        <h4>Key Features</h4>
+        <ul>
+          <li><strong>Income &amp; expense tracking:</strong> entries organised by category.</li>
+          <li><strong>Monthly budget management:</strong> set a budget and follow spending against it.</li>
+          <li><strong>Interactive analytics charts:</strong> see clearly where the money goes.</li>
+          <li><strong>CSV export:</strong> take the data out for backup or offline review.</li>
+          <li><strong>Biometric lock:</strong> protect the app with a device unlock.</li>
+          <li><strong>Dark / light theme:</strong> Material 3 styling in both modes.</li>
+        </ul>
+        <br>
+        <h4>Platforms</h4>
+        <p>Android, iOS, Web and Desktop from a single Flutter codebase.</p>
+        <br>
+        <h4>Storage</h4>
+        <p>On-device SQLite — a personal project, no server side user data.</p>
+      `
+    },
+    proj2: {
+      title: 'Identity Management System',
+      fig: 'FIG. 02 // PROJECT SPECIFICATION',
+      tags: ['Completed Project', 'Java Swing', 'MySQL', 'JavaMail API', 'OTP'],
+      body: `
+        <h4>Overview</h4>
+        <p>A desktop application for managing citizen identity records, built with Java Swing and MySQL. It replaces manual, paper-based identity management with a fully digital record system.</p>
+        <br>
+        <h4>Key Features</h4>
+        <ul>
+          <li><strong>Secure authentication:</strong> login protects the record dashboard.</li>
+          <li><strong>OTP email verification:</strong> signup is confirmed with a one-time password sent through the JavaMail API.</li>
+          <li><strong>Record management:</strong> authorised users can add, view, update and delete citizen records.</li>
+          <li><strong>Clean Swing dashboard:</strong> a simple GUI instead of registers and paper files.</li>
+          <li><strong>MySQL persistence:</strong> records are kept in a relational database.</li>
+        </ul>
+      `
+    },
+    proj3: {
+      title: 'Nagar-Drishti (নগর-দৃষ্টি)',
+      fig: 'FIG. 03 // PROJECT SPECIFICATION',
+      tags: ['Completed Project', 'Flutter', 'Riverpod', 'Appwrite', 'TensorFlow Lite', 'PostGIS'],
+      body: `
+        <h4>Overview</h4>
+        <p>An AI-powered civic issue reporting platform aligned with the Smart Bangladesh Vision 2041. A citizen reports a problem with a photograph, and that report reaches an admin GIS dashboard together with its exact location.</p>
+        <br>
+        <h4>Key Features</h4>
+        <ul>
+          <li><strong>Photo reporting:</strong> citizens photograph a pothole, garbage or a broken streetlight.</li>
+          <li><strong>On-device classification:</strong> a TensorFlow Lite model labels the issue on the phone itself.</li>
+          <li><strong>GPS capture &amp; GIS dashboard:</strong> each report carries its location into a PostGIS-backed admin map.</li>
+          <li><strong>Duplicate clustering:</strong> repeated reports of the same issue are grouped automatically.</li>
+          <li><strong>Work loop:</strong> authorities assign the work, citizens verify the fix.</li>
+          <li><strong>Offline-first:</strong> the app keeps working without a connection and syncs later.</li>
+          <li><strong>Structure:</strong> Riverpod for state management, Appwrite for backend services.</li>
+        </ul>
+        <br>
+        <h4>Scope Note</h4>
+        <p>Image classification uses a pre-trained on-device model — applied AI tooling inside a product, not AI/ML research. The platform is designed to scale from a university campus to a city.</p>
+      `
+    },
+    proj4: {
+      title: 'Employee Management System (EmpSys)',
+      fig: 'FIG. 04 // PROJECT SPECIFICATION',
+      tags: ['Completed Project', 'Java Swing', 'MySQL', 'Desktop GUI', 'CRUD'],
+      body: `
+        <h4>Overview</h4>
+        <p>A desktop-based HR tool built with Java Swing and MySQL that streamlines employee record management.</p>
+        <br>
+        <h4>Key Features</h4>
+        <ul>
+          <li><strong>Add employees:</strong> full details — name, designation, salary, NID, education and date of birth.</li>
+          <li><strong>View records:</strong> every employee listed in one clear table view.</li>
+          <li><strong>Update information:</strong> edit an existing record when details change.</li>
+          <li><strong>Remove employees:</strong> delete a record that is no longer needed.</li>
+          <li><strong>Auto-generated employee IDs:</strong> unique numbering without manual bookkeeping.</li>
+          <li><strong>Clean Swing GUI</strong> with MySQL storage behind it.</li>
+        </ul>
+      `
+    },
+    proj5: {
+      title: 'IntelliLog',
+      fig: 'FIG. 05 // PROJECT SPECIFICATION',
+      tags: ['Completed Project', 'Flutter', 'Google ML Kit', 'Appwrite', 'Realtime Sync'],
+      body: `
+        <h4>Overview</h4>
+        <p>An AI-based smart hall access and attendance system that replaces traditional manual roll calls with face recognition.</p>
+        <br>
+        <h4>Three Role-Based Portals</h4>
+        <ul>
+          <li><strong>Student:</strong> digital ID card with live attendance status.</li>
+          <li><strong>Gate Security:</strong> real-time face scanner built on Google ML Kit.</li>
+          <li><strong>Hall Authority:</strong> live statistics and student registration.</li>
+        </ul>
+        <br>
+        <h4>Key Features</h4>
+        <ul>
+          <li><strong>Instant cloud sync:</strong> attendance data updates through Appwrite Realtime — no manual refresh.</li>
+          <li><strong>Shared records:</strong> all three portals read the same up-to-date data.</li>
+        </ul>
+        <br>
+        <h4>Scope Note</h4>
+        <p>Face detection and recognition use Google ML Kit's pre-built on-device models.</p>
+      `
+    },
+    proj6: {
       title: 'Java DSA Practice',
-      fig: 'FIG. 01 // LEARNING PROJECT SPECIFICATION',
+      fig: 'FIG. 06 // LEARNING PROJECT SPECIFICATION',
       tags: ['Learning Project', 'Java', 'DSA', 'OOP'],
       body: `
         <h4>Overview</h4>
@@ -542,65 +655,6 @@ document.addEventListener('DOMContentLoaded', () => {
         <br>
         <h4>Status</h4>
         <p>Ongoing learning practice as a Software Engineering undergraduate — not a deployed product.</p>
-      `
-    },
-    proj2: {
-      title: 'REST API Learning Project',
-      fig: 'FIG. 02 // LEARNING PROJECT SPECIFICATION',
-      tags: ['Learning Project', 'REST API', 'Java or Python', 'SQL'],
-      body: `
-        <h4>Overview</h4>
-        <p>A practice project for learning API design, HTTP methods, request handling, and backend development fundamentals.</p>
-        <br>
-        <h4>Learning Goals</h4>
-        <ul>
-          <li><strong>API design:</strong> plan clear endpoints and choose the right HTTP method for each action.</li>
-          <li><strong>Request handling:</strong> read input, validate it, and return meaningful status codes and responses.</li>
-          <li><strong>Data layer:</strong> store and query records with SQL.</li>
-          <li><strong>Project structure:</strong> keep a small backend organised and easy to read.</li>
-        </ul>
-        <br>
-        <h4>Status</h4>
-        <p>Backend fundamentals practice — still learning, not a production service.</p>
-      `
-    },
-    proj3: {
-      title: 'Flutter Learning App',
-      fig: 'FIG. 03 // LEARNING PROJECT SPECIFICATION',
-      tags: ['Learning Project', 'Flutter', 'Dart'],
-      body: `
-        <h4>Overview</h4>
-        <p>A mobile application practice project built with Flutter and Dart while learning mobile development fundamentals.</p>
-        <br>
-        <h4>Learning Goals</h4>
-        <ul>
-          <li><strong>UI basics:</strong> build simple screens with Flutter widgets and layout.</li>
-          <li><strong>Navigation:</strong> move between screens and pass data around.</li>
-          <li><strong>State:</strong> manage simple state in a small application.</li>
-          <li><strong>Dart:</strong> strengthen Dart fundamentals alongside the framework.</li>
-        </ul>
-        <br>
-        <h4>Status</h4>
-        <p>Mobile development practice project — learning stage.</p>
-      `
-    },
-    proj4: {
-      title: 'Web Fundamentals Project',
-      fig: 'FIG. 04 // LEARNING PROJECT SPECIFICATION',
-      tags: ['Learning Project', 'HTML', 'CSS'],
-      body: `
-        <h4>Overview</h4>
-        <p>A responsive frontend practice project built using HTML and CSS.</p>
-        <br>
-        <h4>Learning Goals</h4>
-        <ul>
-          <li><strong>Semantic structure:</strong> write HTML that describes the content clearly.</li>
-          <li><strong>Styling:</strong> lay out pages with CSS and keep the stylesheet organised.</li>
-          <li><strong>Responsiveness:</strong> make the page usable on small and large screens.</li>
-        </ul>
-        <br>
-        <h4>Status</h4>
-        <p>Frontend fundamentals practice — learning stage.</p>
       `
     }
   };
@@ -722,7 +776,7 @@ document.addEventListener('DOMContentLoaded', () => {
         res.innerHTML = 'Languages: Java (core — OOP, DSA, problem solving), Go, Python, C, Dart, SQL, HTML, CSS.<br>Tools: Flutter, REST API (learning), Git, GitHub, GitLab.<br>Future roadmap: AI, ML, DevOps.';
         break;
       case 'projects':
-        res.innerHTML = 'Learning projects: 1. Java DSA Practice | 2. REST API Learning Project | 3. Flutter Learning App | 4. Web Fundamentals Project';
+        res.innerHTML = 'Projects: 1. Expense Tracker App (Flutter) | 2. Identity Management System (Java) | 3. Nagar-Drishti (Flutter + AI) | 4. EmpSys (Java) | 5. IntelliLog (Flutter + AI) | 6. Java DSA Practice (learning)';
         break;
       case 'contact':
         res.innerHTML = 'Primary: <a href="mailto:rahmatulislam.se@gmail.com">rahmatulislam.se@gmail.com</a><br>University: <a href="mailto:2303016@bdu.ac.bd">2303016@bdu.ac.bd</a> · Personal: <a href="mailto:rahmatulislam@proton.me">rahmatulislam@proton.me</a><br>GitHub: github.com/rahmatul-islam';

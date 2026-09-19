@@ -714,29 +714,237 @@
           <span class="rule"></span>
           <span class="label" data-i18n="sec_work">03 // Project Blueprints</span>
         </div>
-        <h2 class="section-heading" data-i18n="proj_head">Learning Projects &amp; Practice</h2>
+        <h2 class="section-heading" data-i18n="proj_head">Real Projects &amp; Practice</h2>
       </div>
       <p class="head-desc" data-i18n="proj_desc">
-        এই লার্নিং প্রজেক্টগুলো Java, Data Structures ও Algorithms, Flutter, ওয়েব ডেভেলপমেন্ট, ব্যাকএন্ডের মূল বিষয়, REST API এবং ভার্সন কন্ট্রোলে আমার চলমান অনুশীলনের প্রতিফলন।
+        এগুলো আমি নিজে তৈরি করা প্রজেক্ট — Flutter মোবাইল অ্যাপ্লিকেশন, Java ডেস্কটপ সিস্টেম এবং ডাটাবেস-ভিত্তিক টুল। পাশাপাশি Java, Data Structures ও Algorithms, ব্যাকএন্ডের মূল বিষয়, REST API এবং ভার্সন কন্ট্রোলে আমার অনুশীলন চলছে।
       </p>
     </div>
 
     <div class="project-filters reveal">
-      <button class="filter-btn active" data-filter="all" data-i18n="f_all">ALL PROJECTS (04)</button>
-      <button class="filter-btn" data-filter="java" data-i18n="f_java">JAVA &amp; DSA</button>
-      <button class="filter-btn" data-filter="backend" data-i18n="f_backend">BACKEND &amp; API</button>
+      <button class="filter-btn active" data-filter="all" data-i18n="f_all">ALL PROJECTS (06)</button>
       <button class="filter-btn" data-filter="mobile" data-i18n="f_mobile">FLUTTER &amp; MOBILE</button>
-      <button class="filter-btn" data-filter="web" data-i18n="f_web">WEB BASICS</button>
+      <button class="filter-btn" data-filter="java" data-i18n="f_java">JAVA &amp; DESKTOP</button>
+      <button class="filter-btn" data-filter="ai" data-i18n="f_ai">AI &amp; DATA</button>
     </div>
 
     <div class="projects-grid">
-      <article class="proj-card reveal" data-category="java" data-proj-id="proj1">
+      <article class="proj-card reveal" data-category="mobile" data-proj-id="proj1">
         <div class="proj-top">
-          <span class="proj-fig">FIG. 01 // LEARNING-JAVA-DSA</span>
-          <span class="proj-status status-built">LEARNING PROJECT</span>
+          <span class="proj-fig">FIG. 01 // FLUTTER-FINANCE</span>
+          <span class="proj-status status-built">COMPLETED PROJECT</span>
+        </div>
+        <h3 class="proj-title">Expense Tracker App</h3>
+        <p class="proj-summary" data-i18n="p1_desc">
+          Flutter দিয়ে তৈরি একটি ক্রস-প্লাটফর্ম পার্সোনাল ফাইন্যান্স অ্যাপ, যা নিজের অর্থের পুরো নিয়ন্ত্রণ নিতে সাহায্য করে — ক্যাটাগরি সহ আয় ও খরচ ট্র্যাকিং, মাসিক বাজেট ব্যবস্থাপনা, ইন্টারঅ্যাক্টিভ অ্যানালিটিক্স চার্ট, CSV এক্সপোর্ট, বায়োমেট্রিক লক এবং ডার্ক/লাইট থিম। সব ডেটা SQLite-এর মাধ্যমে ডিভাইসেই সংরক্ষিত থাকে, আর একটি কোডবেস থেকেই Android, iOS, Web ও Desktop চলে।
+        </p>
+
+        <div class="proj-arch-preview">
+          <svg viewBox="0 0 280 40" class="arch-svg">
+            <rect x="20" y="10" width="40" height="20" rx="2" fill="none" stroke="var(--accent-2)" stroke-width="1"/>
+            <line x1="60" y1="20" x2="120" y2="20" stroke="var(--accent-2)" stroke-width="1.5" marker-end="url(#arr-teal)"/>
+            <rect x="120" y="10" width="50" height="20" rx="2" fill="none" stroke="var(--accent)" stroke-width="1"/>
+            <line x1="170" y1="20" x2="230" y2="20" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#arr-orange)"/>
+            <circle cx="250" cy="20" r="10" fill="none" stroke="var(--accent-2)" stroke-width="1.2"/>
+            <text x="40" y="24" font-size="7" fill="var(--muted)" text-anchor="middle">UI</text>
+            <text x="145" y="24" font-size="7" fill="var(--muted)" text-anchor="middle">SQLITE</text>
+            <text x="250" y="24" font-size="7" fill="var(--accent-2)" text-anchor="middle">CHARTS</text>
+          </svg>
+        </div>
+
+        <div class="stack-tags">
+          <span>Flutter</span>
+          <span>Dart</span>
+          <span>SQLite</span>
+          <span>Material 3</span>
+        </div>
+
+        <div class="proj-links">
+          <a href="https://github.com/rahmatul-islam/Expense-trucker-app-new-costomize." target="_blank" rel="noopener" class="proj-link">
+            <span>GitHub</span>
+            <svg class="link-arrow" viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" fill="none" stroke-width="1.5"/></svg>
+          </a>
+          <button class="proj-link modal-trigger-btn" data-proj="proj1">
+            <span data-i18n="p_details">View Details</span>
+            <svg class="link-arrow" viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" fill="none" stroke-width="1.5"/></svg>
+          </button>
+        </div>
+      </article>
+
+      <article class="proj-card reveal" data-category="java" data-proj-id="proj2">
+        <div class="proj-top">
+          <span class="proj-fig">FIG. 02 // JAVA-DESKTOP</span>
+          <span class="proj-status status-built">COMPLETED PROJECT</span>
+        </div>
+        <h3 class="proj-title">Identity Management System</h3>
+        <p class="proj-summary" data-i18n="p2_desc">
+          নাগরিক পরিচয় রেকর্ড ব্যবস্থাপনার জন্য Java Swing ও MySQL দিয়ে তৈরি একটি ডেস্কটপ অ্যাপ্লিকেশন। সাইনআপে OTP-ভিত্তিক ইমেইল ভেরিফিকেশন রয়েছে, এবং অনুমোদিত ব্যবহারকারীরা একটি পরিষ্কার GUI ড্যাশবোর্ডের মাধ্যমে নাগরিক রেকর্ড যোগ, দেখা, হালনাগাদ ও মুছে ফেলতে পারেন — কাগুজে পদ্ধতির সম্পূর্ণ ডিজিটাল বিকল্প।
+        </p>
+
+        <div class="proj-arch-preview">
+          <svg viewBox="0 0 280 40" class="arch-svg">
+            <line x1="20" y1="20" x2="80" y2="20" stroke="var(--accent-2)" stroke-width="1.5" stroke-dasharray="4" marker-end="url(#arr-teal)"/>
+            <line x1="120" y1="20" x2="180" y2="20" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#arr-orange)"/>
+            <line x1="220" y1="20" x2="260" y2="20" stroke="var(--accent-2)" stroke-width="1.5" marker-end="url(#arr-teal)"/>
+            <circle cx="20" cy="20" r="4" fill="var(--accent-2)"/>
+            <circle cx="100" cy="20" r="6" fill="var(--panel-2)" stroke="var(--accent)" stroke-width="1.5"/>
+            <circle cx="200" cy="20" r="6" fill="var(--panel-2)" stroke="var(--accent-2)" stroke-width="1.5"/>
+            <circle cx="260" cy="20" r="4" fill="var(--accent)"/>
+            <text x="100" y="34" font-size="7" fill="var(--muted)" text-anchor="middle">SWING</text>
+            <text x="200" y="34" font-size="7" fill="var(--muted)" text-anchor="middle">MYSQL</text>
+          </svg>
+        </div>
+
+        <div class="stack-tags">
+          <span>Java Swing</span>
+          <span>MySQL</span>
+          <span>JavaMail API</span>
+          <span>OTP</span>
+        </div>
+
+        <div class="proj-links">
+          <a href="https://github.com/rahmatul-islam/IDENTITY-MANAGEMENT-SYSTEM" target="_blank" rel="noopener" class="proj-link">
+            <span>GitHub</span>
+            <svg class="link-arrow" viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" fill="none" stroke-width="1.5"/></svg>
+          </a>
+          <button class="proj-link modal-trigger-btn" data-proj="proj2">
+            <span data-i18n="p_details">View Details</span>
+            <svg class="link-arrow" viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" fill="none" stroke-width="1.5"/></svg>
+          </button>
+        </div>
+      </article>
+
+      <article class="proj-card reveal" data-category="mobile ai" data-proj-id="proj3">
+        <div class="proj-top">
+          <span class="proj-fig">FIG. 03 // CIVIC-AI-GIS</span>
+          <span class="proj-status status-built">COMPLETED PROJECT</span>
+        </div>
+        <h3 class="proj-title">Nagar-Drishti (নগর-দৃষ্টি)</h3>
+        <p class="proj-summary" data-i18n="p3_desc">
+          স্মার্ট বাংলাদেশ ভিশন ২০৪১-এর সাথে সঙ্গতিপূর্ণ একটি AI-ভিত্তিক নাগরিক সমস্যা প্রতিবেদন প্ল্যাটফর্ম। একজন নাগরিক কোনো সমস্যার (গর্ত, ময়লা, নষ্ট স্ট্রিটলাইট) ছবি তুললে অন-ডিভাইস AI সেটি শনাক্ত করে, GPS অবস্থান সংগ্রহ করে এবং প্রতিবেদনটি সরাসরি অ্যাডমিন GIS ড্যাশবোর্ডে দেখা যায়। একই ধরনের প্রতিবেদন স্বয়ংক্রিয়ভাবে একত্রিত হয়, কর্তৃপক্ষ কাজ বরাদ্দ করে এবং নাগরিক সমাধান নিশ্চিত করেন।
+        </p>
+
+        <div class="proj-arch-preview">
+          <svg viewBox="0 0 280 40" class="arch-svg">
+            <circle cx="40" cy="20" r="10" fill="none" stroke="var(--accent)" stroke-width="1.2"/>
+            <line x1="50" y1="20" x2="110" y2="20" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#arr-orange)"/>
+            <rect x="110" y="10" width="60" height="20" fill="none" stroke="var(--accent-2)" stroke-width="1"/>
+            <line x1="170" y1="20" x2="230" y2="20" stroke="var(--accent-2)" stroke-width="1.5" marker-end="url(#arr-teal)"/>
+            <polygon points="250,10 265,20 250,30 235,20" fill="var(--panel-2)" stroke="var(--accent)" stroke-width="1.2"/>
+            <text x="40" y="24" font-size="7" fill="var(--muted)" text-anchor="middle">AI</text>
+            <text x="140" y="24" font-size="7" fill="var(--muted)" text-anchor="middle">GIS MAP</text>
+          </svg>
+        </div>
+
+        <div class="stack-tags">
+          <span>Flutter</span>
+          <span>Riverpod</span>
+          <span>Appwrite</span>
+          <span>TensorFlow Lite</span>
+          <span>PostGIS</span>
+        </div>
+
+        <div class="proj-links">
+          <a href="https://github.com/rahmatul-islam/Nagar-Drishti_test" target="_blank" rel="noopener" class="proj-link">
+            <span>GitHub</span>
+            <svg class="link-arrow" viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" fill="none" stroke-width="1.5"/></svg>
+          </a>
+          <button class="proj-link modal-trigger-btn" data-proj="proj3">
+            <span data-i18n="p_details">View Details</span>
+            <svg class="link-arrow" viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" fill="none" stroke-width="1.5"/></svg>
+          </button>
+        </div>
+      </article>
+
+      <article class="proj-card reveal" data-category="java" data-proj-id="proj4">
+        <div class="proj-top">
+          <span class="proj-fig">FIG. 04 // JAVA-HR</span>
+          <span class="proj-status status-built">COMPLETED PROJECT</span>
+        </div>
+        <h3 class="proj-title">Employee Management System (EmpSys)</h3>
+        <p class="proj-summary" data-i18n="p4_desc">
+          Java Swing ও MySQL দিয়ে তৈরি একটি ডেস্কটপ HR টুল, যা কর্মীদের রেকর্ড ব্যবস্থাপনাকে সহজ করে — নাম, পদবি, বেতন, NID, শিক্ষাগত যোগ্যতা ও জন্মতারিখ সহ নতুন কর্মী যোগ করা, সব রেকর্ড দেখা, তথ্য হালনাগাদ করা এবং কর্মী মুছে ফেলা। অটো-জেনারেটেড কর্মী আইডি ও পরিষ্কার Swing GUI সহ।
+        </p>
+
+        <div class="proj-arch-preview">
+          <svg viewBox="0 0 280 40" class="arch-svg">
+            <rect x="20" y="10" width="40" height="20" rx="2" fill="none" stroke="var(--accent-2)" stroke-width="1"/>
+            <line x1="60" y1="20" x2="120" y2="20" stroke="var(--accent-2)" stroke-width="1.5" marker-end="url(#arr-teal)"/>
+            <rect x="120" y="10" width="50" height="20" rx="2" fill="none" stroke="var(--accent)" stroke-width="1"/>
+            <line x1="170" y1="20" x2="230" y2="20" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#arr-orange)"/>
+            <circle cx="250" cy="20" r="10" fill="none" stroke="var(--accent-2)" stroke-width="1.2"/>
+            <text x="40" y="24" font-size="7" fill="var(--muted)" text-anchor="middle">SWING</text>
+            <text x="145" y="24" font-size="7" fill="var(--muted)" text-anchor="middle">JAVA</text>
+            <text x="250" y="24" font-size="7" fill="var(--accent-2)" text-anchor="middle">MYSQL</text>
+          </svg>
+        </div>
+
+        <div class="stack-tags">
+          <span>Java Swing</span>
+          <span>MySQL</span>
+          <span>Desktop GUI</span>
+          <span>CRUD</span>
+        </div>
+
+        <div class="proj-links">
+          <a href="https://github.com/rahmatul-islam/EmpSys" target="_blank" rel="noopener" class="proj-link">
+            <span>GitHub</span>
+            <svg class="link-arrow" viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" fill="none" stroke-width="1.5"/></svg>
+          </a>
+          <button class="proj-link modal-trigger-btn" data-proj="proj4">
+            <span data-i18n="p_details">View Details</span>
+            <svg class="link-arrow" viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" fill="none" stroke-width="1.5"/></svg>
+          </button>
+        </div>
+      </article>
+
+      <article class="proj-card reveal" data-category="mobile ai" data-proj-id="proj5">
+        <div class="proj-top">
+          <span class="proj-fig">FIG. 05 // FACE-ATTENDANCE</span>
+          <span class="proj-status status-built">COMPLETED PROJECT</span>
+        </div>
+        <h3 class="proj-title">IntelliLog</h3>
+        <p class="proj-summary" data-i18n="p5_desc">
+          ফেস রিকগনিশন প্রযুক্তি ব্যবহার করে ঐতিহ্যবাহী ম্যানুয়াল রোল কল প্রতিস্থাপনকারী একটি AI-ভিত্তিক স্মার্ট হল অ্যাক্সেস ও অ্যাটেন্ডেন্স সিস্টেম। তিনটি রোল-ভিত্তিক পোর্টাল — শিক্ষার্থী (ডিজিটাল আইডি কার্ড ও লাইভ স্ট্যাটাস), গেট সিকিউরিটি (Google ML Kit ব্যবহার করে রিয়েল-টাইম ফেস স্ক্যানার) এবং হল কর্তৃপক্ষ (লাইভ পরিসংখ্যান ও শিক্ষার্থী নিবন্ধন)। Appwrite Realtime-এর মাধ্যমে সব অ্যাটেন্ডেন্স ডেটা তাৎক্ষণিকভাবে ক্লাউডে সিংক হয়।
+        </p>
+
+        <div class="proj-arch-preview">
+          <svg viewBox="0 0 280 40" class="arch-svg">
+            <path d="M 20 20 Q 70 5, 120 20 T 220 20" fill="none" stroke="var(--accent-2)" stroke-width="1.5" stroke-dasharray="3"/>
+            <path d="M 220 20 Q 170 35, 120 20 T 20 20" fill="none" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#arr-orange)"/>
+            <circle cx="20" cy="20" r="5" fill="var(--accent-2)"/>
+            <circle cx="220" cy="20" r="5" fill="var(--accent)"/>
+            <text x="20" y="34" font-size="7" fill="var(--muted)" text-anchor="middle">FACE</text>
+            <text x="220" y="34" font-size="7" fill="var(--muted)" text-anchor="middle">CLOUD</text>
+          </svg>
+        </div>
+
+        <div class="stack-tags">
+          <span>Flutter</span>
+          <span>Google ML Kit</span>
+          <span>Appwrite</span>
+          <span>Realtime Sync</span>
+        </div>
+
+        <div class="proj-links">
+          <a href="https://github.com/rahmatul-islam/intellilog" target="_blank" rel="noopener" class="proj-link">
+            <span>GitHub</span>
+            <svg class="link-arrow" viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" fill="none" stroke-width="1.5"/></svg>
+          </a>
+          <button class="proj-link modal-trigger-btn" data-proj="proj5">
+            <span data-i18n="p_details">View Details</span>
+            <svg class="link-arrow" viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" fill="none" stroke-width="1.5"/></svg>
+          </button>
+        </div>
+      </article>
+
+      <article class="proj-card reveal" data-category="java" data-proj-id="proj6">
+        <div class="proj-top">
+          <span class="proj-fig">FIG. 06 // LEARNING-JAVA-DSA</span>
+          <span class="proj-status status-live">LEARNING PROJECT</span>
         </div>
         <h3 class="proj-title">Java DSA Practice</h3>
-        <p class="proj-summary" data-i18n="p1_desc">
+        <p class="proj-summary" data-i18n="p6_desc">
           Java-তে লেখা Data Structures ও Algorithms সমাধানের একটি সংগ্রহ, যা সমস্যা সমাধানের দক্ষতা, যুক্তিচিন্তা এবং মূল ধারণাগুলো বোঝার ওপর গুরুত্ব দেয়।
         </p>
 
@@ -761,129 +969,11 @@
         </div>
 
         <div class="proj-links">
-          <a href="https://github.com/rahmatul-islam" target="_blank" rel="noopener" class="proj-link">
+          <a href="https://github.com/rahmatul-islam/DSA" target="_blank" rel="noopener" class="proj-link">
             <span>GitHub</span>
             <svg class="link-arrow" viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" fill="none" stroke-width="1.5"/></svg>
           </a>
-          <button class="proj-link modal-trigger-btn" data-proj="proj1">
-            <span data-i18n="p_details">View Details</span>
-            <svg class="link-arrow" viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" fill="none" stroke-width="1.5"/></svg>
-          </button>
-        </div>
-      </article>
-
-      <article class="proj-card reveal" data-category="backend" data-proj-id="proj2">
-        <div class="proj-top">
-          <span class="proj-fig">FIG. 02 // LEARNING-REST-API</span>
-          <span class="proj-status status-built">LEARNING PROJECT</span>
-        </div>
-        <h3 class="proj-title">REST API Learning Project</h3>
-        <p class="proj-summary" data-i18n="p2_desc">
-          API ডিজাইন, HTTP মেথড, রিকোয়েস্ট হ্যান্ডলিং এবং ব্যাকএন্ড ডেভেলপমেন্টের মূল বিষয়গুলো শেখার একটি অনুশীলন প্রজেক্ট।
-        </p>
-
-        <div class="proj-arch-preview">
-          <svg viewBox="0 0 280 40" class="arch-svg">
-            <rect x="20" y="10" width="40" height="20" rx="2" fill="none" stroke="var(--accent-2)" stroke-width="1"/>
-            <line x1="60" y1="20" x2="120" y2="20" stroke="var(--accent-2)" stroke-width="1.5" marker-end="url(#arr-teal)"/>
-            <rect x="120" y="10" width="50" height="20" rx="2" fill="none" stroke="var(--accent)" stroke-width="1"/>
-            <line x1="170" y1="20" x2="230" y2="20" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#arr-orange)"/>
-            <circle cx="250" cy="20" r="10" fill="none" stroke="var(--accent-2)" stroke-width="1.2"/>
-            <text x="40" y="24" font-size="7" fill="var(--muted)" text-anchor="middle">CLIENT</text>
-            <text x="145" y="24" font-size="7" fill="var(--muted)" text-anchor="middle">API</text>
-            <text x="250" y="24" font-size="7" fill="var(--accent-2)" text-anchor="middle">DB</text>
-          </svg>
-        </div>
-
-        <div class="stack-tags">
-          <span>REST API</span>
-          <span>Java or Python</span>
-          <span>SQL</span>
-        </div>
-
-        <div class="proj-links">
-          <a href="https://github.com/rahmatul-islam" target="_blank" rel="noopener" class="proj-link">
-            <span>GitHub</span>
-            <svg class="link-arrow" viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" fill="none" stroke-width="1.5"/></svg>
-          </a>
-          <button class="proj-link modal-trigger-btn" data-proj="proj2">
-            <span data-i18n="p_details">View Details</span>
-            <svg class="link-arrow" viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" fill="none" stroke-width="1.5"/></svg>
-          </button>
-        </div>
-      </article>
-
-      <article class="proj-card reveal" data-category="mobile" data-proj-id="proj3">
-        <div class="proj-top">
-          <span class="proj-fig">FIG. 03 // LEARNING-FLUTTER</span>
-          <span class="proj-status status-built">LEARNING PROJECT</span>
-        </div>
-        <h3 class="proj-title">Flutter Learning App</h3>
-        <p class="proj-summary" data-i18n="p3_desc">
-          মোবাইল ডেভেলপমেন্টের মূল বিষয়গুলো শেখার সময় Flutter ও Dart দিয়ে তৈরি একটি মোবাইল অ্যাপ্লিকেশন অনুশীলন প্রজেক্ট।
-        </p>
-
-        <div class="proj-arch-preview">
-          <svg viewBox="0 0 280 40" class="arch-svg">
-            <path d="M 20 20 Q 70 5, 120 20 T 220 20" fill="none" stroke="var(--accent-2)" stroke-width="1.5" stroke-dasharray="3"/>
-            <path d="M 220 20 Q 170 35, 120 20 T 20 20" fill="none" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#arr-orange)"/>
-            <circle cx="20" cy="20" r="5" fill="var(--accent-2)"/>
-            <circle cx="220" cy="20" r="5" fill="var(--accent)"/>
-            <text x="20" y="34" font-size="7" fill="var(--muted)" text-anchor="middle">UI</text>
-            <text x="220" y="34" font-size="7" fill="var(--muted)" text-anchor="middle">DART</text>
-          </svg>
-        </div>
-
-        <div class="stack-tags">
-          <span>Flutter</span>
-          <span>Dart</span>
-        </div>
-
-        <div class="proj-links">
-          <a href="https://github.com/rahmatul-islam" target="_blank" rel="noopener" class="proj-link">
-            <span>GitHub</span>
-            <svg class="link-arrow" viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" fill="none" stroke-width="1.5"/></svg>
-          </a>
-          <button class="proj-link modal-trigger-btn" data-proj="proj3">
-            <span data-i18n="p_details">View Details</span>
-            <svg class="link-arrow" viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" fill="none" stroke-width="1.5"/></svg>
-          </button>
-        </div>
-      </article>
-
-      <article class="proj-card reveal" data-category="web" data-proj-id="proj4">
-        <div class="proj-top">
-          <span class="proj-fig">FIG. 04 // LEARNING-WEB</span>
-          <span class="proj-status status-built">LEARNING PROJECT</span>
-        </div>
-        <h3 class="proj-title">Web Fundamentals Project</h3>
-        <p class="proj-summary" data-i18n="p4_desc">
-          HTML ও CSS ব্যবহার করে তৈরি একটি রেসপন্সিভ ফ্রন্টএন্ড অনুশীলন প্রজেক্ট।
-        </p>
-
-        <div class="proj-arch-preview">
-          <svg viewBox="0 0 280 40" class="arch-svg">
-            <circle cx="40" cy="20" r="10" fill="none" stroke="var(--accent)" stroke-width="1.2"/>
-            <line x1="50" y1="20" x2="110" y2="20" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#arr-orange)"/>
-            <rect x="110" y="10" width="60" height="20" fill="none" stroke="var(--accent-2)" stroke-width="1"/>
-            <line x1="170" y1="20" x2="230" y2="20" stroke="var(--accent-2)" stroke-width="1.5" marker-end="url(#arr-teal)"/>
-            <polygon points="250,10 265,20 250,30 235,20" fill="var(--panel-2)" stroke="var(--accent)" stroke-width="1.2"/>
-            <text x="40" y="24" font-size="7" fill="var(--muted)" text-anchor="middle">HTML</text>
-            <text x="140" y="24" font-size="7" fill="var(--muted)" text-anchor="middle">CSS LAYOUT</text>
-          </svg>
-        </div>
-
-        <div class="stack-tags">
-          <span>HTML</span>
-          <span>CSS</span>
-        </div>
-
-        <div class="proj-links">
-          <a href="https://github.com/rahmatul-islam" target="_blank" rel="noopener" class="proj-link">
-            <span>GitHub</span>
-            <svg class="link-arrow" viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" fill="none" stroke-width="1.5"/></svg>
-          </a>
-          <button class="proj-link modal-trigger-btn" data-proj="proj4">
+          <button class="proj-link modal-trigger-btn" data-proj="proj6">
             <span data-i18n="p_details">View Details</span>
             <svg class="link-arrow" viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" fill="none" stroke-width="1.5"/></svg>
           </button>
@@ -892,7 +982,6 @@
     </div>
   </section>
 
-  <!-- 04 // REVISION HISTORY SECTION -->
   <section id="experience" class="exp-section">
     <div class="dim reveal">
       <span class="num">04</span>
@@ -1104,7 +1193,7 @@
     <div class="resume-sheet">
       <div class="r-head">
         <h1>RAHMATUL ISLAM (RATUL)</h1>
-        <p class="r-sub">B.Sc. in Software Engineering — Level 2, Term 2 | Java · DSA · Flutter · Backend Learning</p>
+        <p class="r-sub">B.Sc. in Software Engineering — Level 2, Term 2 | Java · Flutter · Databases · DSA Practice</p>
         <p class="r-contact">University, Bangladesh · <a href="mailto:rahmatulislam.se@gmail.com">rahmatulislam.se@gmail.com</a> · <a href="mailto:2303016@bdu.ac.bd">2303016@bdu.ac.bd</a> · <a href="mailto:rahmatulislam@proton.me">rahmatulislam@proton.me</a> · <a href="https://github.com/rahmatul-islam" target="_blank" rel="noopener">github.com/rahmatul-islam</a></p>
       </div>
       <div class="r-section">
@@ -1123,22 +1212,30 @@
         <p><strong>Future Learning Roadmap:</strong> Artificial Intelligence (AI), Machine Learning (ML), DevOps.</p>
       </div>
       <div class="r-section">
-        <h2>LEARNING PROJECTS</h2>
+        <h2>PROJECTS</h2>
+        <div class="r-item">
+          <div class="r-item-head"><strong>Expense Tracker App (Flutter, Dart, SQLite)</strong><span>Completed</span></div>
+          <p>Cross-platform personal finance app: category-wise income and expense tracking, monthly budgets, interactive analytics charts, CSV export, biometric lock and dark/light theme, all stored locally on-device. Runs on Android, iOS, Web and Desktop from one codebase. <a href="https://github.com/rahmatul-islam/Expense-trucker-app-new-costomize." target="_blank" rel="noopener">Repository</a></p>
+        </div>
+        <div class="r-item">
+          <div class="r-item-head"><strong>Identity Management System (Java Swing, MySQL, JavaMail API)</strong><span>Completed</span></div>
+          <p>Desktop application for citizen identity records with secure authentication, OTP-based email verification at signup, and add / view / update / delete operations through a clean Swing dashboard — a digital replacement for paper-based records. <a href="https://github.com/rahmatul-islam/IDENTITY-MANAGEMENT-SYSTEM" target="_blank" rel="noopener">Repository</a></p>
+        </div>
+        <div class="r-item">
+          <div class="r-item-head"><strong>Nagar-Drishti (নগর-দৃষ্টি) (Flutter, Riverpod, Appwrite, TensorFlow Lite, PostGIS)</strong><span>Completed</span></div>
+          <p>AI-powered civic issue reporting platform aligned with the Smart Bangladesh Vision 2041: photo reports classified on-device, GPS-tagged to an admin GIS dashboard, automatic duplicate clustering, authority work assignment and citizen verification. Offline-first. <a href="https://github.com/rahmatul-islam/Nagar-Drishti_test" target="_blank" rel="noopener">Repository</a></p>
+        </div>
+        <div class="r-item">
+          <div class="r-item-head"><strong>Employee Management System — EmpSys (Java Swing, MySQL)</strong><span>Completed</span></div>
+          <p>Desktop HR tool for employee records: add employees with full details (name, designation, salary, NID, education, date of birth), view, update and remove records, with auto-generated employee IDs. <a href="https://github.com/rahmatul-islam/EmpSys" target="_blank" rel="noopener">Repository</a></p>
+        </div>
+        <div class="r-item">
+          <div class="r-item-head"><strong>IntelliLog (Flutter, Google ML Kit, Appwrite)</strong><span>Completed</span></div>
+          <p>AI-based smart hall access and attendance system using face recognition instead of manual roll calls, with three role-based portals (Student, Gate Security, Hall Authority) and instant cloud sync through Appwrite Realtime. <a href="https://github.com/rahmatul-islam/intellilog" target="_blank" rel="noopener">Repository</a></p>
+        </div>
         <div class="r-item">
           <div class="r-item-head"><strong>Java DSA Practice (Java, DSA, OOP)</strong><span>Learning Project</span></div>
-          <p>A collection of Data Structures and Algorithms solutions written in Java, focused on improving problem-solving skills, logical thinking, and understanding core concepts.</p>
-        </div>
-        <div class="r-item">
-          <div class="r-item-head"><strong>REST API Learning Project (REST API, Java or Python, SQL)</strong><span>Learning Project</span></div>
-          <p>A practice project for learning API design, HTTP methods, request handling, and backend development fundamentals.</p>
-        </div>
-        <div class="r-item">
-          <div class="r-item-head"><strong>Flutter Learning App (Flutter, Dart)</strong><span>Learning Project</span></div>
-          <p>A mobile application practice project built with Flutter and Dart while learning mobile development fundamentals.</p>
-        </div>
-        <div class="r-item">
-          <div class="r-item-head"><strong>Web Fundamentals Project (HTML, CSS)</strong><span>Learning Project</span></div>
-          <p>A responsive frontend practice project built using HTML and CSS.</p>
+          <p>Ongoing collection of Data Structures and Algorithms solutions written in Java, focused on problem-solving skills, logical thinking and core concepts. <a href="https://github.com/rahmatul-islam/DSA" target="_blank" rel="noopener">Repository</a></p>
         </div>
       </div>
     </div>

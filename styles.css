@@ -1418,7 +1418,8 @@ h1.title span span {
 .status-live { color: var(--accent); border-color: var(--accent); }
 
 .proj-title {
-  font-family: 'Space Grotesk', sans-serif;
+  /* Hind Siliguri fallback keeps the Bengali project name in the site's own font */
+  font-family: 'Space Grotesk', 'Hind Siliguri', sans-serif;
   font-weight: 600;
   font-size: 22px;
   color: var(--ink);
@@ -1892,7 +1893,7 @@ footer {
 .resume-sheet h1 { font-family: 'Space Grotesk', sans-serif; font-size: 28px; }
 .resume-sheet .r-sub { color: var(--accent); font-weight: 500; margin-bottom: 4px; }
 .resume-sheet .r-contact { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--muted); margin-bottom: 24px; }
-.resume-sheet .r-contact a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+.resume-sheet a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
 .resume-sheet .r-section { margin-bottom: 24px; }
 .resume-sheet h2 { font-family: 'IBM Plex Mono', monospace; font-size: 14px; border-bottom: 1px solid var(--line); padding-bottom: 4px; margin-bottom: 12px; color: var(--accent-2); }
 .resume-sheet .r-item { margin-bottom: 14px; }
