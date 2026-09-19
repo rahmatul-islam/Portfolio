@@ -481,7 +481,7 @@
           </div>
           <div class="spec-row">
             <div class="k"><span class="k-prefix">// 04</span> <span data-i18n="k_institute">UNIVERSITY</span></div>
-            <div class="v uni-v">Your University, Bangladesh</div>
+            <div class="v uni-v">University of Frontier Technology, Bangladesh (UFTB)</div>
           </div>
           <div class="spec-row">
             <div class="k"><span class="k-prefix">// 05</span> <span data-i18n="k_focus">PRIMARY FOCUS</span></div>
@@ -636,23 +636,121 @@
         </div>
       </div>
 
-      <!-- 2.4 JAVA DSA & PROBLEM-SOLVING VISUALIZER -->
+      <!-- 2.4 GO CONCURRENCY & JAVA DSA LEARNING LABS (browser-based simulation) -->
       <div class="legend-group visualizer-group reveal" id="visualizer">
         <div class="group-header vp-header">
           <div class="gh-left">
             <span class="group-num">2.4</span>
-            <h3 data-i18n="sg_vis">Java DSA &amp; Problem-Solving Visualizer</h3>
+            <h3 data-i18n="sg_vis">Concurrency &amp; DSA Learning Labs</h3>
           </div>
           <div class="vp-badges">
-            <span class="vp-mode-badge" id="vpModeBadge" title="Every value in this demo is simulated for learning">● SIMULATED LEARNING DEMO</span>
-            <span class="vp-mode-badge vp-badge-java" title="Data structure practised in Java">JAVA DSA PRACTICE</span>
+            <span class="vp-mode-badge" id="vpModeBadge" title="Browser-based educational simulation — no Go code is executed and no backend is running">● SIMULATED LEARNING DEMO</span>
+            <span class="vp-mode-badge vp-badge-java" title="Concepts practised in Go (concurrency pattern) and Java (data structures)">GO CONCEPTS · JAVA DSA</span>
             <button class="vp-btn" id="vpMotion" title="Toggle animations (also respects your OS reduced-motion setting)">🌀 Motion: Full</button>
+            <div class="vis-controls" role="tablist" aria-label="Learning labs">
+              <button class="btn-micro active" id="vpTabPool" role="tab">Concurrency Lab</button>
+              <button class="btn-micro" id="vpTabBST" role="tab">BST Lab</button>
+            </div>
           </div>
         </div>
 
         <div class="visualizer-card spec-card">
-          <!-- ============ BINARY SEARCH TREE — STEP-BY-STEP EXECUTION ============ -->
-          <div id="vpBSTView">
+          <!-- ==================== CONCURRENCY LAB ==================== -->
+          <div id="vpPoolView">
+            <p class="vp-intro" role="note">This is a browser-based educational simulation. It visualizes Go concurrency concepts — a producer, a buffered channel and a worker pool with retries and backpressure — but does not execute Go code or run a live backend. The simulated workers, channel slots, goroutine counts and metrics below are produced by a small JavaScript model so I can study how the pattern behaves.</p>
+            <div class="vp-layout">
+            <div class="vp-main">
+            <div class="vp-presets" id="vpPresets" role="group" aria-label="Scenario presets">
+              <button class="vp-preset" data-preset="normal" title="w3 · buf5 · normal producer · 0% fail">▸ Normal Load</button>
+              <button class="vp-preset" data-preset="burst" title="w4 · buf5 · burst producer">▸ Burst Traffic</button>
+              <button class="vp-preset" data-preset="slow" title="w2 · slow processing → queue saturates">▸ Slow Workers</button>
+              <button class="vp-preset" data-preset="failretry" title="25% failure rate · 3 retries">▸ Failure &amp; Retry</button>
+              <button class="vp-preset" data-preset="backpres" title="w1 · buf1 → producer blocks on send">▸ Backpressure Demo</button>
+            </div>
+
+            <div class="vp-controls">
+              <label class="vp-ctl">Workers
+                <select id="vpCfgWorkers" aria-label="Worker count (applies live)">
+                  <option>1</option><option>2</option><option selected>3</option><option>4</option>
+                  <option>5</option><option>6</option><option>7</option><option>8</option>
+                </select>
+              </label>
+              <label class="vp-ctl">Channel Buffer
+                <select id="vpCfgBuffer" aria-label="Channel buffer size (resets sim — channels are fixed-size)">
+                  <option>0</option><option>1</option><option selected>5</option><option>10</option>
+                </select>
+              </label>
+              <label class="vp-ctl">Producer
+                <select id="vpCfgProducer" aria-label="Producer speed">
+                  <option value="slow">slow</option><option value="normal" selected>normal</option><option value="burst">burst</option>
+                </select>
+              </label>
+              <label class="vp-ctl">Processing
+                <select id="vpCfgProcessing" aria-label="Worker processing time">
+                  <option value="fast">fast</option><option value="normal" selected>normal</option>
+                  <option value="slow">slow</option><option value="random">random</option>
+                </select>
+              </label>
+              <label class="vp-ctl">Fail %
+                <select id="vpCfgFailRate" aria-label="Task failure rate">
+                  <option>0</option><option>5</option><option>10</option><option>15</option>
+                  <option>20</option><option>25</option><option>30</option>
+                </select>
+              </label>
+              <label class="vp-ctl">Retries
+                <select id="vpCfgMaxRetries" aria-label="Retry limit per task">
+                  <option>0</option><option selected>1</option><option>2</option><option>3</option>
+                </select>
+              </label>
+              <button class="vp-btn primary" id="vpPlay" aria-pressed="false" title="Play / Pause (Space)">▶ Play</button>
+              <button class="vp-btn" id="vpStep" title="Advance one 100ms tick while paused (S)">⏭ Step</button>
+              <button class="vp-btn" id="vpReset" title="Reset simulation (R)">⟲ Reset</button>
+              <button class="vp-btn" id="vpPush" title="Manually produce one task (works while paused)">+ Push Task</button>
+              <button class="vp-btn" id="vpShare" title="Copy a shareable URL encoding this scenario">🔗 Share</button>
+              <span class="vp-kbd-hint"><kbd>Space</kbd> play/pause · <kbd>S</kbd> step · <kbd>R</kbd> reset</span>
+            </div>
+
+            <div class="vp-pipeline" aria-label="Worker pool pipeline">
+              <div class="vp-producer" id="vpProducer" title="Simulated producer — parks on send when the channel is full">
+                <span class="vp-producer-title">PRODUCER</span>
+                <span class="vp-producer-state" id="vpProducerState">ready</span>
+                <span class="vp-producer-rate" id="vpProducerRate"></span>
+              </div>
+              <div class="vp-channel">
+                <span class="vp-channel-label">chan Task [cap <span id="vpCap">5</span>]</span>
+                <div class="vp-slots" id="vpSlots"></div>
+                <span class="vp-blocked-badge" id="vpBlockedBadge" hidden></span>
+              </div>
+              <div class="vp-workers" id="vpWorkers" aria-live="polite"></div>
+            </div>
+
+            <div class="vp-metrics">
+              <div class="vp-metric" title="Tasks currently sitting in the channel buffer"><span class="v" id="vpMQueue">0</span><span class="k">Queue</span></div>
+              <div class="vp-metric" title="Workers currently RECEIVED/RUNNING"><span class="v" id="vpMActive">0</span><span class="k">Active</span></div>
+              <div class="vp-metric" title="Tasks completed successfully"><span class="v" id="vpMDone">0</span><span class="k">Done</span></div>
+              <div class="vp-metric fail" title="Tasks that exhausted all retries"><span class="v" id="vpMFail">0</span><span class="k">Failed</span></div>
+              <div class="vp-metric retry" title="Retry re-queues performed"><span class="v" id="vpMRetry">0</span><span class="k">Retried</span></div>
+              <div class="vp-metric" title="Completions per second (5s sliding window)"><span class="v" id="vpMThr">0.0</span><span class="k">Tasks/s</span></div>
+              <div class="vp-metric" title="Average time from enqueue to completion"><span class="v" id="vpMLat">—</span><span class="k">Avg latency</span></div>
+              <div class="vp-metric goro" title="Simulated goroutine count: main + producer + workers + senders blocked on a full channel"><span class="v" id="vpMGoro">0</span><span class="k">Goroutines</span></div>
+              <div class="vp-clock">simulated clock <span id="vpMClock">0.0s</span> · 1 tick = 100ms of simulated time · all numbers are model output, not measurements</div>
+            </div>
+
+            <div class="vp-log" id="vpLog" aria-live="polite" aria-label="Task lifecycle event log"></div>
+            </div><!-- /vp-main -->
+
+            <div class="vp-side">
+              <div class="vp-code-card">
+                <div class="vp-code-title">Reference snippet (not executed) — worker-pool pattern · highlight follows the simulation</div>
+                <pre class="vp-code" id="vpCode"><span class="code-line"><span class="kw">func</span> <span class="fn">main</span>() {</span><span class="code-line">  jobs := <span class="fn">make</span>(<span class="kw">chan</span> Task, <span id="codeBuf">5</span>)  <span class="cm">// buffered channel</span></span><span class="code-line">  done := <span class="fn">make</span>(<span class="kw">chan</span> Result)</span><span class="code-line"> </span><span class="code-line">  <span class="kw">for</span> id := 1; id &lt;= <span id="codeW">3</span>; id++ {</span><span class="code-line">    <span class="cl" id="cl-spawn"><span class="kw">go</span> <span class="fn">worker</span>(id, jobs, done)</span>  <span class="cm">// spawn</span></span><span class="code-line">  }</span><span class="code-line"> </span><span class="code-line">  <span class="kw">for</span> t := <span class="kw">range</span> <span class="fn">produce</span>() {</span><span class="code-line">    <span class="cl" id="cl-send">jobs &lt;- t</span>  <span class="cm">// blocks when full</span></span><span class="code-line">  }</span><span class="code-line">  <span class="fn">close</span>(jobs)</span><span class="code-line">}</span><span class="code-line"> </span><span class="code-line"><span class="kw">func</span> <span class="fn">worker</span>(id <span class="kw">int</span>, jobs &lt;-<span class="kw">chan</span> Task, done <span class="kw">chan</span>&lt;- Result) {</span><span class="code-line">  <span class="kw">for</span> task := <span class="kw">range</span> jobs {  <span class="cm">// receive</span></span><span class="code-line">    <span class="cl" id="cl-proc">res := <span class="fn">process</span>(task)</span>  <span class="cm">// may fail</span></span><span class="code-line">    <span class="kw">if</span> res.err != nil &amp;&amp; task.attempt &lt;= maxRetries {</span><span class="code-line">      <span class="cl" id="cl-retry"><span class="kw">go func</span>() { jobs &lt;- task.<span class="fn">retry</span>() }()</span>  <span class="cm">// requeue</span></span><span class="code-line">    }</span><span class="code-line">    <span class="cl" id="cl-done">done &lt;- res</span>  <span class="cm">// report</span></span><span class="code-line">  }</span><span class="code-line">}</span></pre>
+                <div class="vp-code-legend">highlighted line = current simulated lifecycle phase: send → recv → proc → done / retry. Shown for reading only — this page does not compile or run Go.</div>
+              </div>
+            </div><!-- /vp-side -->
+            </div><!-- /vp-layout -->
+          </div>
+
+          <!-- ============ BST LAB — STEP-BY-STEP EXECUTION ============ -->
+          <div id="vpBSTView" hidden>
             <p class="vp-intro">An educational, step-by-step simulation of a Binary Search Tree — the kind of data structure I practise in Java while solving problems. Give a problem input, run an operation, and follow the algorithm steps, the processing queue and the data structure state until the completed solution appears. Everything below is a simulated learning demo, not a running application.</p>
 
             <div class="vp-bst-controls">
@@ -1012,7 +1110,7 @@
               <strong data-i18n="r3_title">B.Sc. in Software Engineering — Level 2, Term 2</strong>
               <p data-i18n="r3_desc">Focus: Java, DSA and problem solving, Flutter, databases, backend development, REST API learning, and version control.</p>
             </td>
-            <td class="mono">University, Bangladesh</td>
+            <td class="mono">University of Frontier Technology, Bangladesh (UFTB)</td>
             <td><span class="badge status-progress">IN PROGRESS</span></td>
           </tr>
           <tr>
@@ -1072,7 +1170,7 @@
           <span class="contact-alt-title" data-i18n="c_alt_title">OTHER CONTACT EMAILS</span>
           <div class="contact-alt-row">
             <span class="alt-k" data-i18n="c_alt_uni">University</span>
-            <a class="alt-v" href="mailto:2303016@bdu.ac.bd">2303016@bdu.ac.bd</a>
+            <a class="alt-v" href="mailto:2303016@uftb.ac.bd">2303016@uftb.ac.bd</a>
           </div>
           <div class="contact-alt-row">
             <span class="alt-k" data-i18n="c_alt_personal">Personal</span>
@@ -1195,7 +1293,7 @@
       <div class="r-head">
         <h1>RAHMATUL ISLAM (RATUL)</h1>
         <p class="r-sub">B.Sc. in Software Engineering — Level 2, Term 2 · Expected Graduation 2029 | Java · Flutter · Python · Go · MySQL</p>
-        <p class="r-contact">Bangladesh · <a href="tel:+8801521715025">+880 1521 715025</a> · <a href="mailto:rahmatulislam.se@gmail.com">rahmatulislam.se@gmail.com</a> · <a href="mailto:2303016@bdu.ac.bd">2303016@bdu.ac.bd</a> · <a href="mailto:rahmatulislam@proton.me">rahmatulislam@proton.me</a> · <a href="https://github.com/rahmatul-islam" target="_blank" rel="noopener">github.com/rahmatul-islam</a> · <a href="https://www.linkedin.com/in/rahmatul-islam-447b39341/" target="_blank" rel="noopener">linkedin.com/in/rahmatul-islam-447b39341</a> · <a href="https://rahmatul-islam.github.io/Portfolio/" target="_blank" rel="noopener">rahmatul-islam.github.io/Portfolio</a></p>
+        <p class="r-contact">University of Frontier Technology, Bangladesh (UFTB) · <a href="tel:+8801521715025">+880 1521 715025</a> · <a href="mailto:rahmatulislam.se@gmail.com">rahmatulislam.se@gmail.com</a> · <a href="mailto:2303016@uftb.ac.bd">2303016@uftb.ac.bd</a> · <a href="mailto:rahmatulislam@proton.me">rahmatulislam@proton.me</a> · <a href="https://github.com/rahmatul-islam" target="_blank" rel="noopener">github.com/rahmatul-islam</a> · <a href="https://www.linkedin.com/in/rahmatul-islam-447b39341/" target="_blank" rel="noopener">linkedin.com/in/rahmatul-islam-447b39341</a> · <a href="https://rahmatul-islam.github.io/Portfolio/" target="_blank" rel="noopener">rahmatul-islam.github.io/Portfolio</a></p>
       </div>
 
       <div class="r-section">
@@ -1272,7 +1370,7 @@
         <h2>EDUCATION</h2>
         <div class="r-item">
           <div class="r-item-head"><strong>B.Sc. in Software Engineering — Level 2, Term 2</strong><span>Expected 2029</span></div>
-          <p class="r-inst">University, Bangladesh</p>
+          <p class="r-inst">University of Frontier Technology, Bangladesh (UFTB)</p>
         </div>
         <div class="r-item">
           <div class="r-item-head"><strong>Higher Secondary Certificate (HSC), Science · GPA 5.00</strong><span>2022</span></div>

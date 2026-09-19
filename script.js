@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
       sg_frameworks: 'ডেভেলপমেন্ট টুলস ও টেকনোলজি',
       sg_learning: 'ভবিষ্যতের লার্নিং রোডম্যাপ',
       sg_learning_note: 'ভবিষ্যতের জন্য শেখার পরিকল্পনা — বর্তমান দক্ষতা নয়।',
-      sg_vis: 'জাভা ডিএসএ ও সমস্যা সমাধান ভিজ্যুয়ালাইজার',
+      sg_vis: 'কনকারেন্সি ও ডিএসএ লার্নিং ল্যাব',
       sec_work: '03 // প্রজেক্ট ব্লুপ্রিন্টস',
       proj_head: 'রিয়েল প্রজেক্ট ও অনুশীলন',
       proj_desc: 'এগুলো আমি নিজে তৈরি করা প্রজেক্ট — Flutter মোবাইল অ্যাপ্লিকেশন, Java ডেস্কটপ সিস্টেম এবং ডাটাবেস-ভিত্তিক টুল। পাশাপাশি Java, Data Structures ও Algorithms, ব্যাকএন্ডের মূল বিষয়, REST API এবং ভার্সন কন্ট্রোলে আমার অনুশীলন চলছে।',
@@ -163,7 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
       sg_frameworks: 'Development Tools & Technologies',
       sg_learning: 'Future Learning Roadmap',
       sg_learning_note: 'Planned learning goals for the future — not current skills.',
-      sg_vis: 'Java DSA & Problem-Solving Visualizer',
+      sg_vis: 'Concurrency & DSA Learning Labs',
       sec_work: '03 // Project Blueprints',
       proj_head: 'Real Projects & Practice',
       proj_desc: 'These are projects I have built myself — Flutter mobile applications, Java desktop systems and database-backed tools — alongside my ongoing practice in Java, Data Structures and Algorithms, backend fundamentals, REST APIs, and version control.',
@@ -779,7 +779,7 @@ document.addEventListener('DOMContentLoaded', () => {
         res.innerHTML = 'Projects: 1. Expense Tracker App (Flutter) | 2. Identity Management System (Java) | 3. Nagar-Drishti (Flutter + AI) | 4. EmpSys (Java) | 5. IntelliLog (Flutter + AI) | 6. Java DSA Practice (learning)';
         break;
       case 'contact':
-        res.innerHTML = 'Primary: <a href="mailto:rahmatulislam.se@gmail.com">rahmatulislam.se@gmail.com</a><br>University: <a href="mailto:2303016@bdu.ac.bd">2303016@bdu.ac.bd</a> · Personal: <a href="mailto:rahmatulislam@proton.me">rahmatulislam@proton.me</a><br>Phone: <a href="tel:+8801521715025">+880 1521 715025</a><br>GitHub: github.com/rahmatul-islam · LinkedIn: linkedin.com/in/rahmatul-islam-447b39341';
+        res.innerHTML = 'Primary: <a href="mailto:rahmatulislam.se@gmail.com">rahmatulislam.se@gmail.com</a><br>University: <a href="mailto:2303016@uftb.ac.bd">2303016@uftb.ac.bd</a> · Personal: <a href="mailto:rahmatulislam@proton.me">rahmatulislam@proton.me</a><br>Phone: <a href="tel:+8801521715025">+880 1521 715025</a><br>GitHub: github.com/rahmatul-islam · LinkedIn: linkedin.com/in/rahmatul-islam-447b39341';
         break;
       case 'matrix':
         res.innerHTML = 'Name: Rahmatul Islam (Ratul) | Discipline: Software Engineering (SE) | Level: Level 2, Term 2 | Degree: B.Sc. in Software Engineering | Location: Bangladesh';
@@ -958,10 +958,11 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* ------------------------------------------------------------------------
-     17. LIVE CONCURRENCY & DSA VISUALIZER
+     17. CONCURRENCY & DSA LEARNING LABS (section 2.4)
      ------------------------------------------------------------------------ */
-  // The upgraded Concurrency Lab + BST Lab engine lives in viz-core.js (pure
-  // simulation logic) and visualizer.js (UI rendering). Loaded after this file.
+  // Browser-based educational simulation only. The Concurrency Lab + BST Lab
+  // model lives in viz-core.js (pure JS logic) and visualizer.js (UI). No Go
+  // code is executed and no backend is contacted. Loaded after this file.
 
 
 });
